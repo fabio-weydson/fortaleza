@@ -1,0 +1,64 @@
+<ion-view title="Sócio Torcedor">
+    
+    <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    
+    <ion-content class="has-header">
+        <img class="full-image" id="bannerapp" src="img/banner_app.jpg">
+         <ion-slide-box on-slide-changed="slideChanged($index)" id="slidehome">
+      <ion-slide>
+          <img src="img/slide1.jpg" style="width: 100%; max-width:500px">
+      </ion-slide>
+    </ion-slide-box>
+        <div class="barra-titulo">
+ <label class="item item-input">
+   
+ 
+   <div class="input-label">Faça seu cadastro</div>
+  </label>
+
+</div>
+         <div class="list">
+            
+            <div class="item item-divider">Dados básicos</div>
+            
+            <label class="item item-input">
+            <span class="input-label">Nome:</span>
+            <input type="text" placeholder="Seu nome completo">
+            </label>
+
+           <label class="item item-input">
+            <span class="input-label">CPF:</span>
+            <input type="text" placeholder="Somente numeros">
+            </label>
+
+           
+
+            <div class="item item-divider">Dados de contato</div>
+            
+          
+
+              <label class="item item-input">
+           <span class="input-label">Email:</span>
+            <input type="text" placeholder="seunome@provedor.com">
+            </label>
+
+              <label class="item item-input">
+            <span class="input-label">Telefone:</span>
+            <input type="text" placeholder="(00) 0000-0000">
+            </label>
+             
+            <li class="item item-checkbox">
+     <label class="checkbox">
+       <input type="checkbox">
+     </label>
+     Concordo com os <a href="#">termos e condições</a>
+  </li>
+           <button class="button button-full button-positive">
+			 Continuar
+			</button>
+            
+        </div>
+    </ion-content>
+</ion-view>

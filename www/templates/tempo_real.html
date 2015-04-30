@@ -1,0 +1,35 @@
+<ion-view title="Tempo Real">
+ <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+   <img class="full-image" id="bannerapp" src="img/banner_app.jpg">
+   {{storage}}
+   <div id="tempo-real">
+
+   		<div class="data">
+   			<div ng-bind-html="temporeal.data"></div>
+   		</div>
+   		<div class="placar">
+   			<div class="time time1">
+		       <img ng-src="{{temporeal.escudo_1}}">
+		       <br/>{{temporeal.time1}} 
+		       <div class="pontos">{{temporeal.ponto1}} x {{temporeal.ponto2}}</div>
+	       </div>
+	       <div class="time time2">
+		       <img ng-src="{{temporeal.escudo_2}}">
+		       <br/>{{temporeal.time2}} 
+	       </div>
+
+	       <div class="evento">{{temporeal.nomeevento}} <br/>{{temporeal.terminado}}</div>
+       </div>
+       </div>
+        <div class="barra-titulo">
+ <label class="item item-input">
+   <div class="input-label">Confira os lances</div>
+  </label>
+</div>
+    </ion-content>
+</ion-view>

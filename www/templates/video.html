@@ -1,0 +1,19 @@
+<ion-view title="{{video.title.$t}}">
+
+    <ion-content class="has-header">
+        
+        <div class="padding">
+         <div class="item item-image">
+                 <div class="media-container">
+                 
+                  <div ng-bind-html="video.embed"></div>
+                            </div>
+          </div>
+                       
+            <h2 class="title">{{video.title.$t}}</h2>
+            <p>{{video.idVideo}}</p>
+         
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,23 @@
+<ion-view title="Fotos e Videos">
+ <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+    </ion-nav-buttons>
+    <ion-content class="has-header" locking="true">
+    {{storage}}
+          <div class="list">
+            <a class="item" ng-class="{'item-thumbnail-left' : video.media$group.media$thumbnail[0].url}" href="#/app/video/{{$index}}" ng-repeat="video in videos | limitTo: paginationLimit()" >
+                <img ng-src="{{video.media$group.media$thumbnail[0].url}}" alt="{{video.title.$t}}">
+                
+                <h2>{{video.title.$t}}</h2>
+                <h3>{{video.media$group.media$description.$t}}...</h3>
+       </a>
+        </div>
+         <div class="padding">
+        <button class="button button-block button-positive" ng-show="hasMoreItems()" ng-click="showMoreItems()" >
+        Exibir mais
+        </button>
+        </div>
+    </ion-content>
+</ion-view>

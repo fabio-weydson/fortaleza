@@ -1,0 +1,29 @@
+{
+  "rss": {
+    "-version": "2.0",
+    "script": { "-id": "tinyhippos-injected" },
+    "channel": {
+      "title": "Esportes O Povo Online -",
+      "link": "http://www.opovo.com.br/",
+      "image": {
+        "url": "http://imgs.opovo.com.br/imgs/rss/logo-opovoonline.jpg",
+        "title": "opovo.com.br -",
+        "link": "http://www.opovo.com.br/"
+      },
+      "language": "pt-br",
+      "item": {
+        "dadosevento": {
+          "escudo1": "portlet/539/73456/1.jpg",
+          "escudo2": "portlet/539/73456/fortaleza-escudo.jpeg",
+          "time1": "Icasa",
+          "ponto1": "0",
+          "time2": "Fortaleza",
+          "ponto2": "1",
+          "nomeevento": "Campeonato Cearense"
+        },
+        "terminado": "2",
+        "data": "5/4/2015"
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<ion-view title="NOTÍCIAS">
+ <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+    <a class="button button-clear" href="#/app/settings"><i class="icon ion-loop"></i></a>
+    </ion-nav-buttons>
+    <ion-content class="has-header" overflow-scroll="true" id="noticias-lista">
+        
+        {{storage}}
+        
+        <div class="list">
+
+            <a class="item" ng-class="{'item-thumbnail-left' : post.FotoNoticia.length}" href="#/app/posts/{{$index}}" ng-repeat="post in posts | limitTo: paginationLimit()">
+                <img ng-src="http://www.fortalezaec.net/{{post.FotoNoticia}}" with="150" ng-show="{{post.FotoNoticia.length}}" alt="{{post.Titulo}}">
+                
+                <h2>{{post.Titulo}}</h2>
+                <h3>{{post.Subtitulo}}</h3>
+                <p ng-bind-html="post.DataHora * 1000 | date:'dd/MM/yy'"></p>
+            </a>
+
+        </div>
+        
+        <div class="padding">
+        <button class="button button-block button-positive" ng-show="hasMoreItems()" ng-click="showMoreItems()" >
+        Exibir mais
+        </button>
+        </div>
+       
+    </ion-content>
+</ion-view>

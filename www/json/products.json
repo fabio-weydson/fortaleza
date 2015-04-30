@@ -1,0 +1,47 @@
+{
+	"id": 1,
+	"total": 6,
+	"result": [
+		{
+			"id": 1,
+			"thumb": "http://static1.netshoes.net/Produtos/bone-new-era-fortaleza-piping-collection/66/306-1073-066/306-1073-066_janela.jpg",
+			"title": "Boné New Era Fortaleza Piping Collection",
+			"body": "O Boné New Era Fortaleza Piping Collection não pode ficar de fora da coleção e do look do torcedor leonino. Leve as cores e o orgulho do Tricolor de Aço para além dos estádios e arquibancadas.",
+			"tags": ["Tag1", "Tag2"],
+			"pictures": [
+				"img/http://static1.netshoes.net/Produtos/bone-new-era-fortaleza-piping-collection/66/306-1073-066/306-1073-066_janela.jpg", 
+				"img/products-1-2.jpg"
+			]
+		}, {
+			"id": 2,
+			"thumb": "http://static4.netshoes.net/Produtos/bone-new-era-fortaleza/14/306-0048-014/306-0048-014_janela.jpg",
+			"title": "Boné New Era Fortaleza Piping Collection",
+			"body": "O Boné New Era Fortaleza Piping Collection não pode ficar de fora da coleção e do look do torcedor leonino. Leve as cores e o orgulho do Tricolor de Aço para além dos estádios e arquibancadas.",
+			"tags": ["Tag3", "Tag4"],
+			"pictures": [
+				"http://static4.netshoes.net/Produtos/bone-new-era-fortaleza/14/306-0048-014/306-0048-014_janela.jpg",
+				"img/products-1-1.jpg"
+			]
+		}, {
+			"id": 3,
+			"thumb": "http://static2.netshoes.net/Produtos/camisa-kappa-fortaleza-i-1415-sn/66/034-0151-066/034-0151-066_janela.jpg",
+			"title": "Camisa Kappa Fortaleza I 14/15 s/n°",
+			"body": "Mostre a força do Leão com a Camisa Kappa Fortaleza I 14/15 s/n°. Conforto e tradição para completar o fardamento tricolor ou marcar um golaço na torcida pelo clube.",
+			"tags": ["Tag5"],
+			"pictures": [
+				"http://static2.netshoes.net/Produtos/camisa-kappa-fortaleza-i-1415-sn/66/034-0151-066/034-0151-066_janela.jpg",
+				"img/products-1-1.jpg"
+			]
+		}, {
+			"id": 4,
+			"thumb": "http://static2.netshoes.net/Produtos/camisa-feminina-kappa-fortaleza-i-1415-sn/66/034-0152-066/034-0152-066_janela.jpg",
+			"title": "Camisa Feminina Kappa Fortaleza I 14/15 s/n°",
+			"body": "Mostre a força do Leão com a Camisa Kappa Fortaleza I 14/15 s/n°. Conforto e tradição para completar o fardamento tricolor ou marcar um golaço na torcida pelo clube.",
+			"tags": ["Tag6", "Tag7"],
+			"pictures": [
+				"http://static2.netshoes.net/Produtos/camisa-feminina-kappa-fortaleza-i-1415-sn/66/034-0152-066/034-0152-066_janela.jpg",
+				"img/products-1-1.jpg"
+			]
+		}
+	]
+}

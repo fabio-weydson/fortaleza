@@ -1,0 +1,310 @@
+/* Empty. Add your own CSS if you like */
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../font/SourceSansPro-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../font/SourceSansPro-Italic.ttf");
+  font-style:italic;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../font/SourceSansPro-Light.ttf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../font/SourceSansPro-LightItalic.ttf");
+  font-weight: 300;
+  font-style:italic;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../font/SourceSansPro-Bold.ttf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../font/SourceSansPro-BoldItalic.ttf");
+  font-weight: 600;
+  font-style:italic;
+}
+@font-face {
+    font-family: 'Rockwell';
+    src: url('../lib/ionic/fonts/rockb-webfont.eot');
+    src: url('../lib/ionic/fonts/rockb-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../lib/ionic/fonts/rockb-webfont.woff') format('woff'),
+         url('../lib/ionic/fonts/rockb-webfont.ttf') format('truetype'),
+         url('../lib/ionic/fonts/rockb-webfont.svg#Rockwell') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Source Sans Pro', sans-serif; }
+
+a { text-decoration: none; }
+
+img { max-width: 100%; height:auto; }
+
+.angular-google-map img { max-width: inherit!important; }
+
+.angular-google-map { width: 100%; height: 100%; }
+
+.scroll { height: 100%; }
+
+.noborder { border:none; }
+
+/* Specify an height via CSS for the map container: */
+.angular-google-map-container { height: 100%; }
+.menu-left .item:first-child {
+  border-top:none;
+} 
+.menu-left .item {
+  margin:0;
+ 
+  border-bottom: 1px solid #000;
+
+  border-top: 1px solid #444;
+
+ color: #FFF;
+
+ background: transparent;
+ 
+  text-shadow: -1px 2px 0px #000;
+  border-left: none;
+  border-right: none;
+}
+.menu-left {
+left: 0;
+background: #333;
+	
+}
+.menu-left  .item-content {
+	background:#232323;
+	font-size: 20px;
+
+}
+
+.menu-left  .item-content.activated {
+	background:#444;
+}
+.bar.bar-stable { 
+    background: #cc0014 url(../img/bg_menu.jpg);
+
+}
+.bar .button,.bar.bar-stable .title  {
+    color: #FFF !important;
+     
+    text-transform: uppercase;
+    /* text-shadow: -1px 1px 0px #000; */
+
+}
+.item-thumbnail-left > img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left .item-content > img:first-child, .item-thumbnail-left .item-content .item-image {
+    outline: 2px solid #CCC;
+}
+.list a.item {
+    background: linear-gradient(to bottom, #FFF 0%,#f7f7f7 100%);
+}
+.item h2 {
+    color: #666666;
+    font-size: 100%;
+    white-space: pre-line;
+}
+.item h3 {
+    color: #78848E;
+    font-size: 80%;
+    max-height: 30px;
+    white-space: pre-wrap;
+    overflow: hidden;
+    margin: 0;
+}
+p.ng-binding {
+    text-align: right;
+    color: #78848E;
+    line-height: normal;
+    font-size: 80%;
+}
+
+a.item {
+    padding-bottom: 4px;
+}
+h2.title {
+    font-size: 165%;
+    color: #333;
+}
+
+.pane .scroll-content {
+    background: #f5f5f5;
+}
+.menu-left .scroll-content {
+    background: #262626;
+}
+.post-info {
+    color: #999;
+}
+.item h2 {
+    font-size: 100%;
+    margin-bottom: 2px;
+    color: #155B8D;
+    font-size: 85%;
+    max-height: 30px;
+}
+#slidehome h3 {
+    position: absolute;
+    background: rgba(0,0,0,0.7);
+    width: 100%;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #000;
+    padding: 2%;
+    font-size: 150%;
+    bottom: 0;
+    margin-bottom: 5px;
+}
+#slidehome {
+    margin-top: -4px;  margin-bottom: -4px;
+}
+#slidehome .slider-pager {
+    top: 0;
+}
+
+#slidehome .slider-pager .slider-pager-page {
+    color: #FFF;
+}
+.title.title-center {
+    font-family: "Rockwell";
+    font-weight: normal;
+    font-size: 130%;
+    letter-spacing: 1px;
+}
+.menu-content.pane {  
+    -webkit-box-shadow: -21px -17px 21px -17px #000000;  
+    box-shadow: -21px -17px 21px -17px #000000;
+}
+.row.produto h2 {
+    font-size: 118%;
+    font-weight: bold;
+    color: #666;
+}
+
+.produto p.ng-binding {
+    font-size: 93%;
+    line-height: 97%;
+    text-align: left;
+}
+.barra-titulo .item, .barra-titulo  .item-select select, .barra-titulo .input-label {
+    background: #011B3F;
+    color:#FFF;
+    text-transform:uppercase;
+}
+
+.item-thumbnail-left, .item-thumbnail-left .item-content {
+  padding-top: 8px;
+  padding-left: 97px;
+  min-height: 80px; }
+
+  #jogadores-lista img {
+    max-width: 60px;
+    max-height: 100px;
+}
+
+#jogadores-lista .list a {
+    height: 95px;
+    padding-left: 82px;
+}
+#jogador-ver h2.title  {
+    text-align: left;
+    font-weight:bold;
+    font-size: 20px;
+    color: #666;
+}
+#jogador-ver p.ng-binding {
+    text-align: left;
+    margin-bottom: 4px !important;
+    font-size: 15px;
+    color: #666;
+}
+#jogadores-lista .list a h2 {
+    font-size: 120%;
+}
+
+#jogadores-lista .list a h3 {
+    font-size: 100%;
+}
+
+#jogadores-lista .list a p {
+    font-size: 100%;
+}
+#tempo-real .data {
+    background: #174C8A;
+    float: left;
+    width: 30%;
+    text-align: center;
+    height: 100%;
+    vertical-align: middle;
+}
+
+#tempo-real .placar {
+    background: #03244D;
+    height: 100%;
+    float: left;
+    width: 70%;
+}
+
+div#tempo-real {
+    height: 100px;
+    background: #03244D;
+    color: #53AADD;
+}
+
+.barra-titulo {
+    clear: both;
+}
+
+#tempo-real .placar .time {
+    width: 50%;
+    float: left;
+    font-size: 96%;
+    color: #FFF;
+    padding-top: 10px;
+    text-align: center;
+    position: relative;
+    padding-right: 30px;
+}
+
+#tempo-real .placar .time2 {
+    padding-left: 30px;
+    padding-right: 0;
+}
+
+#tempo-real .placar .evento {
+    text-align: center;
+    clear:both;
+}
+#tempo-real .data div {
+    margin-top: 30px;
+    color: #FFF;
+}
+
+
+
+#tempo-real .placar .pontos {
+    position: absolute;
+    right: -26px;
+    background: #000;
+    padding: 5px;
+    font-size: 23px;
+    top: 45%;
+    border-radius: 6px;
+}
+#tempo-real .time img {
+	  background: #FFF;
+  padding: 2px;
+  border-radius: 3px;
+  
+}
