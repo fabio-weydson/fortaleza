@@ -16,29 +16,29 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-      
+
     // Open any external link with InAppBrowser Plugin
     $(document).on('click', 'a[href^=http], a[href^=https]', function(e){
 
         e.preventDefault();
-        var $this = $(this); 
+        var $this = $(this);
         var target = $this.data('inAppBrowser') || '_blank';
 
         window.open($this.attr('href'), target);
 
     });
-      
+
   });
-    
+
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-    
+
     // $ionicConfigProvider
     // http://ionicframework.com/docs/api/provider/%24ionicConfigProvider/
     $ionicConfigProvider.tabs.position('bottom');
     $ionicConfigProvider.navBar.alignTitle('center');
-    
+
     $stateProvider
 
     .state('app', {
@@ -106,7 +106,7 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
           controller: 'GalleryCtrl2'
         }
       }
-    }) 
+    })
 
     .state('app.map', {
       url: "/map",
@@ -230,6 +230,15 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         'menuContent' :{
           templateUrl: "templates/tempo_real.html",
           controller: 'TempoRealCtrl'
+        }
+      }
+    })
+    .state('app.lances', {
+      url: "/lances",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/lances.html",
+          controller: 'LancesCtrl'
         }
       }
     })
@@ -361,11 +370,11 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
 		N : /\xD1/g,
 		'-' : /\s/g
 	};
- 
+
 	for ( var letra in mapaAcentosHex ) {
 		var expressaoRegular = mapaAcentosHex[letra];
 		string = string.replace( expressaoRegular, letra );
 	}
- 
+
 	return string;
 }

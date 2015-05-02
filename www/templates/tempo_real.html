@@ -15,12 +15,12 @@
    		<div class="placar">
    			<div class="time time1">
 		       <img ng-src="{{temporeal.escudo_1}}">
-		       <br/>{{temporeal.time1}} 
+		       <br/>{{temporeal.time1}}
 		       <div class="pontos">{{temporeal.ponto1}} x {{temporeal.ponto2}}</div>
 	       </div>
 	       <div class="time time2">
 		       <img ng-src="{{temporeal.escudo_2}}">
-		       <br/>{{temporeal.time2}} 
+		       <br/>{{temporeal.time2}}
 	       </div>
 
 	       <div class="evento">{{temporeal.nomeevento}} <br/>{{temporeal.terminado}}</div>
@@ -31,5 +31,13 @@
    <div class="input-label">Confira os lances</div>
   </label>
 </div>
+<!-- <div ng-controller="LancesCtrl">
+<div class="list">
+
+    <a class="item" ng-class="{'item-thumbnail-left' : post.FotoNoticia.length}" href="#/app/posts/{{$index}}" ng-repeat="lance in lances | limitTo: paginationLimit()"  >
+        <h2>{{lance}}</h2>
+    </a>
+  </div>
+</div> -->
     </ion-content>
 </ion-view>

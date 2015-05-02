@@ -139,6 +139,23 @@ angular.module('mobionicApp.storage', [])
     }
   }
 })
+.factory('LancesStorage', function() {
+  return {
+    all: function() {
+      var lances = window.localStorage['lances'];
+      if(lances) {
+        return angular.fromJson(lances);
+      }
+      return {};
+    },
+    save: function(lances) {
+      window.localStorage['lances'] = angular.toJson(lances);
+    },
+    clear: function() {
+      window.localStorage.removeItem('lances');
+    }
+  }
+})
 
 .factory('ServerPostsStorage', function() {
   return {
@@ -189,19 +206,19 @@ angular.module('mobionicApp.storage', [])
             {
                name: 'First Option',
                checked: true
-            }, 
+            },
             {
                name: 'Second Option',
                checked: false
-            }, 
+            },
             {
                name: 'Third Option',
                checked: false
-            }, 
+            },
             {
                name: 'Fourth Option',
                checked: false
-            }, 
+            },
             {
                name: 'Fifth Option',
                checked: false
