@@ -1,5 +1,4 @@
 <ion-view title="{{video.title.$t}}">
-
     <ion-content class="has-header">
         <span class="localdata">{{storage}}</span>
         <div class="padding" id="video" >
@@ -13,6 +12,18 @@
             <h2 class="title">{{video.title.$t}}</h2>
             <p>{{video.media$group.media$description.$t}}</p>
         </div>
-
+         <div class="barra-titulo">
+ <label class="item item-input">
+   <div class="input-label">Mais vídeos</div>
+  </label>
+</div>
+         <div class="list"  ng-controller="VideosCtrl">
+            <a class="item" ng-class="{'item-thumbnail-left' : video.media$group.media$thumbnail[0].url}" href="#/app/video/{{$index}}" ng-repeat="video in videos | limitTo: 4" >
+                <img ng-src="{{video.media$group.media$thumbnail[0].url}}" alt="{{video.title.$t}}">
+                
+                <h2>{{video.title.$t}}</h2>
+                <h3>{{video.media$group.media$description.$t}}...</h3>
+       </a>
+        </div>
     </ion-content>
 </ion-view>

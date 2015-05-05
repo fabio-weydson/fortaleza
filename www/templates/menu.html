@@ -38,8 +38,8 @@
                 <i class="icon {{item.icon}}"></i>&nbsp;&nbsp;{{item.title}}
             </ion-item>
             </div>
-      <div ng-if="!item.url">
- <ion-item ng-click="toggleGroup(item)" ng-class="item-content">
+      <div ng-if="!item.url" >
+ <ion-item ng-click="toggleGroup(item)" ng-class="item-content" href="#">
                 <i class="icon" ng-class="isGroupShown(item) ? '{{item.icon}}' : '{{item.icon}}'"></i>&nbsp;&nbsp;{{item.title}}
             </ion-item>
             <ion-item  ng-class="isGroupShown(item) ? 'sub-item item-accordion' : ''"
