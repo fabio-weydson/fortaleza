@@ -422,6 +422,7 @@ span.localdata {
 
 #fotos .thumb {
     width: 33%;
+    height: 106px;
     float: left;
     background-size: 150%;
     background-position:center;

@@ -122,7 +122,7 @@ angular.module('mobionicApp.data', [])
             url: '#/app/jogadores'
         },
         {
-            title: 'Notícias',
+            title: 'Noticias',
             icon: 'ion-ios7-paper-outline',
             url: '#/app/posts'
         },
@@ -137,12 +137,12 @@ angular.module('mobionicApp.data', [])
                     icon:"ion-android-image",
                 },
                 {
-                    title: "Vídeos",
+                    title: "Videos",
                     url: '#/app/videos',
                     icon:"ion-social-youtube",
                 },
                 {
-                    title: "Papéis de Parede",
+                    title: "Papeis de Parede",
                     url: '#/app/papeis_de_parede',
                     icon:"ion-wand",
                 }] 
@@ -157,7 +157,7 @@ angular.module('mobionicApp.data', [])
                     icon:"ion-monitor",
                 },
                 {
-                    title: "Próximos Jogos",
+                    title: "Proximos Jogos",
                     url: '#/app/proximos_jogos',
                     icon:"ion-calendar",
                 }]  
@@ -168,7 +168,7 @@ angular.module('mobionicApp.data', [])
             url: '#/app/products'
         },
         {
-            title: 'Sócio Torcedor',
+            title: 'Socio Torcedor',
             icon: 'ion-android-star',
             url: '#/app/socio'
         },
@@ -188,7 +188,7 @@ angular.module('mobionicApp.data', [])
                 },
                 {
                     title: "Contatos",
-                    url: '#/app/proximos_jogos',
+                    url: '#/app/contatos',
                     icon:"ion-ios7-email",
                 },
                 {

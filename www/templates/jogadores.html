@@ -9,8 +9,8 @@
         
      
     <div class="list" >
-                 <a class="item"   ng-class="{'item-thumbnail-left' : jogador.Foto.length}" href="#/app/jogador/{{$index}}" ng-repeat="jogador in jogadores | limitTo: 20">
-                <img ng-src="thumbs.php?w=128&h=128&imagem=http://www.fortalezaec.net/{{jogador.Foto}}" ng-show="{{jogador.Foto.length}}" alt="{{jogador.NomeUsual}}">
+                 <a class="item" ng-class="{'item-thumbnail-left' : jogador.Foto.length}" href="#/app/jogador/{{$index}}" ng-repeat="jogador in jogadores | limitTo: 20">
+                <img ng-src="http://179.188.17.9/~fortalezaapp/webservice/thumbs.php?w=128&h=128&imagem=http://www.fortalezaec.net{{jogador.Foto}}" ng-show="{{jogador.Foto.length}}" alt="{{jogador.NomeUsual}}">
                 
                 <h2>{{jogador.NomeUsual}}</h2>
                 <h3>Idade: {{jogador.Idade}}</h3>
