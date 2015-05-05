@@ -97,17 +97,33 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         }
       }
     })
-
-    .state('app.gallery', {
-      url: "/gallery",
+  .state('app.fotos', {
+      url: "/fotos",
       views: {
         'menuContent' :{
-          templateUrl: "templates/gallery.html",
-          controller: 'GalleryCtrl2'
+          templateUrl: "templates/fotos.html",
+          controller: 'FotosCtrl'
         }
       }
     })
-
+    .state('app.videos', {
+      url: "/videos",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/videos.html",
+          controller: 'VideosCtrl'
+        }
+      }
+    })
+    .state('app.video', {
+      url: "/video/:videoId",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/video.html",
+          controller: 'VideoCtrl'
+        }
+      }
+    })
     .state('app.map', {
       url: "/map",
       views: {
@@ -144,16 +160,6 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         'menuContent' :{
           templateUrl: "templates/jogador.html",
           controller: 'JogadorCtrl'
-        }
-      }
-    })
-
-    .state('app.video', {
-      url: "/video/:videoId",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/video.html",
-          controller: 'VideoCtrl'
         }
       }
     })
@@ -336,6 +342,16 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         'menuContent' :{
           templateUrl: "templates/settings.html",
           controller: 'SettingsCtrl'
+        }
+      }
+    })
+
+     .state('app.member', {
+      url: "/member",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/member.html",
+          controller: 'MemberCtrl'
         }
       }
     })

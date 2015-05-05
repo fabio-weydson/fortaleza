@@ -71,20 +71,37 @@ angular.module('mobionicApp.storage', [])
     }
   }
 })
-.factory('GalleryStorage', function() {
+.factory('FotosStorage', function() {
   return {
     all: function() {
-      var gallery = window.localStorage['gallery'];
-      if(gallery) {
-        return angular.fromJson(gallery);
+      var fotos = window.localStorage['fotos'];
+      if(fotos) {
+        return angular.fromJson(fotos);
       }
       return {};
     },
-    save: function(gallery) {
-      window.localStorage['gallery'] = angular.toJson(gallery);
+    save: function(fotos) {
+      window.localStorage['fotos'] = angular.toJson(fotos);
     },
     clear: function() {
-      window.localStorage.removeItem('gallery');
+      window.localStorage.removeItem('fotos');
+    }
+  }
+})
+.factory('VideosStorage', function() {
+  return {
+    all: function() {
+      var videos = window.localStorage['videos'];
+      if(videos) {
+        return angular.fromJson(videos);
+      }
+      return {};
+    },
+    save: function(videos) {
+      window.localStorage['videos'] = angular.toJson(videos);
+    },
+    clear: function() {
+      window.localStorage.removeItem('videos');
     }
   }
 })

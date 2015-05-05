@@ -1,18 +1,17 @@
 <ion-view title="{{video.title.$t}}">
 
     <ion-content class="has-header">
-        
-        <div class="padding">
+        <span class="localdata">{{storage}}</span>
+        <div class="padding" id="video" >
          <div class="item item-image">
-                 <div class="media-container">
+                 <div class="media-container" data-ng-init="init()">
                  
                   <div ng-bind-html="video.embed"></div>
                             </div>
           </div>
                        
             <h2 class="title">{{video.title.$t}}</h2>
-            <p>{{video.idVideo}}</p>
-         
+            <p>{{video.media$group.media$description.$t}}</p>
         </div>
 
     </ion-content>

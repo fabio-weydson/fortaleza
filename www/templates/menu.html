@@ -12,7 +12,7 @@
   <ion-side-menu side="left">
   
     <ion-content>
-      <ion-list>
+      <!--<ion-list>
         <ion-item ng-repeat="item in items" nav-clear menu-close href="{{item.url}}">
         <i class="icon {{item.icon}}"></i> {{item.title}}
         </ion-item>
@@ -24,11 +24,32 @@
         <i class="icon ion-arrow-swap"></i> Action Sheet
         </ion-item>
         -->
-		<ion-item nav-clear menu-close ng-click="ionic.Platform.exitApp()">
+		<!--<ion-item nav-clear menu-close ng-click="ionic.Platform.exitApp()">
         <i class="icon ion-power"></i> Sair
         </ion-item>
         
-      </ion-list>
+      </ion-list> -->
+      
+      <ion-list>
+
+    <div ng-repeat="item in items">
+      <div ng-if="item.url">
+                  <ion-item nav-clear menu-close href="{{item.url}}">
+                <i class="icon {{item.icon}}"></i>&nbsp;&nbsp;{{item.title}}
+            </ion-item>
+            </div>
+      <div ng-if="!item.url">
+ <ion-item ng-click="toggleGroup(item)" ng-class="item-content">
+                <i class="icon" ng-class="isGroupShown(item) ? '{{item.icon}}' : '{{item.icon}}'"></i>&nbsp;&nbsp;{{item.title}}
+            </ion-item>
+            <ion-item  ng-class="isGroupShown(item) ? 'sub-item item-accordion' : ''"
+                      ng-repeat="submenu in item.subMenu"
+                      ng-show="isGroupShown(item)"  nav-clear menu-close href="{{submenu.url}}">
+              <i class="icon {{submenu.icon}}"></i>&nbsp;&nbsp;{{submenu.title}}
+            </ion-item>
+      </div>
+    </div>
+  </ion-list>
     </ion-content>
   </ion-side-menu>
-</ion-side-menus>
+</ion-side-menus> 

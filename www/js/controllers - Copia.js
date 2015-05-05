@@ -15,10 +15,10 @@ angular.module('mobionicApp.controllers', [])
     $scope.loading = $ionicLoading.show({
       template: '<i class="icon ion-loading-c"></i> Carregando',
 
-      
+      //Will a dark overlay or backdrop cover the entire view
       showBackdrop: false,
 
-      
+      // The delay in showing the indicator
       showDelay: 10
     });
 
@@ -49,10 +49,10 @@ angular.module('mobionicApp.controllers', [])
     $scope.loading = $ionicLoading.show({
       template: '<i class="icon ion-loading-c"></i> Carregando',
 
-      
+      //Will a dark overlay or backdrop cover the entire view
       showBackdrop: false,
 
-      
+      // The delay in showing the indicator
       showDelay: 10
     });
 
@@ -90,10 +90,10 @@ angular.module('mobionicApp.controllers', [])
     $scope.loading = $ionicLoading.show({
       template: '<i class="icon ion-loading-c"></i> Carregando',
 
-      
+      //Will a dark overlay or backdrop cover the entire view
       showBackdrop: false,
 
-      
+      // The delay in showing the indicator
       showDelay: 10
     });
 
@@ -125,52 +125,9 @@ angular.module('mobionicApp.controllers', [])
 })
 
 // Gallery Controller
-.controller('FotosCtrl', function($scope, $ionicLoading, FotosData, FotosStorage, $document) {
+.controller('GalleryCtrl', function($scope, GalleryData) {
 
-    $scope.fotos = [];
-
-    $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-c"></i> Carregando',
-
-      
-      showBackdrop: false,
-
-      
-      showDelay: 10
-    });
-
-    FotosData.async().then(
-        // successCallback
-        function() {
-            $scope.fotos = FotosData.getAll();
-            $ionicLoading.hide();
-        },
-        // errorCallback
-        function() {
-            $scope.fotos = FotosStorage.all();
-            $scope.storage = 'Dados locais. Você está offline.';
-            $ionicLoading.hide();
-        },
-        // notifyCallback
-        function() {}
-    )
-
-    var page = 1;
-    // Define the number of the posts in the page
-    var pageSize = 7;
-
-    $scope.paginationLimit = function(data) {
-    return pageSize * page;
-    };
-
-    $scope.hasMoreItems = function() {
-    return page < ($scope.fotos.length / pageSize);
-    };
-
-    $scope.showMoreItems = function() {
-    page = page + 1;
-    };
-
+    $scope.items = GalleryData.items;
 
 })
 
@@ -182,10 +139,10 @@ angular.module('mobionicApp.controllers', [])
     $scope.loading = $ionicLoading.show({
       template: '<i class="icon ion-loading-c"></i> Carregando',
 
-      
-      showBackdrop: true,
+      //Will a dark overlay or backdrop cover the entire view
+      showBackdrop: false,
 
-      
+      // The delay in showing the indicator
       showDelay: 10
     });
 
@@ -225,6 +182,45 @@ angular.module('mobionicApp.controllers', [])
 })
 
 // Video Controller
+.controller('VideoCtrl1', function($scope, $stateParams, VideosData) {
+
+    $scope.video = VideosData.get($stateParams.videoId);
+
+    var feedURL = $scope.video.link[1].href;
+        var fragments = feedURL.split("/");
+        var idVideo = fragments[fragments.length - 2];
+
+    var urlEmbed = trustAsHtml('<iframe src="https://www.youtube.com/embed/'+idVideo+'?rel=0&showinfo=0&allownetworking=internal" frameborder="0" width="100%" height="150%"></iframe>');
+
+    $scope.video['embed'] = urlEmbed;
+
+
+
+    $scope.loadURL = function (url) {
+        //target: The target in which to load the URL, an optional parameter that defaults to _self. (String)
+        //_self: Opens in the Cordova WebView if the URL is in the white list, otherwise it opens in the InAppBrowser.
+        //_blank: Opens in the InAppBrowser.
+        //_system: Opens in the system's web browser.
+        window.open(url,'_blank');
+    }
+
+    $scope.sharePost = function () {
+
+        var subject = $scope.video.title.$t;
+        var message = $scope.video.title.$t;
+        message = message.replace(/(<([^>]+)>)/ig,"");
+
+        var link = $scope.video.title.$t;
+
+        //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
+        //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
+        window.plugins.socialsharing.share(message, subject, null, link);
+    }
+
+})
+
+
+// Video Controller
 .controller('VideoCtrl', ['$scope', '$sce', '$stateParams', 'VideosData', function($scope, $sce, $stateParams, VideosData){
       $scope.video = VideosData.get($stateParams.videoId);
 
@@ -239,10 +235,10 @@ angular.module('mobionicApp.controllers', [])
 
 
     $scope.loadURL = function (url) {
-        
-        
-        
-        
+        //target: The target in which to load the URL, an optional parameter that defaults to _self. (String)
+        //_self: Opens in the Cordova WebView if the URL is in the white list, otherwise it opens in the InAppBrowser.
+        //_blank: Opens in the InAppBrowser.
+        //_system: Opens in the system's web browser.
         window.open(url,'_blank');
     }
 
@@ -254,8 +250,8 @@ angular.module('mobionicApp.controllers', [])
 
         var link = $scope.video.title.$t;
 
-        
-        
+        //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
+        //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
         window.plugins.socialsharing.share(message, subject, null, link);
 
     }
@@ -267,7 +263,68 @@ angular.module('mobionicApp.controllers', [])
        $('.media-container .ng-binding').width(window_width).height(valueHeight);
     };
 }])
+// Map Controller
+.controller('MapCtrl', function($scope, MapData) {
 
+    $scope.windowOptions = false;
+
+    $scope.onClick = function () {
+    this.windowOptions = !this.windowOptions;
+    };
+
+    $scope.closeClick = function () {
+    this.windowOptions = false;
+    };
+
+    $scope.map = MapData.map;
+
+})
+
+// About Controller
+.controller('AboutCtrl', function($scope, $ionicLoading, AboutData, AboutStorage) {
+
+    $scope.about = [];
+
+    $scope.loading = $ionicLoading.show({
+      template: '<i class="icon ion-loading-c"></i> Carregando',
+
+      //Will a dark overlay or backdrop cover the entire view
+      showBackdrop: false,
+
+      // The delay in showing the indicator
+      showDelay: 10
+    });
+
+    AboutData.async().then(
+        // successCallback
+        function() {
+            $scope.about = AboutData.getAll();
+            $ionicLoading.hide();
+        },
+        // errorCallback
+        function() {
+            $scope.about = AboutStorage.all();
+            $scope.storage = 'Dados locais. Você está offline.';
+            $ionicLoading.hide();
+        },
+        // notifyCallback
+        function() {}
+    );
+
+})
+
+// Member Controller
+.controller('MemberCtrl', function($scope, $stateParams, AboutData) {
+
+    $scope.member = AboutData.get($stateParams.memberId);
+
+})
+// Tempo Real Controller
+.controller('MemberCtrl', function($scope, $stateParams, AboutData) {
+
+    $scope.member = AboutData.get($stateParams.memberId);
+
+})
 // Contact Controller
 .controller('ContactCtrl', function($scope) {
 
@@ -298,10 +355,10 @@ angular.module('mobionicApp.controllers', [])
     $scope.loading = $ionicLoading.show({
       template: '<i class="icon ion-loading-c"></i> Carregando',
 
-      
+      //Will a dark overlay or backdrop cover the entire view
       showBackdrop: false,
 
-      
+      // The delay in showing the indicator
       showDelay: 10
     });
 
@@ -350,10 +407,10 @@ angular.module('mobionicApp.controllers', [])
     $scope.loading = $ionicLoading.show({
       template: '<i class="icon ion-loading-c"></i> Carregando',
 
-      
+      //Will a dark overlay or backdrop cover the entire view
       showBackdrop: false,
 
-      
+      // The delay in showing the indicator
       showDelay: 10
     });
 
@@ -397,10 +454,10 @@ angular.module('mobionicApp.controllers', [])
     $scope.post = PostsData.get($stateParams.postId);
 
     $scope.loadURL = function (url) {
-        
-        
-        
-        
+        //target: The target in which to load the URL, an optional parameter that defaults to _self. (String)
+        //_self: Opens in the Cordova WebView if the URL is in the white list, otherwise it opens in the InAppBrowser.
+        //_blank: Opens in the InAppBrowser.
+        //_system: Opens in the system's web browser.
         window.open(url,'_blank');
     }
 
@@ -412,13 +469,103 @@ angular.module('mobionicApp.controllers', [])
 
         var link = $scope.post.url;
 
-        
-        
+        //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
+        //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
         window.plugins.socialsharing.share(message, subject, null, link);
     }
 
 })
 
+// ServerPosts Controller
+.controller('ServerPostsCtrl', function($scope, $http, $ionicLoading, ServerPostsData, ServerPostsStorage) {
+    var data = []
+    $scope.posts = [];
+    $scope.storage = '';
+
+    $scope.loading = $ionicLoading.show({
+      template: '<i class="icon ion-loading-c"></i> Carregando',
+
+      //Will a dark overlay or backdrop cover the entire view
+      showBackdrop: false,
+
+      // The delay in showing the indicator
+      showDelay: 10
+    });
+
+    $scope.loadData = function () {
+
+        $http({method: 'GET', url: ServerPostsData.getURL() + 'page=' + $scope.page, timeout: 5000}).
+        // this callback will be called asynchronously
+        // when the response is available.
+        success(function(data) {
+            $scope.more = data.pages !== $scope.page;
+            $scope.posts = $scope.posts.concat(data.posts);
+            ServerPostsData.setData($scope.posts);
+            ServerPostsStorage.save(data);
+            $ionicLoading.hide();
+        }).
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        error(function() {
+            $scope.posts = ServerPostsStorage.all().posts;
+            ServerPostsData.setData(ServerPostsStorage.all().posts);
+            $scope.storage = 'Dados locais. Você está offline.';
+            $ionicLoading.hide();
+        });
+
+    };
+
+    $scope.showMoreItems = function () {
+        $scope.page += 1;
+        $ionicLoading.show({
+        template: '<i class="icon ion-loading-c"></i> Carregando',
+
+        //Will a dark overlay or backdrop cover the entire view
+        showBackdrop: false,
+
+        // The delay in showing the indicator
+        showDelay: 10
+        });
+        $scope.loadData();
+    }
+
+    $scope.hasMoreItems = function () {
+        return $scope.more;
+    }
+
+    $scope.page = 1;
+    $scope.more = true;
+    $scope.loadData();
+
+})
+
+// ServerPost Controller
+.controller('ServerPostCtrl', function($scope, $stateParams, ServerPostsData) {
+
+    $scope.post = ServerPostsData.get($stateParams.serverpostId);
+
+    $scope.loadURL = function (url) {
+        //target: The target in which to load the URL, an optional parameter that defaults to _self. (String)
+        //_self: Opens in the Cordova WebView if the URL is in the white list, otherwise it opens in the InAppBrowser.
+        //_blank: Opens in the InAppBrowser.
+        //_system: Opens in the system's web browser.
+        window.open(url,'_blank');
+    }
+
+    $scope.sharePost = function () {
+
+        var subject = $scope.post.title;
+        var message = $scope.post.content;
+        message = message.replace(/(<([^>]+)>)/ig,"");
+
+        var link = $scope.post.url;
+
+        //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
+        //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
+        window.plugins.socialsharing.share(message, subject, null, link);
+    }
+
+})
 // Posts Controller
 .controller('TempoRealCtrl', function($scope, $ionicLoading, TempoRealData, TempoRealStorage) {
 
@@ -428,8 +575,10 @@ angular.module('mobionicApp.controllers', [])
     $scope.loading = $ionicLoading.show({
       template: '<i class="icon ion-loading-c"></i> Carregando',
 
-      
+      //Will a dark overlay or backdrop cover the entire view
       showBackdrop: false,
+
+      // The delay in showing the indicator
       showDelay: 10
     });
 
@@ -460,10 +609,10 @@ angular.module('mobionicApp.controllers', [])
     $scope.loading = $ionicLoading.show({
       template: '<i class="icon ion-loading-c"></i> Carregando',
 
-      
+      //Will a dark overlay or backdrop cover the entire view
       showBackdrop: false,
 
-      
+      // The delay in showing the indicator
       showDelay: 10
     });
 
@@ -494,10 +643,10 @@ angular.module('mobionicApp.controllers', [])
     $scope.loading = $ionicLoading.show({
       template: '<i class="icon ion-loading-c"></i> Carregando',
 
-      
+      //Will a dark overlay or backdrop cover the entire view
       showBackdrop: false,
 
-      
+      // The delay in showing the indicator
       showDelay: 10
     });
 
@@ -541,10 +690,10 @@ angular.module('mobionicApp.controllers', [])
     $scope.jogador = JogadoresData.get($stateParams.jogadorId);
 
     $scope.loadURL = function (url) {
-        
-        
-        
-        
+        //target: The target in which to load the URL, an optional parameter that defaults to _self. (String)
+        //_self: Opens in the Cordova WebView if the URL is in the white list, otherwise it opens in the InAppBrowser.
+        //_blank: Opens in the InAppBrowser.
+        //_system: Opens in the system's web browser.
         window.open(url,'_blank');
     }
 
@@ -556,8 +705,102 @@ angular.module('mobionicApp.controllers', [])
 
         var link = $scope.jogador.url;
 
-        
-        
+        //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
+        //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
+        window.plugins.socialsharing.share(message, subject, null, link);
+    }
+
+})
+
+// RSS Feeds Controller
+.controller('FeedsCtrl', function($scope, $ionicLoading, FeedsData, FeedsStorage) {
+
+    $scope.feeds = [];
+
+    $scope.loading = $ionicLoading.show({
+      template: '<i class="icon ion-loading-c"></i> Carregando',
+
+      //Will a dark overlay or backdrop cover the entire view
+      showBackdrop: false,
+
+      // The delay in showing the indicator
+      showDelay: 10
+    });
+
+    var data;
+
+    FeedsData.async().then(
+        // successCallback
+        function() {
+            data = FeedsData.getAll();
+
+            $scope.title = data.title;
+            $scope.description = data.description;
+            $scope.link = data.link;
+            $scope.feeds = data.item;
+
+            $ionicLoading.hide();
+
+        },
+        // errorCallback
+        function() {
+            data = FeedsStorage.all();
+            //console.log(data);
+            $scope.storage = 'Dados locais. Você está offline.';
+
+            $scope.title = data.title;
+            $scope.description = data.description;
+            $scope.link = data.link;
+            $scope.feeds = data.entries;
+
+            $ionicLoading.hide();
+        },
+        // notifyCallback
+        function() {}
+    );
+
+    var page = 1;
+    // Define the number of the feed results in the page
+    var pageSize = 5;
+
+    $scope.paginationLimit = function(data) {
+    return pageSize * page;
+    };
+
+    $scope.hasMoreItems = function() {
+    return page < ($scope.feeds.length / pageSize);
+    };
+
+    $scope.showMoreItems = function() {
+    page = page + 1;
+    $scope.$apply();
+    };
+
+})
+
+// RSS Feed Controller
+.controller('FeedCtrl', function($scope, $stateParams, FeedsData) {
+
+    $scope.entry = FeedsData.get($stateParams.entryId);
+
+    $scope.loadURL = function (url) {
+        //target: The target in which to load the URL, an optional parameter that defaults to _self. (String)
+        //_self: Opens in the Cordova WebView if the URL is in the white list, otherwise it opens in the InAppBrowser.
+        //_blank: Opens in the InAppBrowser.
+        //_system: Opens in the system's web browser.
+        window.open(url,'_blank');
+    }
+
+    $scope.shareEntry = function () {
+
+        var subject = $scope.entry.title;
+        var message = $scope.entry.content;
+        message = message.replace(/(<([^>]+)>)/ig,"");
+
+        var link = $scope.entry.link;
+
+        //Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
+        //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
         window.plugins.socialsharing.share(message, subject, null, link);
     }
 
@@ -591,6 +834,27 @@ angular.module('mobionicApp.controllers', [])
     $scope.confirmNotify = function() {
     navigator.notification.confirm("My Confirmation",function(){console.log("Confirm Success")},"Are you sure?",["Ok","Cancel"]);
     };
+
+})
+
+// Barcodescanner Controller
+.controller('BarcodescannerCtrl', function($scope) {
+
+    $scope.scan = function() {
+        cordova.plugins.barcodeScanner.scan(function(result) {
+            $scope.result = result;
+            $scope.$apply();
+        }, function(error) {
+            $scope.error = error;
+            $scope.$apply();
+        });
+    };
+
+})
+
+// Geolocation Controller
+.controller('GeolocationCtrl', function($scope, $ionicLoading) {
+
 
 })
 
@@ -665,6 +929,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.modal.show();
   };
 
+  // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);
 
@@ -708,10 +973,3 @@ angular.module('mobionicApp.controllers', [])
     };
 
 })
-
-        //window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-//target: The target in which to load the URL, an optional parameter that defaults to _self. (String)
-        //_self: Opens in the Cordova WebView if the URL is in the white list, otherwise it opens in the InAppBrowser.
-        //_blank: Opens in the InAppBrowser.
-        //_system: Opens in the system's web browser.
-        

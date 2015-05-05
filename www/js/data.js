@@ -109,6 +109,7 @@ angular.module('mobionicApp.data', [])
 .factory('MenuData', function(){
     var data = {};
 
+
     data.items = [
         {
             title: 'Home',
@@ -126,14 +127,40 @@ angular.module('mobionicApp.data', [])
             url: '#/app/posts'
         },
          {
-            title: 'Fotos e Vídeos',
+            title: 'Galeria',
             icon: 'ion-images',
-            url: '#/app/gallery'
+           
+             subMenu: [
+                {
+                    title: "Fotos",
+                    url: '#/app/fotos',
+                    icon:"ion-android-image",
+                },
+                {
+                    title: "Vídeos",
+                    url: '#/app/videos',
+                    icon:"ion-social-youtube",
+                },
+                {
+                    title: "Papéis de Parede",
+                    url: '#/app/papeis_de_parede',
+                    icon:"ion-wand",
+                }] 
         },
          {
-            title: 'Tempo Real',
-            icon: 'ion-ios7-monitor-outline',
-            url: '#/app/tempo_real'
+            title: 'Partidas',
+            icon:"ion-ios7-football",
+            subMenu: [
+                {
+                    title: "Tempo Real",
+                    url: '#/app/tempo_real',
+                    icon:"ion-monitor",
+                },
+                {
+                    title: "Próximos Jogos",
+                    url: '#/app/proximos_jogos',
+                    icon:"ion-calendar",
+                }]  
         },
         {
             title: 'Loja Oficial',
@@ -142,31 +169,56 @@ angular.module('mobionicApp.data', [])
         },
         {
             title: 'Sócio Torcedor',
-            icon: 'ion-ios7-star-outline',
+            icon: 'ion-android-star',
             url: '#/app/socio'
         },
          {
             title: 'Ingressos',
-            icon: 'ion-ios7-football-outline',
+            icon: 'ion-card',
             url: '#/app/ingressos'
-        }
-        /*
+        },
         {
-            title: 'Elements',
+            title: 'Mais',
+            icon: 'ion-more',
+             subMenu: [
+                {
+                    title: "Newsletter",
+                    url: '#/app/member',
+                    icon:"ion-paper-airplane",
+                },
+                {
+                    title: "Contatos",
+                    url: '#/app/proximos_jogos',
+                    icon:"ion-ios7-email",
+                },
+                {
+                    title: "Ajustes",
+                    url: '#/app/settings',
+                    icon:"ion-ios7-gear",
+                },
+                 {
+            title: 'Plugins',
             icon: 'ion-code',
-            url: '#/app/elements'
-        },
-        {
-            title: 'Tabs',
-            icon: 'ion-ios7-albums-outline',
-            url: '#/app/tabs'
-        },
-        {
-            title: 'Grid',
-            icon: 'ion-grid',
-            url: '#/app/grid'
+            url: '#/app/plugins'
+        }]  
         }
-        */
+        // {
+        //     title: 'Elements',
+        //     icon: 'ion-code',
+        //     url: '#/app/elements'
+        // },
+        
+        // {
+        //     title: 'Tabs',
+        //     icon: 'ion-ios7-albums-outline',
+        //     url: '#/app/tabs'
+        // },
+        // {
+        //     title: 'Grid',
+        //     icon: 'ion-grid',
+        //     url: '#/app/grid'
+        // }
+        
     ];
 
     return data;
@@ -266,29 +318,43 @@ angular.module('mobionicApp.data', [])
     return data;
 })
 
-// Gallery Data: Gallery configuration
-.factory('GalleryData', function(){
-    var data = {};
 
-    data.items = [
-        {
-            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-            src: 'img/foto1.jpg',
-            location: '15 de Março 2014'
-        },
-        {
-            description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
-             src: 'img/foto1.jpg',
-            location: '16 de Março 2014'
-        },
-        {
-            description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-             src: 'img/foto1.jpg',
-            location: '17 de Março 2014'
-        }
-    ];
+// News Data: JSON
+.factory('FotosData', function($http, $q, FotosStorage) {
 
-    return data;
+    var json = 'https://api.instagram.com/v1/users/698161208/media/recent/?access_token=206080583.5b9e1e6.3530d3cd24ea4328af6e09f335122038&count=24';
+
+    var deferred = $q.defer();
+    var promise = deferred.promise;
+    var data = [];
+    var service = {};
+
+    service.async = function() {
+    $http({method: 'GET', url: json, timeout: 5000}).
+    // this callback will be called asynchronously
+    // when the response is available.
+    success(function(d) {
+        data = d.data;
+        console.log(data);
+        FotosStorage.save(data);
+        deferred.resolve();
+    }).
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+    error(function() {
+        data = FotosStorage.all();
+        deferred.reject();
+    });
+
+    return promise;
+
+    };
+
+    service.getAll = function() { return data; };
+
+    service.get = function(fotoId) { return data[fotoId]; };
+
+    return service;
 })
 
 // News Data: JSON
@@ -368,9 +434,9 @@ angular.module('mobionicApp.data', [])
 })
 
 // Gallery Data: Gallery configuration
-.factory('GalleryData2', function($http, $q, GalleryStorage) {
+.factory('VideosData', function($http, $q, VideosStorage) {
 
-    var json = 'http://gdata.youtube.com/feeds/users/siteoficialfortaleza/uploads?&alt=json';
+    var json = 'http://gdata.youtube.com/feeds/users/siteoficialfortaleza/uploads?&alt=json&start-index=2';
     var deferred = $q.defer();
     var promise = deferred.promise;
     var data = [];
@@ -382,13 +448,13 @@ angular.module('mobionicApp.data', [])
     // when the response is available.
     success(function(d) {
         data = d.feed.entry;
-        GalleryStorage.save(data);
+        VideosStorage.save(data);
         deferred.resolve();
     }).
     // called asynchronously if an error occurs
     // or server returns response with an error status.
     error(function() {
-        data = GalleryStorage.all();
+        data = VideosStorage.all();
         deferred.reject();
     });
 
@@ -444,7 +510,7 @@ angular.module('mobionicApp.data', [])
 .factory('PostsData', function($http, $q, PostsStorage) {
 
     /* (For DEMO purposes) Local JSON data */
-    var json = 'http://fortalezaec.net/Json/Noticias?first=0&limit=10';
+    var json = 'http://fortalesaec.net/Json/Noticias?first=0&limit=20';
 
     /* Set your URL as you can see in the following example */
     // var json = 'YourWordpressURL/?json=get_recent_posts';
@@ -490,7 +556,7 @@ angular.module('mobionicApp.data', [])
 .factory('TempoRealData', function($http, $q, TempoRealStorage) {
 
     /* (For DEMO purposes) Local JSON data */
-    var json = 'http://localhost/fortaleza/webservice/tempo_real.php?ver=tempo_real';
+    var json = 'http://179.188.17.9/~fortalezaapp/webservice/tempo_real.php?ver=tempo_real';
 
 
     var deferred = $q.defer();

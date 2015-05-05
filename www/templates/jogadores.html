@@ -1,40 +1,37 @@
-<ion-view title="ELENCO">
+<ion-view title="O CLUBE">
  <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
 
-    <ion-content class="has-header" overflow-scroll="true" id="jogadores-lista">
+    <ion-content class="has-header" overflow-scroll="true"  id="jogadores-lista">
+          
+    <span class="localdata">{{storage}}</span>
         
-        {{storage}}
-        
-        
-
-        <ion-tabs class="tabs-icon-only">
-
-            <ion-tab title="Home" icon-on="ion-ios7-home" icon-off="ion-ios7-home-outline">
-                <div class="list">
-
-            <a class="item"   ng-class="{'item-thumbnail-left' : jogador.Foto.length}" href="#/app/jogador/{{$index}}" ng-repeat="jogador in jogadores | limitTo: paginationLimit()">
-                <img ng-src="http://www.fortalezaec.net/{{jogador.Foto}}" with="130" ng-show="{{jogador.Foto.length}}" alt="{{jogador.NomeUsual}}">
+     
+    <div class="list" >
+                 <a class="item"   ng-class="{'item-thumbnail-left' : jogador.Foto.length}" href="#/app/jogador/{{$index}}" ng-repeat="jogador in jogadores | limitTo: 20">
+                <img ng-src="thumbs.php?w=128&h=128&imagem=http://www.fortalezaec.net/{{jogador.Foto}}" ng-show="{{jogador.Foto.length}}" alt="{{jogador.NomeUsual}}">
                 
                 <h2>{{jogador.NomeUsual}}</h2>
                 <h3>Idade: {{jogador.Idade}}</h3>
                 <p>{{jogador.Posicao.Nome}}</p>
             </a> 
+     </div>
+               <!--
+        <ion-tabs class="tabs-icon-only">
 
-        </div>
-       
+            <ion-tab title="Sobre o clube" icon-on="ion-information-circled" icon-off="ion-ios7-information-outline">
             </ion-tab>
 
-            <ion-tab title="Comments" icon-on="ion-ios7-chatboxes" icon-off="ion-ios7-chatboxes-outline">
-                <div class="padding"><strong>[Comments]</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+            <ion-tab title="Elenco" icon-on="ion-person-stalker" icon-off="ion-person-stalker">
+             
             </ion-tab>
 
-            <ion-tab title="Settings" icon-on="ion-ios7-gear" icon-off="ion-ios7-gear-outline">
-                <div class="padding"><strong>[Settings]</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+            <ion-tab title="Escalação" icon-on="ion-ios7-gear" icon-off="ion-ios7-gear-outline">
+                <div class="padding"><strong>[Escalação]</strong></div>
             </ion-tab>
 
         </ion-tabs>
-       
+       -->
     </ion-content>
 </ion-view>
