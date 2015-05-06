@@ -1,0 +1,12 @@
+Modificações app
+- Noticias abrir no app ou site
+- Compartilhar link do APP nas noticias
+- O Clube
+- Equipe como menu
+- Menu claro apos falha
+- Fotos abrir e compartilhar
+- Fotos carregar sem link pro instagram
+- Video virar
+- Noticias compartilhar
+- Data videos (tempo passado)
+- Ultimo video

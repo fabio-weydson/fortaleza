@@ -436,7 +436,7 @@ angular.module('mobionicApp.data', [])
 // Gallery Data: Gallery configuration
 .factory('VideosData', function($http, $q, VideosStorage) {
 
-    var json = 'http://gdata.youtube.com/feeds/users/siteoficialfortaleza/uploads?&alt=json&start-index=2';
+    var json = 'http://gdata.youtube.com/feeds/users/siteoficialfortaleza/uploads?&alt=json&start-index=1';
     var deferred = $q.defer();
     var promise = deferred.promise;
     var data = [];
