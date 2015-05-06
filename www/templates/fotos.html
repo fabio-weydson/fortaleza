@@ -7,11 +7,10 @@
     </ion-nav-buttons>
     <ion-content class="has-header" locking="true">
          <div id="fotos" >
-            <div class="thumb" ng-repeat="foto in fotos" ng-style="{'background-image':'url({{foto.images.thumbnail.url}})'}">
+            <div class="thumb" ng-repeat="foto in fotos">
                 <img ng-src="{{foto.images.thumbnail.url}}"/>
             </div>
         </div>
-       
         <a class="button button-block button-positive" href="https://instagram.com/instafortalezaec/" target="_system" >
         <i class="icon ion-social-instagram"></i> Ver mais fotos
         </a>

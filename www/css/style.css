@@ -428,6 +428,7 @@ span.localdata {
     background-size: 150%;
     background-position:center;
     background-repeat:no-repeat;
+    outline:1px solid #FFF;
 }
 
 #fotos .thumb img {
@@ -436,18 +437,22 @@ span.localdata {
 }
 #fotos .thumb:hover,#fotos .thumb:active {
     -webkit-transition: all 0.3s ease-in;
--moz-transition: all 0.4s ease-in;
--ms-transition: all 0.4s ease-in;
--o-transition: all 0.4s ease-in;
+    -moz-transition: all 0.4s ease-in;
+    -ms-transition: all 0.4s ease-in;
+    -o-transition: all 0.4s ease-in;
+    overflow:hidden;
     transition: all 0.4s ease-in;
+
 }
 #fotos .thumb:hover img,#fotos .thumb:active img{
     -webkit-transition: all 0.3s ease-in;
--moz-transition: all 0.4s ease-in;
--ms-transition: all 0.4s ease-in;
--o-transition: all 0.4s ease-in;
-    -webkit-filter: blur(1px);
+    -moz-transition: all 0.4s ease-in;
+    -ms-transition: all 0.4s ease-in;
+    -o-transition: all 0.4s ease-in;
     transition: all 0.4s ease-in;
+    opacity: 0.8;
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1) rotate(0.02deg);
 }
 div#fotos {
     display: block;

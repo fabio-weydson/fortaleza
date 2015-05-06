@@ -510,7 +510,7 @@ angular.module('mobionicApp.data', [])
 .factory('PostsData', function($http, $q, PostsStorage) {
 
     /* (For DEMO purposes) Local JSON data */
-    var json = 'http://fortalesaec.net/Json/Noticias?first=0&limit=20';
+    var json = 'http://www.fortalezaec.net/Json/Noticias?first=0&limit=20';
 
     /* Set your URL as you can see in the following example */
     // var json = 'YourWordpressURL/?json=get_recent_posts';
