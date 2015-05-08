@@ -182,6 +182,17 @@ angular.module('mobionicApp.controllers', [])
         });  
     };
 
+    $scope.sharePost = function (img,link) {
+
+        var subject = "Siga o Fortaleza no Instagram";
+        var message = "  Via App ofical Fortaleza EC http://bit.ly/1bc2Xja";
+        message = message.replace(/(<([^>]+)>)/ig,"");
+        var link = link;
+        var image = img;
+        window.plugins.socialsharing.share(message, subject, image, link);
+
+    }
+
 
 })
 
@@ -274,7 +285,7 @@ console.log(idVideo);
     };
 
       $scope.$on('$rootScope.orientation.change', function () {
-        alert('orientacao alterada');
+       // alert('orientacao alterada');
     });
 
 }])
