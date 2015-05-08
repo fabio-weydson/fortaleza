@@ -8,9 +8,10 @@
                   <div ng-bind-html="video.embed"></div>
                             </div>
           </div>
-                       
+                       <div class="padding">
             <h2 class="title">{{video.snippet.title}}</h2>
             <p>{{video.snippet.description}}</p>
+             </div>
         </div>
          <div class="barra-titulo">
  <label class="item item-input">
@@ -18,11 +19,12 @@
   </label>
 </div>
          <div class="list"  ng-controller="VideosCtrl">
-            <a class="item" ng-class="{'item-thumbnail-left' : video.snippet.thumbnails.default.url}" href="#/app/video/{{$index}}" ng-repeat="video in videos | limitTo: 4" >
+            <a class="item" ng-class="{'item-thumbnail-left' : video.snippet.thumbnails.default.url}" ng-repeat="video in videos | limitTo: 4" >
                 <img ng-src="{{video.snippet.thumbnails.default.url}}" alt="{{video.snippet.title}}">
                 
                 <h2>{{video.snippet.title}}</h2>
                 <h3>{{video.snippet.description}}...</h3>
+
        </a>
         </div>
     </ion-content>

@@ -457,6 +457,7 @@ span.localdata {
     -webkit-transform: scale(1.1);
     -moz-transform: scale(1.1) rotate(0.02deg);
 }
+
 div#fotos {
     display: block;
     overflow: hidden;
@@ -502,12 +503,17 @@ div#lightbox b {
     color: #f5f5f5;
     font-family: "Arial";
 }
-div#lightbox a.close {
+div#lightbox a {
     color: #FFF;
-    position: absolute;
     text-align: center;
+    margin: 0 10%;
+}
+div#lightbox p.action {
     bottom: 3%;
+    /* position: absolute; */
+    z-index: 9999;
     font-size: 2.9em;
     z-index: 9999;
     width: 90%;
+    text-align: center;
 }
