@@ -274,7 +274,7 @@ console.log(idVideo);
     };
 
       $scope.$on('$rootScope.orientation.change', function () {
-        console.log('Device orientation changed!!!')
+        alert('orientacao alterada');
     });
 
 }])
