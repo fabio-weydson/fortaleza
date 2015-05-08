@@ -176,7 +176,7 @@ angular.module('mobionicApp.controllers', [])
             $('#lightbox').fadeIn(500);  
         });  
     };
-    $scope.close_foto = function (foto, text) {
+    $scope.close_foto = function () {
         $('#lightbox span').html('').promise().done(function(){
             $('#lightbox').fadeOut(500);  
         });  
