@@ -62,7 +62,7 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, text
 
 a { text-decoration: none; }
 
-img { max-width: 100%; height:auto; }
+img { max-width: 100%; height:auto;}
 
 .angular-google-map img { max-width: inherit!important; }
 
@@ -500,19 +500,38 @@ div#lightbox {
 div#lightbox b {
     display: block;
     text-align: left;
-    color: #f5f5f5;
+    padding: 10px;
+    line-height: normal;
+    font-weight: normal;
+    color: #666;
+    background: #f5f5f5;
+    border-radius: 0 0 8px 8px;
+    float: left;
 }
 div#lightbox a {
     color: #FFF;
     text-align: center;
+    display: inline-block;
     margin: 0 10%;
 }
 div#lightbox p.action {
     font-size: 2.9em;
     z-index: 9999;
-    width: 90%;
+    width: 100%;
     text-align: center;
     margin: 0;
     padding: 0;
-    margin-top: 17px;
+    margin-top: 15px;
+}
+div#lightbox {
+    float: left;
+}
+
+#lightbox img {
+    max-width: 100%;    height: auto;    float: left;
+}
+
+div#lightbox span {
+    display: block;
+    overflow: hidden;
 }

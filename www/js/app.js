@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'mobionicApp' is the name of this angular module (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.data', 'mobionicApp.directives', 'mobionicApp.filters', 'mobionicApp.storage', 'ngSanitize', 'uiGmapgoogle-maps'])
+angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.data', 'mobionicApp.directives', 'mobionicApp.filters', 'mobionicApp.storage', 'ngSanitize'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -159,35 +159,6 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         }
       }
     })
-
-    .state('app.serverposts', {
-      url: "/serverposts",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/serverposts.html",
-          controller: 'ServerPostsCtrl'
-        }
-      }
-    })
-
-    .state('app.serverpost', {
-      url: "/serverposts/:serverpostId",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/serverpost.html",
-          controller: 'ServerPostCtrl'
-        }
-      }
-    })
-
-    .state('app.elements', {
-      url: "/elements",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/elements.html"
-        }
-      }
-    })
  .state('app.socio', {
       url: "/socio",
       views: {
@@ -214,35 +185,6 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         }
       }
     })
-    .state('app.grid', {
-      url: "/grid",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/grid.html"
-        }
-      }
-    })
-
-    .state('app.feeds', {
-      url: "/feeds",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/feeds.html",
-          controller: 'FeedsCtrl'
-        }
-      }
-    })
-
-    .state('app.feed', {
-      url: "/feeds/:entryId",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/feed.html",
-          controller: 'FeedCtrl'
-        }
-      }
-    })
-
     .state('app.plugins', {
       url: "/plugins",
       views: {
@@ -252,27 +194,6 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         }
       }
     })
-
-    .state('app.geolocation', {
-      url: "/plugins/geolocation",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/plugins/geolocation.html",
-          controller: 'GeolocationCtrl'
-        }
-      }
-    })
-
-    .state('app.device', {
-      url: "/plugins/device",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/plugins/device.html",
-          controller: 'DeviceCtrl'
-        }
-      }
-    })
-
     .state('app.notifications', {
       url: "/plugins/notifications",
       views: {
@@ -282,26 +203,6 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         }
       }
     })
-
-    .state('app.barcodescanner', {
-      url: "/plugins/barcodescanner",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/plugins/barcodescanner.html",
-          controller: 'BarcodescannerCtrl'
-        }
-      }
-    })
-
-    .state('app.tabs', {
-      url: "/tabs",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/tabs.html"
-        }
-      }
-    })
-
     .state('app.settings', {
       url: "/settings",
       views: {
@@ -311,17 +212,6 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         }
       }
     })
-
-     .state('app.member', {
-      url: "/member",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/member.html",
-          controller: 'MemberCtrl'
-        }
-      }
-    })
-
     .state('app.ingressos', {
       url: "/ingressos",
       views: {
