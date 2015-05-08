@@ -13,14 +13,14 @@
    			<div ng-bind-html="temporeal.data"></div>
    		</div>
    		<div class="placar">
+       <div class="pontos"><span>{{temporeal.ponto1}} x {{temporeal.ponto2}}</span></div>
    			<div class="time time1">
 		       <img ng-src="{{temporeal.escudo_1}}">
-		       <br/>{{temporeal.time1}}
-		       <div class="pontos">{{temporeal.ponto1}} x {{temporeal.ponto2}}</div>
+		       {{temporeal.time1}}
 	       </div>
 	       <div class="time time2">
 		       <img ng-src="{{temporeal.escudo_2}}">
-		       <br/>{{temporeal.time2}}
+		       {{temporeal.time2}}
 	       </div>
 
 	       <div class="evento">{{temporeal.nomeevento}} <br/>{{temporeal.terminado}}</div>
@@ -31,13 +31,14 @@
    <div class="input-label">Confira os lances</div>
   </label>
 </div>
-<!-- <div ng-controller="LancesCtrl">
+ <div ng-controller="LancesCtrl" id="lances">
 <div class="list">
 
-    <a class="item" ng-class="{'item-thumbnail-left' : post.FotoNoticia.length}" href="#/app/posts/{{$index}}" ng-repeat="lance in lances | limitTo: paginationLimit()"  >
-        <h2>{{lance}}</h2>
+    <a class="item" ng-repeat="lance in lances2 | reverse"  >
+        <span class="tempo"><b ng-bind="lance.momento"></b><b ng-bind="lance.periodo"></b></span>
+        <span ng-bind-html="lance.texto"></span>
     </a>
   </div>
-</div> -->
+</div>
     </ion-content>
 </ion-view>

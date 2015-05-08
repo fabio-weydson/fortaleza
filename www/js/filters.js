@@ -19,3 +19,9 @@ angular.module('mobionicApp.filters', [])
     };
     return filter;
 })
+
+.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});

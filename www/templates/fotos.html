@@ -7,13 +7,14 @@
     </ion-nav-buttons>
     <ion-content class="has-header" locking="true">
          <div id="fotos" >
-            <div class="thumb" ng-repeat="foto in fotos">
-                <img ng-src="{{foto.images.thumbnail.url}}"/>
+            <div id="lightbox"><a class="close" ng-click="close_foto()"><i class="icon ion-close-circled"></i></a><span></span></div>
+            <div class="thumb" ng-repeat="foto in fotos  | limitTo: paginationLimit()">
+                <img ng-click="abre_foto('{{foto.images.standard_resolution.url}}', '{{foto.caption.text}}')" ng-src="{{foto.images.thumbnail.url}}"/>
             </div>
         </div>
-        <a class="button button-block button-positive" href="https://instagram.com/instafortalezaec/" target="_system" >
-        <i class="icon ion-social-instagram"></i> Ver mais fotos
-        </a>
+         <button class="button button-block button-positive" ng-show="hasMoreItems()" ng-click="showMoreItems()" >
+        Exibir mais
+        </button>
         
     </ion-content>
 </ion-view>

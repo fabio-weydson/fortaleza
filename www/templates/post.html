@@ -1,16 +1,16 @@
 <ion-view title="{{post.Titulo}}">
     
-    <ion-nav-buttons side="right">
+ <!--    <ion-nav-buttons side="right">
     <a class="button button-clear" ng-click="sharePost()"><i class="icon ion-share"></i></a>
-    </ion-nav-buttons>
+    </ion-nav-buttons> -->
     
-    <ion-content class="has-header">
+    <ion-content class="has-header" id="noticia">
         <span class="localdata">{{storage}}</span>
         <div class="padding">
             <h2 class="title">{{post.Titulo}}</h2>
 
             <div style="padding:0 0 20px 0;" class="post-info">
-            Postado em {{post.DataHora * 1000 | date:'dd/MM/yy '+as+' H:m'}}<br/>
+            Publicado em {{post.DataHora * 1000 | date:'dd/MM/yy '+as+' H:m'}}<br/>
             </div>
             
             <p ng-show="{{post.FotoNoticia.length}}"><img ng-src="http://www.fortalezaec.net/{{post.FotoNoticia}}"/></p>
@@ -21,10 +21,10 @@
             <span ng-repeat="category in post.categories">{{post.Assunto.Nome}}</span>
             </p>
             
-            <p><button class="button icon-left ion-share button-outline button-positive" ng-click="sharePost()">Compartilhar</button></p>
-                  
+<!--             <p><button class="button icon-left ion-share button-outline button-positive" ng-click="sharePost()">Compartilhar</button></p>
+ -->                  
             <button class="button button-full button-positive" ng-click="loadURL('http://www.fortalezaec.net/{{post.URL}}')">
-            Ver no site
+            Veja a notícia completa no site
             </button>
             
         </div>

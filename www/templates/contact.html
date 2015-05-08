@@ -1,21 +1,24 @@
-<ion-view title="Contact">
+<ion-view title="Contatos">
     <ion-content class="has-header">
-
+    <img class="full-image" id="bannerapp" src="img/banner_app.jpg">
+    <div class="padding">
         <div class="list">
-            
+            <b>Fortaleza Esporte Clube</b><br/>
+            <b>Endereço: </b> .... <br/>
+            <b>Telefones: </b> .... <br/> <br/>
             <label class="item item-input">
-            <input type="text" placeholder="Subject" ng-model="contact.subject">
+            <input type="text" placeholder="Assunto" ng-model="contact.subject">
             </label>
 
             <label class="item item-input">
-            <textarea placeholder="Message" ng-model="contact.body"></textarea>
+            <textarea placeholder="Mensagem" rows="5" ng-model="contact.body"></textarea>
             </label>
 
             <label class="item">
-            <button class="button button-block button-positive" type="submit" ng-click="submitForm()">Send Message</button>
+            <button class="button button-block button-positive" type="submit" ng-click="submitForm()">Enviar Mensagem</button>
             </label>
             
         </div>
-   
+   </div>
     </ion-content>
 </ion-view>

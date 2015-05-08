@@ -157,7 +157,7 @@ angular.module('mobionicApp.controllers', [])
 
     var page = 1;
     // Define the number of the posts in the page
-    var pageSize = 7;
+    var pageSize = 15;
 
     $scope.paginationLimit = function(data) {
     return pageSize * page;
@@ -169,6 +169,17 @@ angular.module('mobionicApp.controllers', [])
 
     $scope.showMoreItems = function() {
     page = page + 1;
+    };
+
+    $scope.abre_foto = function (foto, text) {
+        $('#lightbox span').html('<img src="'+foto+'"/><b>'+text+'</b>').promise().done(function(){
+            $('#lightbox').fadeIn(500);  
+        });  
+    };
+    $scope.close_foto = function (foto, text) {
+        $('#lightbox span').html('').promise().done(function(){
+            $('#lightbox').fadeOut(500);  
+        });  
     };
 
 
@@ -183,7 +194,7 @@ angular.module('mobionicApp.controllers', [])
       template: '<i class="icon ion-loading-c"></i> Carregando',
 
       
-      showBackdrop: true,
+      showBackdrop: false,
 
       
       showDelay: 10
@@ -220,7 +231,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.showMoreItems = function() {
     page = page + 1;
     };
-
+  
 
 })
 
@@ -228,10 +239,9 @@ angular.module('mobionicApp.controllers', [])
 .controller('VideoCtrl', ['$scope', '$sce', '$stateParams', 'VideosData', function($scope, $sce, $stateParams, VideosData){
       $scope.video = VideosData.get($stateParams.videoId);
 
-    var feedURL = $scope.video.link[1].href;
-        var fragments = feedURL.split("/");
-        var idVideo = fragments[fragments.length - 2];
+    var idVideo = $scope.video.snippet.resourceId.videoId;
 
+console.log(idVideo);
     var urlEmbed = $sce.trustAsHtml('<iframe src="https://www.youtube.com/embed/'+idVideo+'?rel=0&showinfo=0&allownetworking=internal" frameborder="0" width="100%" height="100%"></iframe>');
 
     $scope.video['embed'] = urlEmbed;
@@ -239,11 +249,7 @@ angular.module('mobionicApp.controllers', [])
 
 
     $scope.loadURL = function (url) {
-        
-        
-        
-        
-        window.open(url,'_blank');
+        window.open(url,'_self');
     }
 
     $scope.sharePost = function () {
@@ -266,6 +272,11 @@ angular.module('mobionicApp.controllers', [])
         var valueHeight = Math.round((window_width/16)*9);
        $('.media-container .ng-binding').width(window_width).height(valueHeight);
     };
+
+      $scope.$on('$rootScope.orientation.change', function () {
+        console.log('Device orientation changed!!!')
+    });
+
 }])
 
 // Contact Controller
@@ -279,14 +290,21 @@ angular.module('mobionicApp.controllers', [])
     $scope.submitForm = function() {
 
         window.plugin.email.open({
-            to:      ['username@company.com'],
-            cc:      ['username1@company.com'],
-            bcc:     ['username2@company.com'],
-            subject: $scope.contact.subject,
+            to:      ['fabioweydson@gmail.com'],
+            subject: 'Mensagem APP'+$scope.contact.subject,
             body:    $scope.contact.body
         });
 
     };
+
+})
+.controller('AboutCtrl', function($scope) {
+
+    $scope.about = {
+      subject:  '',
+      body: ''
+    }
+
 
 })
 // Posts Controller
@@ -397,24 +415,18 @@ angular.module('mobionicApp.controllers', [])
     $scope.post = PostsData.get($stateParams.postId);
 
     $scope.loadURL = function (url) {
-        
-        
-        
-        
-        window.open(url,'_blank');
+        window.open(url,'_self');
     }
 
     $scope.sharePost = function () {
-
         var subject = $scope.post.Titulo;
         var message = $scope.post.Subtitulo;
+        var message = $scope.post.Subtitulo;
         message = message.replace(/(<([^>]+)>)/ig,"");
-
-        var link = $scope.post.url;
-
-        
-        
-        window.plugins.socialsharing.share(message, subject, null, link);
+        message += '  Via App ofical Fortaleza EC http://bit.ly/1bc2Xja'
+        var img = 'http://www.fortalezaec.net/{{post.FotoNoticia}}';
+        var link = $scope.post.URL;
+        window.plugins.socialsharing.share(message, subject, img, link);
     }
 
 })
@@ -452,7 +464,7 @@ angular.module('mobionicApp.controllers', [])
 
 })
 // Lances Controller
-.controller('LancesCtrl', function($scope, $ionicLoading, LancesData, LancesStorage) {
+.controller('LancesCtrl', function($scope, $ionicLoading, LancesData, LancesStorage, $sce) {
 
     $scope.lances = [];
     $scope.storage = '';
@@ -472,7 +484,11 @@ angular.module('mobionicApp.controllers', [])
         function() {
             $scope.lances = LancesData.getAll();
             $ionicLoading.hide();
-        },
+            $scope.lances2 = [];
+
+            for (var o in $scope.lances)
+               $scope.lances2.push($scope.lances[o])
+            },
         // errorCallback
         function() {
             $scope.lances = LancesStorage.all();
@@ -480,8 +496,37 @@ angular.module('mobionicApp.controllers', [])
             $ionicLoading.hide();
         },
         // notifyCallback
-        function() {}
+        function() {
+
+
+        }
     );
+
+    var page = 1;
+    // Define the number of the posts in the page
+    var pageSize = 5;
+
+    $scope.paginationLimit = function(data) {
+    return pageSize * page;
+    };
+
+    $scope.hasMoreItems = function() {
+    return page < ($scope.lances.length / pageSize);
+    };
+
+    $scope.showMoreItems = function() {
+    page = page + 1;
+    };
+
+    $scope.toTrustedHTML = function( html ){
+        html += " ";
+        var newvar = html.replace(/(<([^>]+)>)/ig,"");
+        newvar = newvar.replace(/(\r\n|\n|\r)/gm,"");
+        //console.log(newvar);
+        return newvar;
+    }
+
+
 
 
 })
@@ -541,11 +586,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.jogador = JogadoresData.get($stateParams.jogadorId);
 
     $scope.loadURL = function (url) {
-        
-        
-        
-        
-        window.open(url,'_blank');
+        window.open(url,'_self');
     }
 
     $scope.sharePost = function () {

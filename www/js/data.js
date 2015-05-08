@@ -118,8 +118,18 @@ angular.module('mobionicApp.data', [])
         },
         {
             title: 'O Clube',
-            icon: 'ion-person-stalker',
-            url: '#/app/jogadores'
+            icon: 'ion-trophy',
+             subMenu: [
+                {
+                    title: "Historia",
+                    url: '#/home',
+                    icon:"ion-clock",
+                },
+                {
+                    title: "Equipe",
+                    url: '#/app/jogadores',
+                    icon:"ion-person-stalker",
+                }] 
         },
         {
             title: 'Noticias',
@@ -188,7 +198,7 @@ angular.module('mobionicApp.data', [])
                 },
                 {
                     title: "Contatos",
-                    url: '#/app/contatos',
+                    url: '#/app/contact',
                     icon:"ion-ios7-email",
                 },
                 {
@@ -322,7 +332,7 @@ angular.module('mobionicApp.data', [])
 // News Data: JSON
 .factory('FotosData', function($http, $q, FotosStorage) {
 
-    var json = 'https://api.instagram.com/v1/users/698161208/media/recent/?access_token=206080583.5b9e1e6.3530d3cd24ea4328af6e09f335122038&count=24';
+    var json = 'https://api.instagram.com/v1/users/698161208/media/recent/?access_token=206080583.5b9e1e6.3530d3cd24ea4328af6e09f335122038&count=60';
 
     var deferred = $q.defer();
     var promise = deferred.promise;
@@ -335,7 +345,6 @@ angular.module('mobionicApp.data', [])
     // when the response is available.
     success(function(d) {
         data = d.data;
-        console.log(data);
         FotosStorage.save(data);
         deferred.resolve();
     }).
@@ -436,7 +445,7 @@ angular.module('mobionicApp.data', [])
 // Gallery Data: Gallery configuration
 .factory('VideosData', function($http, $q, VideosStorage) {
 
-    var json = 'http://gdata.youtube.com/feeds/users/siteoficialfortaleza/uploads?&alt=json&start-index=1';
+    var json = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=UUV5UiFF5AlNKW4sLXcYMG_g&fields=items/id,items/snippet/title,items/snippet/description,items/snippet/resourceId/videoId,items/snippet/thumbnails/default&key=AIzaSyDAyzQoPMlHyqjx5MJ5NS9jv3cM8JihcOc';
     var deferred = $q.defer();
     var promise = deferred.promise;
     var data = [];
@@ -447,7 +456,7 @@ angular.module('mobionicApp.data', [])
     // this callback will be called asynchronously
     // when the response is available.
     success(function(d) {
-        data = d.feed.entry;
+        data = d.items;
         VideosStorage.save(data);
         deferred.resolve();
     }).
@@ -479,25 +488,6 @@ angular.module('mobionicApp.data', [])
     var data = [];
     var service = {};
 
-    service.async = function() {
-    $http({method: 'GET', url: json, timeout: 5000}).
-    // this callback will be called asynchronously
-    // when the response is available.
-    success(function(d) {
-        data = d.result;
-        AboutStorage.save(data);
-        deferred.resolve();
-    }).
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-    error(function() {
-        data = AboutStorage.all();
-        deferred.reject();
-    });
-
-    return promise;
-
-    };
 
     service.getAll = function() { return data; };
 
@@ -572,14 +562,15 @@ angular.module('mobionicApp.data', [])
 
         data = d.channel.item.dadosevento;
         var dataJogoFull = d.channel.item.data;
-        var dataJogo = dataJogoFull.replace("-", "<br/>");;
+        var dataJogo = dataJogoFull.replace("-", "<br/>");
        	data['data'] = dataJogo;
-       	var escudo1 = StrToURL(d.channel.item.dadosevento.time1);
-       	// escudo1 = escudo1.;
-      	data['escudo_1'] = 'http://e.imguol.com/futebol/brasoes/40x40/'+escudo1.toLowerCase()+'.png';
-      	var escudo2 = StrToURL(d.channel.item.dadosevento.time2);
-      	//var escudo2 = escudo2.toLowerCase();
-      	data['escudo_2'] = 'http://e.imguol.com/futebol/brasoes/40x40/'+escudo2.toLowerCase()+'.png';
+        var time1  = d.channel.item.dadosevento.time1.trim();
+       	var escudo1 = StrToURL(time1);
+
+      	data['escudo_1'] = 'http://cdn.espn.com.br/image/times/'+escudo1.toLowerCase()+'.png';
+      	var time2  = d.channel.item.dadosevento.time2.trim();
+        var escudo2 = StrToURL(time2);
+      	data['escudo_2'] = 'http://cdn.espn.com.br/image/times/'+escudo2.toLowerCase()+'.png';
 
 
         TempoRealStorage.save(data);
@@ -607,7 +598,7 @@ angular.module('mobionicApp.data', [])
 .factory('LancesData', function($http, $q, LancesStorage) {
 
     /* (For DEMO purposes) Local JSON data */
-    var json = 'http://globoesporte.globo.com/ce/futebol/campeonato-cearense/jogo/26-04-2015/fortaleza-ceara/mensagens.json';
+    var json = 'http://localhost/fortaleza/webservice/tempo_real.php?ver=linha_do_tempo&v=4';
 
 
     var deferred = $q.defer();
@@ -620,13 +611,8 @@ angular.module('mobionicApp.data', [])
     // this callback will be called asynchronously
     // when the response is available.
     success(function(d) {
-
-		console.log(Object.keys(d).length);
-
-        //data['equipe_visitante'] = d.jogo.equipe_visitante.nome;
-
-
-				LancesStorage.save(data);
+		data = d;
+		LancesStorage.save(data);
         deferred.resolve();
     }).
     // called asynchronously if an error occurs

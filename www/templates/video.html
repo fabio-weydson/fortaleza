@@ -1,7 +1,7 @@
-<ion-view title="{{video.title.$t}}">
+<ion-view title="{{video.snippet.title}}">
     <ion-content class="has-header">
         <span class="localdata">{{storage}}</span>
-        <div class="padding" id="video" >
+        <div id="video" >
          <div class="item item-image">
                  <div class="media-container" data-ng-init="init()">
                  
@@ -9,8 +9,8 @@
                             </div>
           </div>
                        
-            <h2 class="title">{{video.title.$t}}</h2>
-            <p>{{video.media$group.media$description.$t}}</p>
+            <h2 class="title">{{video.snippet.title}}</h2>
+            <p>{{video.snippet.description}}</p>
         </div>
          <div class="barra-titulo">
  <label class="item item-input">
@@ -18,11 +18,11 @@
   </label>
 </div>
          <div class="list"  ng-controller="VideosCtrl">
-            <a class="item" ng-class="{'item-thumbnail-left' : video.media$group.media$thumbnail[0].url}" href="#/app/video/{{$index}}" ng-repeat="video in videos | limitTo: 4" >
-                <img ng-src="{{video.media$group.media$thumbnail[0].url}}" alt="{{video.title.$t}}">
+            <a class="item" ng-class="{'item-thumbnail-left' : video.snippet.thumbnails.default.url}" href="#/app/video/{{$index}}" ng-repeat="video in videos | limitTo: 4" >
+                <img ng-src="{{video.snippet.thumbnails.default.url}}" alt="{{video.snippet.title}}">
                 
-                <h2>{{video.title.$t}}</h2>
-                <h3>{{video.media$group.media$description.$t}}...</h3>
+                <h2>{{video.snippet.title}}</h2>
+                <h3>{{video.snippet.description}}...</h3>
        </a>
         </div>
     </ion-content>
