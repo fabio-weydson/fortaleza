@@ -173,6 +173,7 @@ angular.module('mobionicApp.controllers', [])
 
     $scope.abre_foto = function (foto, text) {
         $('#lightbox span').html('<img src="'+foto+'"/><b>'+text+'</b>').promise().done(function(){
+            $('#lightbox .share').attr('ng-click', "sharePost('"+foto+"', '"+text+"')");
             $('#lightbox').fadeIn(500);  
         });  
     };
@@ -183,16 +184,15 @@ angular.module('mobionicApp.controllers', [])
     };
 
     $scope.sharePost = function (img,link) {
-
         var subject = "Siga o Fortaleza no Instagram";
         var message = "  Via App ofical Fortaleza EC http://bit.ly/1bc2Xja";
         message = message.replace(/(<([^>]+)>)/ig,"");
         var link = link;
         var image = img;
-        window.plugins.socialsharing.share(message, subject, image, link);
+        alert(img);
+       // window.plugins.socialsharing.share(message, subject, image, link);
 
     }
-
 
 })
 
@@ -251,8 +251,6 @@ angular.module('mobionicApp.controllers', [])
       $scope.video = VideosData.get($stateParams.videoId);
 
     var idVideo = $scope.video.snippet.resourceId.videoId;
-
-console.log(idVideo);
     var urlEmbed = $sce.trustAsHtml('<iframe src="https://www.youtube.com/embed/'+idVideo+'?rel=0&showinfo=0&allownetworking=internal" frameborder="0" width="100%" height="100%"></iframe>');
 
     $scope.video['embed'] = urlEmbed;
@@ -265,15 +263,12 @@ console.log(idVideo);
 
     $scope.sharePost = function () {
 
-        var subject = $scope.video.title.$t;
-        var message = $scope.video.title.$t;
+        var subject = $scope.video.snippet.title;
+        var message += "  Via App ofical Fortaleza EC http://bit.ly/1bc2Xja";
         message = message.replace(/(<([^>]+)>)/ig,"");
-
-        var link = $scope.video.title.$t;
-
-        
-        
-        window.plugins.socialsharing.share(message, subject, null, link);
+        var imagem = $scope.video.snippet.thumbnails.default.url;
+        var link = 'https://youtu.be/'+idVideo;
+        window.plugins.socialsharing.share(message, subject, img, link);
 
     }
 
@@ -285,9 +280,8 @@ console.log(idVideo);
     };
 
       $scope.$on('$rootScope.orientation.change', function () {
-       // alert('orientacao alterada');
+      alert('orientacao alterada');
     });
-
 }])
 
 // Contact Controller
@@ -426,16 +420,15 @@ console.log(idVideo);
     $scope.post = PostsData.get($stateParams.postId);
 
     $scope.loadURL = function (url) {
-        window.open(url,'_self');
+        window.open(url,'_blank');
     }
 
     $scope.sharePost = function () {
         var subject = $scope.post.Titulo;
         var message = $scope.post.Subtitulo;
-        var message = $scope.post.Subtitulo;
         message = message.replace(/(<([^>]+)>)/ig,"");
-        message += '  Via App ofical Fortaleza EC http://bit.ly/1bc2Xja'
-        var img = 'http://www.fortalezaec.net/{{post.FotoNoticia}}';
+        message += '  Baixe o APP ofical http://bit.ly/1bc2Xja';
+        var img = 'http://fortalezaec.net/{{post.FotoNoticia}}';
         var link = $scope.post.URL;
         window.plugins.socialsharing.share(message, subject, img, link);
     }

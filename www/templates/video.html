@@ -1,4 +1,7 @@
 <ion-view title="{{video.snippet.title}}">
+  <ion-nav-buttons side="right">
+    <a class="button button-clear" ng-click="sharePost()"><i class="icon ion-share"></i></a>
+    </ion-nav-buttons>
     <ion-content class="has-header">
         <span class="localdata">{{storage}}</span>
         <div id="video" >
