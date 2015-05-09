@@ -264,12 +264,12 @@ angular.module('mobionicApp.controllers', [])
     $scope.sharePost = function () {
 
         var subject = $scope.video.snippet.title;
-        var message += "  Via App ofical Fortaleza EC http://bit.ly/1bc2Xja";
-        message = message.replace(/(<([^>]+)>)/ig,"");
+        var message = "  Via App ofical Fortaleza EC http://bit.ly/1bc2Xja";
+        message += message.replace(/(<([^>]+)>)/ig,"");
         var imagem = $scope.video.snippet.thumbnails.default.url;
         var link = 'https://youtu.be/'+idVideo;
         window.plugins.socialsharing.share(message, subject, img, link);
-
+  
     }
 
    $scope.init = function () {
