@@ -35,7 +35,7 @@
 <div class="list">
 
     <a class="item" ng-repeat="lance in lances2 | reverse"  >
-        <span class="tempo"><b ng-bind="lance.momento"></b><b ng-bind="lance.periodo"></b></span>
+        <span class="tempo"><b ng-bind="lance.momento"></b>' <b ng-bind="lance.periodo"></b></span>
         <span ng-bind-html="lance.texto"></span>
     </a>
   </div>

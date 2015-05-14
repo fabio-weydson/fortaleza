@@ -598,7 +598,7 @@ angular.module('mobionicApp.data', [])
 .factory('LancesData', function($http, $q, LancesStorage) {
 
     /* (For DEMO purposes) Local JSON data */
-    var json = 'http://localhost/fortaleza/webservice/tempo_real.php?ver=linha_do_tempo&v=4';
+    var json = 'http://179.188.17.9/~fortalezaapp/webservice/tempo_real.php?ver=linha_do_tempo&v=5';
 
 
     var deferred = $q.defer();

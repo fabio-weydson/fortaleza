@@ -420,7 +420,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.post = PostsData.get($stateParams.postId);
 
     $scope.loadURL = function (url) {
-        window.open(url,'_blank');
+        window.open(url,'_system');
     }
 
     $scope.sharePost = function () {
