@@ -300,7 +300,11 @@ angular.module('mobionicApp.controllers', [])
             body:    $scope.contact.body
         });
 
-    };
+    }
+        $scope.loadURL = function (url, target) {
+        window.open(url, target);
+    }
+
 
 })
 .controller('AboutCtrl', function($scope) {
