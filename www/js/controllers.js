@@ -283,7 +283,7 @@ angular.module('mobionicApp.controllers', [])
       alert('orientacao alterada');
     });
 }])
-
+  
 // Contact Controller
 .controller('ContactCtrl', function($scope) {
 
