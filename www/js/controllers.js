@@ -301,10 +301,15 @@ angular.module('mobionicApp.controllers', [])
         });
 
     }
-        $scope.loadURL = function (url, target) {
+    $scope.loadURL = function (url, target) {
         window.open(url, target);
     }
-
+    $scope.loadURL2 = function (url, target) {
+        window.location.assign(url, target);
+    }
+     $scope.loadURL3 = function (url, target) {
+        cordova.InAppBrowser.open(url, target);
+    }
 
 })
 .controller('AboutCtrl', function($scope) {
