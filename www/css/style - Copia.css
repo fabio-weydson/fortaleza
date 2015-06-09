@@ -81,24 +81,23 @@ img { max-width: 100%; height:auto;}
   margin:0;
  
   padding: 0;
-  border-bottom: 1px solid #030017;
+  border-bottom: 1px solid #000;
 
-  border-top: 1px solid #373B56;
+  border-top: 1px solid #444;
 
  color: #FFF;
   font-size: 17px;
  
-  /* background: transparent; */
+  background: transparent;
  
-  background: rgba(35, 35, 35, 0.45);
-  text-shadow: -1px 2px 0px #373B56;
+  text-shadow: -1px 2px 0px #000;
   border-left: none;
   font-family: "Roboto";
   border-right: none;
 }
 .menu-left {
 left: 0;
-background: url(../img/bg_menu.png);
+background: #333;
   
 }
 .menu-left .item-content {
@@ -120,7 +119,7 @@ background: url(../img/bg_menu.png);
 
 .menu-left .sub-item {
     /* border-top: none; */
-    /* background: #333333; */
+    background: #333333;
 }
 .bar.bar-stable { 
     background: #cc0014 url(../img/bg_menu.jpg);
@@ -168,10 +167,10 @@ h2.title {
 }
 
 .pane .scroll-content {
-    /* background: #f5f5f5; */
+    background: #f5f5f5;
 }
 .menu-left .scroll-content {
-    /* background: rgba(35, 35, 35, 0.39); */;
+    background: #232323;
 }
 .post-info {
     color: #999;
@@ -367,7 +366,7 @@ div#tempo-real {
     width: 60%;
 }
 .list .item-accordion {
- background: rgba(0, 0, 0, 0.19);
+ background: #333;
 
  transition: all 0.2s ease-out;
 }

@@ -277,11 +277,12 @@ angular.module('mobionicApp.controllers', [])
         window_width *= 1;
         var valueHeight = Math.round((window_width/16)*9);
        $('.media-container .ng-binding').width(window_width).height(valueHeight);
+       
     };
 
-      $scope.$on('$rootScope.orientation.change', function () {
-      alert('orientacao alterada');
-    });
+    //   $scope.$on('$rootScope.orientation.change', function () {
+    //   alert('orientacao alterada');
+    // });
 }])
   
 // Contact Controller
