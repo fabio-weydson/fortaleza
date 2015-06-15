@@ -159,6 +159,15 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         }
       }
     })
+     .state('app.noticia', {
+      url: "/noticia/:postId",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/noticia.html",
+          controller: 'NoticiaCtrl'
+        }
+      }
+    })
  .state('app.socio', {
       url: "/socio",
       views: {

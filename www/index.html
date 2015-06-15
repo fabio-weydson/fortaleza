@@ -18,7 +18,7 @@
 
         <script src="js/angular-sanitize.js"></script>
 
-        <script type="text/javascript"src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <!--<script type="text/javascript"src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
         <script type="text/javascript" src="js/lodash.underscore.min.js"></script>
 
         <!-- Cordova Script (this will be a 404 during development) -->
@@ -32,24 +32,6 @@
         <script src="js/local-storage.js"></script>
         <script src="js/data.js"></script>
         <script src="js/jquery-1.11.1.min.js"></script>
-       <script>
-            window.addEventListener("orientationchange", function() {
-                alert('asdasd');
-            if ($( "#video").length ) {
-            var window_width = $('.media-container').width();
-            window_width *= 1;
-            var valueHeight = Math.round((window_width/16)*9);
-            $('.media-container .ng-binding').width(window_width).height(valueHeight);
-                   if (Math.abs(window.orientation) === 90) {
-                            $('#video .padding,.nav-bar-container').hide();
-                            $('.has-header').css('top', '0px');
-                        } else {
-                            $('#video .padding,.nav-bar-container').show();
-                             $('.has-header').css('top', '44px');
-                        }
-            }
-        }, false);
-    </script> 
     </head>
 
     <body ng-app="mobionicApp">

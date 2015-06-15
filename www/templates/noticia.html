@@ -1,0 +1,12 @@
+<ion-view title="{{post.Titulo}}">
+    
+    <ion-nav-buttons side="right">
+    <a class="button button-clear" ng-click="sharePost()"><i class="icon ion-share"></i></a>
+    </ion-nav-buttons>
+    
+    <ion-content class="has-header" id="noticia">
+        <span class="localdata">{{storage}}</span>
+        
+             <div ng-bind-html="post.embed" style="  height: 100%;"></div>
+    </ion-content>
+</ion-view>

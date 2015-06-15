@@ -536,3 +536,6 @@ div#lightbox span {
     display: block;
     overflow: hidden;
 }
+#video .media-container {
+  background: #000;
+}

@@ -251,11 +251,30 @@ angular.module('mobionicApp.controllers', [])
       $scope.video = VideosData.get($stateParams.videoId);
 
     var idVideo = $scope.video.snippet.resourceId.videoId;
-    var urlEmbed = $sce.trustAsHtml('<iframe src="https://www.youtube.com/embed/'+idVideo+'?rel=0&showinfo=0&allownetworking=internal" frameborder="0" width="100%" height="100%"></iframe>');
+    var urlEmbed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/'+idVideo+'?rel=0&showinfo=0&allownetworking=internal" frameborder="0" width="100%" height="100%"></iframe>');
 
-    $scope.video['embed'] = urlEmbed;
+    $scope.video.embed = urlEmbed;
 
 
+     window.addEventListener("orientationchange", function() {
+           var window_width = $('.media-container').width();
+            var window_height = window.innerHeight;
+            window_width *= 1;
+            var valueHeight = Math.round((window_width/16)*9);
+        if(window.orientation == 0) {
+            $('.media-container').height(valueHeight);
+            $('.media-container .ng-binding').width(window_width).height(valueHeight);
+            $('#video .padding,.nav-bar-container').show();
+            $('.has-header').css('top', '44px');
+            $scope.video.embed = urlEmbed;
+        }else {
+            $('.media-container').height(window_height);
+            $('.media-container .ng-binding').width(window_width).height(valueHeight);
+            $('#video .padding,.nav-bar-container').hide();
+            $('.has-header').css('top', '0px');
+            $scope.video.embed = urlEmbed;
+        }
+    })
 
     $scope.loadURL = function (url) {
         window.open(url,'_self');
@@ -423,7 +442,7 @@ angular.module('mobionicApp.controllers', [])
 .controller('PostCtrl', function($scope, $stateParams, PostsData) {
 
     $scope.post = PostsData.get($stateParams.postId);
-
+    $scope.post.postId = $stateParams.postId;
     $scope.loadURL = function (url) {
         window.open(url,'_system');
     }
@@ -439,6 +458,17 @@ angular.module('mobionicApp.controllers', [])
     }
 
 })
+
+// Post Controller
+.controller('NoticiaCtrl', ['$scope', '$sce', '$stateParams', 'PostsData', function($scope, $sce, $stateParams, PostsData) {
+
+    $scope.post = PostsData.get($stateParams.postId);
+    $scope.post.postId = $stateParams.postId;
+    $scope.post.iframe = 'http://www.fortalezaec.net/'+ $scope.post.URL;
+    var urlEmbed = $sce.trustAsHtml('<iframe src="'+$scope.post.iframe+'" frameborder="0" width="100%" height="100%"></iframe>');
+
+    $scope.post.embed = urlEmbed;
+}])
 
 // Posts Controller
 .controller('TempoRealCtrl', function($scope, $ionicLoading, TempoRealData, TempoRealStorage) {
