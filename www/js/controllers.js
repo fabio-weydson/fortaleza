@@ -21,10 +21,10 @@ angular.module('mobionicApp.controllers', [])
       
       showDelay: 10
     });
-
     PostsData.async().then(
         // successCallback
         function() {
+
             $scope.news = PostsData.getAll();
             $ionicLoading.hide();
         },
@@ -198,7 +198,6 @@ angular.module('mobionicApp.controllers', [])
 
 // Gallery Controller
 .controller('VideosCtrl',	function($scope, $ionicLoading, VideosData, VideosStorage, $document) {
-
     $scope.videos = [];
 
     $scope.loading = $ionicLoading.show({
@@ -250,6 +249,7 @@ angular.module('mobionicApp.controllers', [])
 .controller('VideoCtrl', ['$scope', '$sce', '$stateParams', 'VideosData', function($scope, $sce, $stateParams, VideosData){
       $scope.video = VideosData.get($stateParams.videoId);
 
+
     var idVideo = $scope.video.snippet.resourceId.videoId;
     var urlEmbed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/'+idVideo+'?rel=0&showinfo=0&allownetworking=internal" frameborder="0" width="100%" height="100%"></iframe>');
 
@@ -292,6 +292,9 @@ angular.module('mobionicApp.controllers', [])
     }
 
    $scope.init = function () {
+        screen.lockOrientation('landscape');
+
+        alert('Orientation is ' + screen.orientation);
         var window_width = $('.media-container').width();
         window_width *= 1;
         var valueHeight = Math.round((window_width/16)*9);
