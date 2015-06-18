@@ -8,6 +8,7 @@ angular.module('mobionicApp.controllers', [])
  });
  */
 .controller('HomeCtrl',function($scope, $ionicLoading, PostsData, PostsStorage) {
+
     $scope.news = [];
     $scope.storage = '';
 
@@ -34,9 +35,7 @@ angular.module('mobionicApp.controllers', [])
             $ionicLoading.hide();
         },
         // notifyCallback
-        function() {
-
-        }
+        function() {}
     );
 
 })
@@ -127,7 +126,7 @@ angular.module('mobionicApp.controllers', [])
 
 // Gallery Controller
 .controller('FotosCtrl', function($scope, $ionicLoading, FotosData, FotosStorage, $document) {
-     screen.lockOrientation('portrait');
+
     $scope.fotos = [];
 
     $scope.loading = $ionicLoading.show({
@@ -248,7 +247,7 @@ angular.module('mobionicApp.controllers', [])
 
 // Video Controller
 .controller('VideoCtrl', ['$scope', '$sce', '$stateParams', 'VideosData', function($scope, $sce, $stateParams, VideosData){
-    $scope.video = VideosData.get($stateParams.videoId);
+      $scope.video = VideosData.get($stateParams.videoId);
 
 
     var idVideo = $scope.video.snippet.resourceId.videoId;
@@ -340,7 +339,7 @@ angular.module('mobionicApp.controllers', [])
 })
 // Posts Controller
 .controller('DestaquesCtrl', function($scope, $ionicLoading, $ionicSlideBoxDelegate, DestaquesData, DestaquesStorage) {
-     screen.lockOrientation('portrait');    
+
     $scope.destaques = [];
     $scope.storage = '';
 
@@ -392,7 +391,7 @@ angular.module('mobionicApp.controllers', [])
 })
 // Posts Controller
 .controller('PostsCtrl', function($scope, $ionicLoading, PostsData, PostsStorage) {
- screen.lockOrientation('portrait');
+
     $scope.posts = [];
     $scope.storage = '';
 
@@ -442,7 +441,7 @@ angular.module('mobionicApp.controllers', [])
 
 // Post Controller
 .controller('PostCtrl', function($scope, $stateParams, PostsData) {
- screen.lockOrientation('portrait');
+
     $scope.post = PostsData.get($stateParams.postId);
     $scope.post.postId = $stateParams.postId;
     $scope.loadURL = function (url) {
@@ -463,7 +462,7 @@ angular.module('mobionicApp.controllers', [])
 
 // Post Controller
 .controller('NoticiaCtrl', ['$scope', '$sce', '$stateParams', 'PostsData', function($scope, $sce, $stateParams, PostsData) {
- screen.lockOrientation('portrait');
+
     $scope.post = PostsData.get($stateParams.postId);
     $scope.post.postId = $stateParams.postId;
     $scope.post.iframe = 'http://www.fortalezaec.net/'+ $scope.post.URL;
@@ -474,7 +473,7 @@ angular.module('mobionicApp.controllers', [])
 
 // Posts Controller
 .controller('TempoRealCtrl', function($scope, $ionicLoading, TempoRealData, TempoRealStorage) {
- screen.lockOrientation('portrait');
+
     $scope.temporeal = [];
     $scope.storage = '';
 
@@ -506,7 +505,7 @@ angular.module('mobionicApp.controllers', [])
 })
 // Lances Controller
 .controller('LancesCtrl', function($scope, $ionicLoading, LancesData, LancesStorage, $sce) {
- screen.lockOrientation('portrait');
+
     $scope.lances = [];
     $scope.storage = '';
 
@@ -573,7 +572,7 @@ angular.module('mobionicApp.controllers', [])
 })
 // Jogadores Controller
 .controller('JogadoresCtrl', function($scope, $ionicLoading, JogadoresData, JogadoresStorage) {
- screen.lockOrientation('portrait');
+
     $scope.jogadores = [];
     $scope.storage = '';
 
@@ -623,7 +622,7 @@ angular.module('mobionicApp.controllers', [])
 })
 // Jogador Controller
 .controller('JogadorCtrl', function($scope, $stateParams, JogadoresData) {
- screen.lockOrientation('portrait');
+
     $scope.jogador = JogadoresData.get($stateParams.jogadorId);
 
     $scope.loadURL = function (url) {
