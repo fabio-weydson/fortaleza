@@ -292,9 +292,7 @@ angular.module('mobionicApp.controllers', [])
     }
 
    $scope.init = function () {
-        screen.lockOrientation('landscape');
-
-        alert('Orientation is ' + screen.orientation);
+        screen.unlockOrientation();
         var window_width = $('.media-container').width();
         window_width *= 1;
         var valueHeight = Math.round((window_width/16)*9);
