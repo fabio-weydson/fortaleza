@@ -8,7 +8,10 @@ angular.module('mobionicApp.controllers', [])
  });
  */
 .controller('HomeCtrl',function($scope, $ionicLoading, PostsData, PostsStorage) {
-
+    $scope.init = function() {
+         screen.lockOrientation('portrait');
+         alert("asdsad");
+    }
     $scope.news = [];
     $scope.storage = '';
 
@@ -37,7 +40,7 @@ angular.module('mobionicApp.controllers', [])
         // notifyCallback
         function() {}
     );
-
+    $scope.init();
 })
 
 // News Controller
