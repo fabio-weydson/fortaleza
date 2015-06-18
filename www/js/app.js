@@ -135,6 +135,14 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         }
       }
     })
+    .state('app.instagram', {
+      url: "/instagram",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/instagram.html"
+        }
+      }
+    })
     .state('app.contact', {
       url: "/contact",
       views: {
