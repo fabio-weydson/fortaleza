@@ -173,7 +173,9 @@ angular.module('mobionicApp.controllers', [])
     $scope.ativoimg='0';
     $scope.ativolink='0';
 
-    $scope.abre_foto = function (thumbid) {
+    $scope.abre_foto = function (passedEventObject, thumbid) {
+     var window_height = window.innerHeight;
+         $('#lightbox span').css('max-height', window_height-Math.round((window_height*25)/100));
         var imagem = $('div[data-thumbid="'+thumbid+'"] img').data('imgfull');
         var texto = $('div[data-thumbid="'+thumbid+'"] img').data('texto');
         var link = $('div[data-thumbid="'+thumbid+'"] img').data('link');
@@ -190,12 +192,13 @@ angular.module('mobionicApp.controllers', [])
     };
 
     $scope.sharePost = function () {
+   
         var subject = "Siga o Fortaleza no Instagram";
         var message = "  Via App ofical Fortaleza EC http://bit.ly/1bc2Xja";
         message = message.replace(/(<([^>]+)>)/ig,"");
         var imagem = $scope.ativoimg;
         var link = $scope.ativolink;
-        window.plugins.socialsharing.share(message, subject, imagem, link);
+        //window.plugins.socialsharing.share(message, subject, imagem, link);
 
     }
 
