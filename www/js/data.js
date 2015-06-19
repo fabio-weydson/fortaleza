@@ -150,12 +150,13 @@ angular.module('mobionicApp.data', [])
                     title: "Videos",
                     url: '#/app/videos',
                     icon:"ion-social-youtube",
-                },
-                {
-                    title: "Papeis de Parede",
-                    url: '#/app/papeis_de_parede',
-                    icon:"ion-wand",
-                }] 
+                }
+                // {
+                //     title: "Papeis de Parede",
+                //     url: '#/app/papeis_de_parede',
+                //     icon:"ion-wand",
+                // }
+                ] 
         },
          {
             title: 'Partidas',
@@ -191,26 +192,27 @@ angular.module('mobionicApp.data', [])
             title: 'Mais',
             icon: 'ion-more',
              subMenu: [
-                {
-                    title: "Newsletter",
-                    url: '#/app/member',
-                    icon:"ion-paper-airplane",
-                },
+                // {
+                //     title: "Newsletter",
+                //     url: '#/app/member',
+                //     icon:"ion-paper-airplane",
+                // },
                 {
                     title: "Contatos",
                     url: '#/app/contact',
                     icon:"ion-ios7-email",
-                },
-                {
-                    title: "Ajustes",
-                    url: '#/app/settings',
-                    icon:"ion-ios7-gear",
-                },
-                 {
-            title: 'Plugins',
-            icon: 'ion-code',
-            url: '#/app/plugins'
-        }]  
+                }
+                // {
+                //     title: "Ajustes",
+                //     url: '#/app/settings',
+                //     icon:"ion-ios7-gear",
+                // },
+        //          {
+        //     title: 'Plugins',
+        //     icon: 'ion-code',
+        //     url: '#/app/plugins'
+        // },
+        ]  
         }
         // {
         //     title: 'Elements',
@@ -445,7 +447,7 @@ angular.module('mobionicApp.data', [])
 // Gallery Data: Gallery configuration
 .factory('VideosData', function($http, $q, VideosStorage) {
 
-    var json = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=UUV5UiFF5AlNKW4sLXcYMG_g&fields=items/id,items/snippet/title,items/snippet/description,items/snippet/resourceId/videoId,items/snippet/thumbnails/default&key=AIzaSyDAyzQoPMlHyqjx5MJ5NS9jv3cM8JihcOc';
+    var json = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=UUV5UiFF5AlNKW4sLXcYMG_g&fields=items/id,items/snippet/publishedAt,items/snippet/title,items/snippet/description,items/snippet/resourceId/videoId,items/snippet/thumbnails/default&key=AIzaSyDAyzQoPMlHyqjx5MJ5NS9jv3cM8JihcOc';
     var deferred = $q.defer();
     var promise = deferred.promise;
     var data = [];

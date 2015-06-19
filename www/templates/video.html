@@ -13,7 +13,11 @@
           </div>
                        <div class="padding">
             <h2 class="title">{{video.snippet.title}}</h2>
+             <div  class="post-info">
+            Publicado em {{video.snippet.publishedAt | date:'dd/MM/yy'}}<br/>
+            </div>
             <p>{{video.snippet.description}}</p>
+            
              </div>
         </div>
       <!--    <div class="barra-titulo">

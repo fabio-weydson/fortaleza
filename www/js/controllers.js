@@ -13,7 +13,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.storage = '';
 
     $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-c"></i> Carregando',
+      template: '<i class="icon ion-loading-a"></i> Carregando',
 
       
       showBackdrop: false,
@@ -39,7 +39,19 @@ angular.module('mobionicApp.controllers', [])
     );
 
 })
-
+.controller('BannerController',['$scope', '$sce',  function($scope, $sce) {
+  
+  
+    $scope.SetImage = function() {
+        var imgLinks = [
+        //['img/banner_loja.jpg','#/app/loja'],
+        ['img/banner_socio.jpg','#/app/socio']
+        ];
+        var R =  Math.floor(Math.random() * imgLinks.length);
+        $scope.banner = $sce.trustAsHtml('<a href="'+imgLinks[R][1]+'" class="banner" nav-clear menu-close><img class="full-image" src="'+imgLinks[R][0]+'"></a>');
+    }
+     $scope.SetImage();
+}])
 // News Controller
 .controller('NewsCtrl', function($scope, $ionicLoading, NewsData, NewsStorage) {
 
@@ -47,7 +59,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.storage = '';
 
     $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-c"></i> Carregando',
+      template: '<i class="icon ion-loading-a"></i> Carregando',
 
       
       showBackdrop: false,
@@ -88,7 +100,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.storage = '';
 
     $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-c"></i> Carregando',
+      template: '<i class="icon ion-loading-a"></i> Carregando',
 
       
       showBackdrop: false,
@@ -130,7 +142,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.fotos = [];
 
     $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-c"></i> Carregando',
+      template: '<i class="icon ion-loading-a"></i> Carregando',
 
       
       showBackdrop: false,
@@ -193,12 +205,12 @@ angular.module('mobionicApp.controllers', [])
 
     $scope.sharePost = function () {
    
-        var subject = "Siga o Fortaleza no Instagram";
-        var message = "  Via App ofical Fortaleza EC http://bit.ly/1bc2Xja";
+        var subject = "via APP Oficial do Fortaleza";
+        var message = "Ver no instagram  <br/>  Via App ofical Fortaleza http://bit.ly/1bc2Xja";
         message = message.replace(/(<([^>]+)>)/ig,"");
         var imagem = $scope.ativoimg;
-        var link = $scope.ativolink;
-        //window.plugins.socialsharing.share(message, subject, imagem, link);
+        var link = $scope.ativolink.replace('https://instagram.com', 'http://instagr.am');
+        window.plugins.socialsharing.share(message, subject, imagem, link);
 
     }
 
@@ -209,7 +221,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.videos = [];
 
     $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-c"></i> Carregando',
+      template: '<i class="icon ion-loading-a"></i> Carregando',
 
       
       showBackdrop: false,
@@ -249,22 +261,25 @@ angular.module('mobionicApp.controllers', [])
     $scope.showMoreItems = function() {
     page = page + 1;
     };
-  
+    $scope.loadURL = function (url) {
+        window.open(url,'_system');
+    }
 
 })
 
 // Video Controller
-.controller('VideoCtrl', ['$scope', '$sce', '$stateParams', 'VideosData', function($scope, $sce, $stateParams, VideosData){
+.controller('VideoCtrl', ['$scope', '$ionicLoading', '$sce', '$stateParams', 'VideosData', function($scope, $ionicLoading, $sce, $stateParams, VideosData){
       $scope.video = VideosData.get($stateParams.videoId);
 
 
     var idVideo = $scope.video.snippet.resourceId.videoId;
-    var urlEmbed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/'+idVideo+'?rel=0&showinfo=0&allownetworking=internal" frameborder="0" width="100%" height="100%"></iframe>');
+    var urlEmbed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/'+idVideo+'?rel=0&showinfo=0&allownetworking=internal&fs=0&theme=light&controls=2&autohide=1" frameborder="0" width="100%" height="100%"></iframe>');
 
     $scope.video.embed = urlEmbed;
 
 
      window.addEventListener("orientationchange", function() {
+        console.log('orientacao');
            var window_width = $('.media-container').width();
             var window_height = window.innerHeight;
             window_width *= 1;
@@ -285,12 +300,18 @@ angular.module('mobionicApp.controllers', [])
     })
 
     $scope.loadURL = function (url) {
-        window.open(url,'_self');
+        window.open(url,'_system');
     }
 
     $scope.sharePost = function () {
+          $scope.loading = $ionicLoading.show({
+      template: '<i class="icon ion-loading-a"></i> Aguarde',
+
+      showBackdrop: true,
+      duration: 5000
+    });
         var subject = $scope.video.snippet.title;
-        var message = "  Via App ofical Fortaleza EC http://bit.ly/1bc2Xja";
+        var message = "  via APP Oficial do Fortaleza http://bit.ly/1bc2Xja";
         message += message.replace(/(<([^>]+)>)/ig,"");
         //var imagem = $scope.video.snippet.thumbnails.default.url;
         var link = 'https://youtu.be/'+idVideo;
@@ -299,7 +320,7 @@ angular.module('mobionicApp.controllers', [])
     }
 
    $scope.init = function () {
-        screen.unlockOrientation();
+        //screen.unlockOrientation();
         var window_width = $('.media-container').width();
         window_width *= 1;
         var valueHeight = Math.round((window_width/16)*9);
@@ -354,7 +375,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.storage = '';
 
     $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-c"></i> Carregando',
+      template: '<i class="icon ion-loading-a"></i> Carregando',
 
       
       showBackdrop: false,
@@ -404,9 +425,9 @@ angular.module('mobionicApp.controllers', [])
 
     $scope.posts = [];
     $scope.storage = '';
-
+     $scope.loadData = function () {
     $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-c"></i> Carregando',
+      template: '<i class="icon ion-loading-a"></i> Carregando',
 
       
       showBackdrop: false,
@@ -430,7 +451,7 @@ angular.module('mobionicApp.controllers', [])
         // notifyCallback
         function() {}
     );
-
+    }
     var page = 1;
     // Define the number of the posts in the page
     var pageSize = 7;
@@ -446,7 +467,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.showMoreItems = function() {
     page = page + 1;
     };
-
+     $scope.loadData();
 })
 
 // Post Controller
@@ -454,18 +475,18 @@ angular.module('mobionicApp.controllers', [])
 
     $scope.post = PostsData.get($stateParams.postId);
     $scope.post.postId = $stateParams.postId;
-    $scope.loadURL = function (url) {
-        window.open(url,'_system');
-    }
 
     $scope.sharePost = function () {
-         $scope.loading = $ionicLoading.show({
-          showDelay: 5
-        });
+            $scope.loading = $ionicLoading.show({
+      template: '<i class="icon ion-loading-a"></i> Aguarde',
+
+      showBackdrop: true,
+      duration: 5000
+    });
         var subject = $scope.post.Titulo;
         var message = $scope.post.Subtitulo;
         message = message.replace(/(<([^>]+)>)/ig,"");
-        message += '  Baixe o APP ofical http://bit.ly/1bc2Xja';
+         message += ' via APP Oficial do Fortaleza http://bit.ly/1bc2Xja';
         var img = 'http://fortalezaec.net/{{post.FotoNoticia}}';
         var link = $scope.post.URL;
         window.plugins.socialsharing.share(message, subject, img, link);
@@ -484,10 +505,16 @@ angular.module('mobionicApp.controllers', [])
     $scope.post.embed = urlEmbed;
 
         $scope.sharePost = function () {
+               $scope.loading = $ionicLoading.show({
+      template: '<i class="icon ion-loading-a"></i> Aguarde',
+
+      showBackdrop: true,
+      duration: 5000
+    });
         var subject = $scope.post.Titulo;
         var message = $scope.post.Subtitulo;
         message = message.replace(/(<([^>]+)>)/ig,"");
-        message += '  Baixe o APP ofical http://bit.ly/1bc2Xja';
+        message += ' via APP Oficial do Fortaleza http://bit.ly/1bc2Xja';
         var img = 'http://fortalezaec.net/{{post.FotoNoticia}}';
         var link = $scope.post.URL;
         window.plugins.socialsharing.share(message, subject, img, link);
@@ -501,7 +528,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.storage = '';
 
     $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-c"></i> Carregando',
+      template: '<i class="icon ion-loading-a"></i> Carregando',
 
       
       showBackdrop: false,
@@ -533,7 +560,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.storage = '';
 
     $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-c"></i> Carregando',
+      template: '<i class="icon ion-loading-a"></i> Carregando',
 
       
       showBackdrop: false,
@@ -585,7 +612,6 @@ angular.module('mobionicApp.controllers', [])
         html += " ";
         var newvar = html.replace(/(<([^>]+)>)/ig,"");
         newvar = newvar.replace(/(\r\n|\n|\r)/gm,"");
-        //console.log(newvar);
         return newvar;
     }
 
@@ -600,7 +626,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.storage = '';
 
     $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-c"></i> Carregando',
+      template: '<i class="icon ion-loading-a"></i> Carregando',
 
       
       showBackdrop: false,
@@ -618,7 +644,6 @@ angular.module('mobionicApp.controllers', [])
         // errorCallback
         function() {
             $scope.jogadores = JogadoresStorage.all();
-            console.log('local');
             $scope.storage = 'Dados locais. Você está offline.';
             $ionicLoading.hide();
         },

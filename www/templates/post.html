@@ -6,20 +6,14 @@
 
     <ion-content class="has-header" id="noticia">
         <span class="localdata">{{storage}}</span>
+        <span ng-show="{{post.FotoNoticia.length}}"><img ng-src="http://www.fortalezaec.net/{{post.FotoNoticia}}"/></span>
         <div class="padding">
-            <h2 class="title">{{post.Titulo}}</h2>
-
-            <div style="padding:0 0 20px 0;" class="post-info">
+<!--              <span  ng-show="{{post.Assunto.Nome.length}}">{{post.Assunto.Nome}}</span>
+ -->            <h2 class="title">{{post.Titulo}}</h2>
+            <div  class="post-info">
             Publicado em {{post.DataHora * 1000 | date:'dd/MM/yy '+as+' H:m'}}<br/>
             </div>
-
-            <p ng-show="{{post.FotoNoticia.length}}"><img ng-src="http://www.fortalezaec.net/{{post.FotoNoticia}}"/></p>
-
-            <p ng-bind-html="post.Subtitulo"></p>
-
-            <p ng-show="{{post.Assunto.length}}"><i class="icon ion-ios7-pricetags"></i>
-            <span ng-repeat="category in post.categories">{{post.Assunto.Nome}}</span>
-            </p>
+            <p ng-bind-html="post.Subtitulo" class="texto"></p>
 
 <!--             <p><button class="button icon-left ion-share button-outline button-positive" ng-click="sharePost()">Compartilhar</button></p>
  -->

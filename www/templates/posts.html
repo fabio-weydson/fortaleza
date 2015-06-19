@@ -3,7 +3,7 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-    <a class="button button-clear" href="#/app/settings"><i class="icon ion-loop"></i></a>
+    <button class="button button-clear" ng-click="loadData()"><i class="icon ion-loop"></i></button>
     </ion-nav-buttons>
     <ion-content class="has-header" overflow-scroll="true" id="noticias-lista">
         
@@ -14,10 +14,10 @@
             <a class="item" ng-class="{'item-thumbnail-left' : post.FotoNoticia.length}" href="#/app/posts/{{$index}}" ng-repeat="post in posts | limitTo: paginationLimit()" >
                 <img ng-src="http://www.fortalezaec.net/{{post.FotoNoticia}}" with="150" ng-show="{{post.FotoNoticia.length}}" alt="{{post.Titulo}}">
                 
-                <h2>{{post.Titulo}}</h2>
+                <h2><span ng-bind-html="post.DataHora * 1000 | date:'dd/MM/yy'"></span> - {{post.Titulo}}</h2>
                 <h3>{{post.Subtitulo}}</h3>
-                <p ng-bind-html="post.DataHora * 1000 | date:'dd/MM/yy'"></p>
-            </a>
+<!--                 <p ng-bind-html="post.DataHora * 1000 | date:'dd/MM/yy'"></p>
+ -->            </a>
 
         </div>
         

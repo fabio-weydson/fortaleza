@@ -3,7 +3,7 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-    <a class="button button-clear" href="#/app/tempo_real"><i class="icon ion-ios7-football-outline"></i></a>
+    <a href="#/app/tempo_real" class="button button-icon icon ion-ios7-football-outline"></a>
     </ion-nav-buttons>
     <ion-content class="has-header">
     <span class="localdata">{{storage}}</span>
@@ -35,8 +35,9 @@
       </ion-slide>
      
     </ion-slide-box>-->
-     <a href="#/app/products" class="banner"  nav-clear menu-close><img class="full-image" src="img/banner_loja.jpg"></a>
-
+    <div ng-controller="BannerController">
+     <div ng-bind-html="banner"></div>
+    </div>
         <div class="list">
 
             <a class="item" ng-class="{'item-thumbnail-left' : post.FotoNoticia.length}" href="#/app/posts/{{$index}}" ng-repeat="post in posts | limitTo: paginationLimit()"  >

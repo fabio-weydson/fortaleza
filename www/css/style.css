@@ -1,16 +1,38 @@
 /* Empty. Add your own CSS if you like */
 
+/* latin-ext */
 @font-face {
-    font-family: 'Roboto';
-    src: url('../font/Roboto-Regular-webfont.eot');
-  src: url('../font/Roboto-Regular-webfont.eot?#iefix') format('eot'),
-         url('../font/Roboto-Regular-webfont.svg#RobotoRegular') format('svg'),
-         url('../font/Roboto-Regular-webfont.woff') format('woff'),
-         url('../font/Roboto-Regular-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(../font/Fcx7Wwv8OzT71A3E1XOAjvesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
-/* Empty. Add your own CSS if you like */
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(../font/CWB0XYA8bzo0kSThX0UTuA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'), url(../font/97uahxiqZRoncBaCEI3aWxJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'), url(../font/d-6IYplOFocCacKzxwXSOFtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}/* Empty. Add your own CSS if you like */
 
 @font-face {
   font-family: "Source Sans Pro";
@@ -59,7 +81,9 @@
     font-style: normal;
 }
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Source Sans Pro', sans-serif; }
-
+.loading-container .loading {
+  font-size: 1.3em;
+}
 a { text-decoration: none; }
 
 img { max-width: 100%; height:auto;}
@@ -90,7 +114,7 @@ img { max-width: 100%; height:auto;}
  
   /* background: transparent; */
  
-  background: rgba(35, 35, 35, 0.45);
+  background: rgba(35, 35, 35, 0.30);
   text-shadow: -1px 2px 0px #373B56;
   border-left: none;
   font-family: "Roboto";
@@ -158,13 +182,27 @@ p.ng-binding {
     line-height: normal;
     font-size: 0.8em;
 }
+#noticia p.texto {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #CCC;
+
+}
+#noticia .button {
+    
+    position: absolute;
+    width: 94%;
+    bottom: 0;
+}
 
 a.item {
     padding-bottom: 4px;
 }
 h2.title {
-    font-size: 165%;
+    font-size: 1.4em;
     color: #333;
+    font-weight: bold;
+    font-family: "Roboto";
 }
 
 .pane .scroll-content {
@@ -174,14 +212,16 @@ h2.title {
     /* background: rgba(35, 35, 35, 0.39); */;
 }
 .post-info {
-    color: #999;
+    color: #22A1CF;
+    margin: 10px 0;
 }
 .item h2 {
     font-size: 100%;
     margin-bottom: 2px;
     color: #155B8D;
-    font-size: 85%;
+    font-size: 0.8em;
     max-height: 30px;
+    font-family: "Roboto";
 }
 #slidehome h3 {
     position: absolute;
@@ -190,8 +230,9 @@ h2.title {
     color: #FFF;
     text-shadow: 1px 1px 1px #000;
     padding: 2%;
-    font-size: 150%;
+    font-size: 1.3em;
     bottom: 0;
+    font-family: "Roboto";
     margin-bottom: 5px;
 }
 #slidehome {
@@ -253,27 +294,27 @@ h2.title {
     width: 100%;
     text-shadow: 1px 1px 0px #000;
     color: #FFF;
-    background: rgba(0,0,0,0.6);
+    /* background: rgba(0,0,0,0.6); */
     position: absolute;
     padding-left: 165px;
     bottom: 25px;
 }
 #jogador-ver p.ng-binding {
     text-align: left;
-    font-size: 15px;
+    font-size: 1em;
     color: #777;
     font-family: "Roboto";
 }
 #jogadores-lista .list a h2 {
-    font-size: 120%;
+    font-size: 1em;
 }
 
 #jogadores-lista .list a h3 {
-    font-size: 100%;
+    font-size: 0.9em;
 }
 
 #jogadores-lista .list a p {
-    font-size: 100%;
+    font-size: 0.8em;
 }
 div#jogador .blade {
     position: absolute;
@@ -285,14 +326,14 @@ div#jogador .blade {
 
 div#jogador .blade img {
     width: 128px;
-    border-radius: 100%;
+    /* border-radius: 100%; */
     background: #F5F5F5;
     bottom: -15px;
-    left: 5%;
+    left: 20px;
     position: absolute;
     z-index: 99999;
     /* box-shadow: 0px -1px 11px #000; */
-    border: 3px solid #CCC;
+    border: 2px solid #FFF;
 }
 #tempo-real .data {
     background: #174C8A;
@@ -367,7 +408,7 @@ div#tempo-real {
     width: 60%;
 }
 .list .item-accordion {
- background: rgba(0, 0, 0, 0.19);
+ background: rgba(0, 0, 0, 0.60);
 
  transition: all 0.2s ease-out;
 }
@@ -379,7 +420,7 @@ div#tempo-real {
   display: block !important;
 }
 #video p.ng-binding{
-  text-align: justify;
+  text-align: left;
     font-size: 110%;
 }
 .banner {
@@ -390,9 +431,9 @@ div#tempo-real {
   clear: both;
 }
 #jogador {
-      background: url(../img/bg_jogador.jpg) left bottom;
-      background-size: initial;
-      height: 40%;
+      background: url(../img/bg_jogador.jpg) 0 76%;
+      background-size: 165%;
+      height: 60%;
       max-height: 200px;
       /* box-shadow: 0px -1px 11px #000; */
       box-sizing: content-box;
@@ -402,19 +443,21 @@ div#tempo-real {
 #jogador-ver h3.subtitle {
   font-weight: 700;
   text-align: left;
-  font-size: 89%;
+  font-size: 0.9em;
   width: 100%;
   color: #6C6C6C;
   position: absolute;
   padding-left: 165px;
-  bottom: -5px;
+  bottom: -16px;
 }
 #jogador-ver .info {
-  padding: 4%;
+  /* padding: 4%; */
   margin-top:50px;
 }
 #jogador-ver p b {
     color: #666;
+    /* font-family: "Roboto"; */
+    display: block;
 }
 span.localdata {
     background: #444;
@@ -479,15 +522,17 @@ button.button-block {
 }
 #noticia img {
     width: 100%;
-    border-radius:6px;
+    /* border-radius:6px; */
 }
 #noticia p.ng-binding {
-    font-size: 1.2em;
+    font-size: 1em;
+    text-align: left;
 }
 div#lightbox {
   display:none;
     width: 100%;
     
+  max-width: 400px;
   padding: 3%;
   top: 44px;
   height: 100%;
@@ -532,6 +577,7 @@ div#lightbox {
 
 #lightbox img {
     max-width: 100%;    height: auto;    float: left;
+    width: 100%;
 }
 
 div#lightbox span {
