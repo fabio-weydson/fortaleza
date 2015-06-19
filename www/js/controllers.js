@@ -170,11 +170,16 @@ angular.module('mobionicApp.controllers', [])
     $scope.showMoreItems = function() {
     page = page + 1;
     };
+    $scope.ativoimg='0';
+    $scope.ativolink='0';
 
-    $scope.abre_foto = function (foto, text) {
-
-        $('#lightbox span').html('<img src="'+foto+'"/><b>'+text+'</b>').promise().done(function(){
-            $('#lightbox .share').attr('ng-click', "sharePost('"+foto+"', '"+text+"')");
+    $scope.abre_foto = function (thumbid) {
+        var imagem = $('div[data-thumbid="'+thumbid+'"] img').data('imgfull');
+        var texto = $('div[data-thumbid="'+thumbid+'"] img').data('texto');
+        var link = $('div[data-thumbid="'+thumbid+'"] img').data('link');
+        $('#lightbox span').html('<img src="'+imagem+'"/><b>'+texto+'</b>').promise().done(function(){
+            $scope.ativoimg = imagem;
+            $scope.ativolink = link;
             $('#lightbox').fadeIn(500);  
         });  
     };
@@ -184,19 +189,20 @@ angular.module('mobionicApp.controllers', [])
         });  
     };
 
-    $scope.sharePost = function (link) {
+    $scope.sharePost = function () {
         var subject = "Siga o Fortaleza no Instagram";
         var message = "  Via App ofical Fortaleza EC http://bit.ly/1bc2Xja";
         message = message.replace(/(<([^>]+)>)/ig,"");
-        var link = link;
-        window.plugins.socialsharing.share(message, subject, null, link);
+        var imagem = $scope.ativoimg;
+        var link = $scope.ativolink;
+        window.plugins.socialsharing.share(message, subject, imagem, link);
 
     }
 
 })
 
 // Gallery Controller
-.controller('VideosCtrl',	function($scope, $ionicLoading, VideosData, VideosStorage, $document) {
+.controller('VideosCtrl',   function($scope, $ionicLoading, VideosData, VideosStorage, $document) {
     $scope.videos = [];
 
     $scope.loading = $ionicLoading.show({
@@ -809,4 +815,3 @@ angular.module('mobionicApp.controllers', [])
         //_self: Opens in the Cordova WebView if the URL is in the white list, otherwise it opens in the InAppBrowser.
         //_blank: Opens in the InAppBrowser.
         //_system: Opens in the system's web browser.
-        

@@ -7,9 +7,9 @@
     </ion-nav-buttons>
     <ion-content class="has-header" locking="true">
          <div id="fotos" >
-            <div id="lightbox"><span></span><p class="action"><a class="share" ><i class="icon ion-share"></i></a><a class="close" ng-click="close_foto()"><i class="icon ion-close-circled"></i></a></p></div>
-            <div class="thumb" ng-repeat="foto in fotos  | limitTo: paginationLimit()">
-                <img ng-click="abre_foto('{{foto.images.standard_resolution.url}}', '{{foto.caption.text}}')" ng-src="{{foto.images.thumbnail.url}}"/>
+            <div id="lightbox"><span></span><p class="action"><a class="share" ng-click="sharePost()" ><i class="icon ion-share"></i></a><a class="close" ng-click="close_foto()"><i class="icon ion-close-circled"></i></a></p></div>
+            <div class="thumb" data-thumbid="{{foto.id}}"  ng-repeat="foto in fotos  | limitTo: paginationLimit()">
+                <img ng-click="abre_foto('{{foto.id}}')" data-texto="{{foto.caption.text}}" data-imgfull="{{foto.images.standard_resolution.url}}"  data-link="{{foto.link}}"  ng-src="{{foto.images.thumbnail.url}}"/>
             </div>
         </div>
          <button class="button button-block button-positive" ng-show="hasMoreItems()" ng-click="showMoreItems()" >
