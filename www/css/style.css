@@ -882,3 +882,27 @@ div#lightbox span {
     right: 0;
     left: initial;
 }
+#construcao {
+    background:url(../img/bg_jogador.jpg);
+    background-size:cover;
+}
+#construcao .msg {
+    width:100%;
+    background:rgba(0,0,0,0.5);
+    height:100%;
+    padding-top: 20%;
+    text-align: center;
+}
+
+#construcao .msg img {
+    width: 50%;
+}
+#construcao .msg h3 {
+      font-family: "Rockwell";
+  font-weight: normal;
+  font-size: 2em;
+  color:#FFF;
+  text-transform:uppercase;
+  text-shadow:1px 2px 3px #000;
+  letter-spacing: 1px;
+}

@@ -62,7 +62,8 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
       url: "/products",
       views: {
         'menuContent' :{
-          templateUrl: "templates/loja.html"
+          //templateUrl: "templates/loja.html"
+          templateUrl: "templates/construcao.html"
                   }
       }
     })
@@ -242,7 +243,9 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
       url: "/ingressos",
       views: {
         'menuContent' :{
-          templateUrl: "templates/ingressos.html"        }
+          //templateUrl: "templates/ingressos.html"  
+           templateUrl: "templates/construcao.html"
+               }
       }
     })
 
