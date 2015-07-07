@@ -335,10 +335,6 @@ angular.module('mobionicApp.controllers', [])
   
 // Contact Controller
 .controller('ContactCtrl', function($scope) {
-     $scope.init = function () {
-        screen.lockOrientation('portrait');
-    };
-     $scope.init();
     $scope.contact = {
       subject:  '',
       body: ''
@@ -348,7 +344,7 @@ angular.module('mobionicApp.controllers', [])
 
         window.plugin.email.open({
             to:      ['fabioweydson@gmail.com'],
-            subject: 'Mensagem APP'+$scope.contact.subject,
+            subject: 'Mensagem APP: '+$scope.contact.subject,
             body:    $scope.contact.body
         });
 
@@ -369,33 +365,23 @@ angular.module('mobionicApp.controllers', [])
 
 })
 // Posts Controller
-.controller('DestaquesCtrl', function($scope, $ionicLoading, $ionicSlideBoxDelegate, DestaquesData, DestaquesStorage) {
-
+.controller('DestaquesCtrl', function($scope, $ionicLoading, $interval, $ionicSlideBoxDelegate, DestaquesData, DestaquesStorage) {
+  $scope.intervalo = 4000;
     $scope.destaques = [];
     $scope.storage = '';
-
-    $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-a"></i> Carregando',
-
-      
-      showBackdrop: false,
-
-      
-      showDelay: 10
-    });
 
     DestaquesData.async().then(
         // successCallback
         function() {
             $scope.destaques = DestaquesData.getAll();
-            $ionicLoading.hide();
             $ionicSlideBoxDelegate.$getByHandle('slidehome').update();
+            $scope.animaBarra($scope.intervalo-1000);
         },
         // errorCallback
         function() {
             $scope.destaques = DestaquesStorage.all();
             $scope.storage = 'Dados locais. Você está offline.';
-            $ionicLoading.hide();
+            $scope.animaBarra();
         },
         // notifyCallback
         function() {
@@ -403,22 +389,24 @@ angular.module('mobionicApp.controllers', [])
         }
     );
 
-    var page = 1;
-    // Define the number of the posts in the page
-    var pageSize = 5;
+    $scope.animaBarra = function(tempo){
+           $(".meter > span").stop().width(0);
+           $(".meter > span").animate({
+                        width: '100%'
+                    }, tempo);
+    }
+    $scope.slideChanged = function(index) {
+        $scope.animaBarra($scope.intervalo);
+        if(index==3) {
+            $interval(function(){
+                $ionicSlideBoxDelegate.$getByHandle('slidehome').slide(0,0);
+                            $ionicSlideBoxDelegate.$getByHandle('slidehome').start();
 
-    $scope.paginationLimit = function(data) {
-    return pageSize * page;
-    };
+            },$scope.intervalo)
+        }
+    }
 
-    $scope.hasMoreItems = function() {
-    return page < ($scope.posts.length / pageSize);
-    };
-
-    $scope.showMoreItems = function() {
-    page = page + 1;
-    };
-
+           
 })
 // Posts Controller
 .controller('PostsCtrl', function($scope, $ionicLoading, PostsData, PostsStorage) {
@@ -516,7 +504,7 @@ angular.module('mobionicApp.controllers', [])
         message = message.replace(/(<([^>]+)>)/ig,"");
         message += ' via APP Oficial do Fortaleza http://bit.ly/1bc2Xja';
         var img = 'http://fortalezaec.net/{{post.FotoNoticia}}';
-        var link = $scope.post.URL;
+        var link = 'http://fortalezaec.net'+$scope.post.URL;
         window.plugins.socialsharing.share(message, subject, img, link);
     }
 }])
@@ -618,6 +606,55 @@ angular.module('mobionicApp.controllers', [])
 
 
 
+})
+// Posts Controller post
+.controller('ProximosJogosCtrl', function($scope, $ionicLoading, ProximosJogosData, ProximosJogosStorage) {
+
+    $scope.jogos = [];
+    $scope.storage = '';
+     $scope.loadData = function () {
+    $scope.loading = $ionicLoading.show({
+      template: '<i class="icon ion-loading-a"></i> Carregando',
+
+      
+      showBackdrop: false,
+
+      
+      showDelay: 10
+    });
+
+    ProximosJogosData.async().then(
+        // successCallback
+        function() {
+            $scope.jogos = ProximosJogosData.getAll();
+            $ionicLoading.hide();
+        },
+        // errorCallback
+        function() {
+            $scope.jogos = ProximosJogosStorage.all();
+            $scope.storage = 'Dados locais. Você está offline.';
+            $ionicLoading.hide();
+        },
+        // notifyCallback
+        function() {}
+    );
+    }
+    var page = 1;
+    // Define the number of the posts in the page
+    var pageSize = 7;
+
+    $scope.paginationLimit = function(data) {
+    return pageSize * page;
+    };
+
+    $scope.hasMoreItems = function() {
+    return page < ($scope.jogos.length / pageSize);
+    };
+
+    $scope.showMoreItems = function() {
+    page = page + 1;
+    };
+     $scope.loadData();
 })
 // Jogadores Controller
 .controller('JogadoresCtrl', function($scope, $ionicLoading, JogadoresData, JogadoresStorage) {

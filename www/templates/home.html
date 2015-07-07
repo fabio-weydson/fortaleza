@@ -8,8 +8,11 @@
     <ion-content class="has-header">
     <span class="localdata">{{storage}}</span>
             <img class="full-image" id="bannerapp" src="img/banner_app.jpg">
-            <div ng-controller="DestaquesCtrl">
-				  <ion-slide-box on-slide-changed="slideChanged($index)" id="slidehome" delegate-handle="slidehome">
+            <div ng-controller="DestaquesCtrl" id="slides">
+                <div class="meter">
+                    <span style="width: 0%"></span>
+                </div>
+				  <ion-slide-box on-slide-changed="slideChanged($index)" auto-play="true" does-continue="true" id="slidehome" delegate-handle="slidehome">
 				      <ion-slide ng-repeat="destaque in destaques | limitTo: 4">
 				        <a href="#/app/posts/{{$index}}" ><h3>{{destaque.Titulo}}</h3></a>
 				          <a href="#/app/posts/{{$index}}" ><img src="http://www.fortalezaec.net{{destaque.Foto}}" width="100%" style="100%;"></a>

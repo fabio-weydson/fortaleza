@@ -1,38 +1,199 @@
 /* Empty. Add your own CSS if you like */
 
 /* latin-ext */
+
+
 @font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto'), local('Roboto-Regular'), url(../font/Fcx7Wwv8OzT71A3E1XOAjvesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto'), local('Roboto-Regular'), url(../font/CWB0XYA8bzo0kSThX0UTuA.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+    font-family: 'Roboto';
+    src: url('../font/Roboto-Regular-webfont.eot');
+    src: url('../font/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Regular-webfont.svg#Roboto') format('svg'),
+         url('../font/Roboto-Regular-webfont.woff') format('woff'),
+         url('../font/Roboto-Regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
-/* latin-ext */
 @font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url(../font/97uahxiqZRoncBaCEI3aWxJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+    font-family: 'RobotoItalic';
+    src: url('../font/Roboto-Italic-webfont.eot');
+    src: url('../font/Roboto-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Italic-webfont.svg#RobotoItalic') format('svg'),
+         url('../font/Roboto-Italic-webfont.woff') format('woff'),
+         url('../font/Roboto-Italic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
 }
-/* latin */
+
 @font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url(../font/d-6IYplOFocCacKzxwXSOFtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-}/* Empty. Add your own CSS if you like */
+    font-family: 'RobotoBold';
+    src: url('../font/Roboto-Bold-webfont.eot');
+    src: url('../font/Roboto-Bold-webfont.svg#RobotoBold') format('svg'),
+         url('../font/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Bold-webfont.woff') format('woff'),
+         url('../font/Roboto-Bold-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoBoldItalic';
+    src: url('../font/Roboto-BoldItalic-webfont.eot');
+    src: url('../font/Roboto-BoldItalic-webfont.svg#RobotoBoldItalic') format('svg'),
+         url('../font/Roboto-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-BoldItalic-webfont.woff') format('woff'),
+         url('../font/Roboto-BoldItalic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoCondensed';
+    src: url('../font/Roboto-Condensed-webfont.eot');
+    src: url('../font/Roboto-Condensed-webfont.svg#RobotoCondensed') format('svg'),
+         url('../font/Roboto-Condensed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Condensed-webfont.woff') format('woff'),
+         url('../font/Roboto-Condensed-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoCondensedItalic';
+    src: url('../font/Roboto-CondensedItalic-webfont.eot');
+    src: url('../font/Roboto-CondensedItalic-webfont.svg#RobotoCondensedItalic') format('svg'),
+         url('../font/Roboto-CondensedItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-CondensedItalic-webfont.woff') format('woff'),
+         url('../font/Roboto-CondensedItalic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoBoldCondensed';
+    src: url('../font/Roboto-BoldCondensed-webfont.eot');
+    src: url('../font/Roboto-BoldCondensed-webfont.svg#RobotoBoldCondensed') format('svg'),
+         url('../font/Roboto-BoldCondensed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-BoldCondensed-webfont.woff') format('woff'),
+         url('../font/Roboto-BoldCondensed-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoBoldCondensedItalic';
+    src: url('../font/Roboto-BoldCondensedItalic-webfont.eot');
+    src: url('../font/Roboto-BoldCondensedItalic-webfont.svg#RobotoBoldCondensedItalic') format('svg'),
+         url('../font/Roboto-BoldCondensedItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-BoldCondensedItalic-webfont.woff') format('woff'),
+         url('../font/Roboto-BoldCondensedItalic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoThin';
+    src: url('../font/Roboto-Thin-webfont.eot');
+    src: url('../font/Roboto-Thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Thin-webfont.woff') format('woff'),
+         url('../font/Roboto-Thin-webfont.ttf') format('truetype'),
+         url('../font/Roboto-Thin-webfont.svg#RobotoThin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoThinItalic';
+    src: url('../font/Roboto-ThinItalic-webfont.eot');
+    src: url('../font/Roboto-ThinItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-ThinItalic-webfont.woff') format('woff'),
+         url('../font/Roboto-ThinItalic-webfont.ttf') format('truetype'),
+         url('../font/Roboto-ThinItalic-webfont.svg#RobotoThinItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoLight';
+    src: url('../font/Roboto-Light-webfont.eot');
+    src: url('../font/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Light-webfont.woff') format('woff'),
+         url('../font/Roboto-Light-webfont.ttf') format('truetype'),
+         url('../font/Roboto-Light-webfont.svg#RobotoLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoLightItalic';
+    src: url('../font/Roboto-LightItalic-webfont.eot');
+    src: url('../font/Roboto-LightItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-LightItalic-webfont.woff') format('woff'),
+         url('../font/Roboto-LightItalic-webfont.ttf') format('truetype'),
+         url('../font/Roboto-LightItalic-webfont.svg#RobotoLightItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoMedium';
+    src: url('../font/Roboto-Medium-webfont.eot');
+    src: url('../font/Roboto-Medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Medium-webfont.woff') format('woff'),
+         url('../font/Roboto-Medium-webfont.ttf') format('truetype'),
+         url('../font/Roboto-Medium-webfont.svg#RobotoMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoMediumItalic';
+    src: url('../font/Roboto-MediumItalic-webfont.eot');
+    src: url('../font/Roboto-MediumItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-MediumItalic-webfont.woff') format('woff'),
+         url('../font/Roboto-MediumItalic-webfont.ttf') format('truetype'),
+         url('../font/Roboto-MediumItalic-webfont.svg#RobotoMediumItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoBlack';
+    src: url('../font/Roboto-Black-webfont.eot');
+    src: url('../font/Roboto-Black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Black-webfont.woff') format('woff'),
+         url('../font/Roboto-Black-webfont.ttf') format('truetype'),
+         url('../font/Roboto-Black-webfont.svg#RobotoBlack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoBlackItalic';
+    src: url('../font/Roboto-BlackItalic-webfont.eot');
+    src: url('../font/Roboto-BlackItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-BlackItalic-webfont.woff') format('woff'),
+         url('../font/Roboto-BlackItalic-webfont.ttf') format('truetype'),
+         url('../font/Roboto-BlackItalic-webfont.svg#RobotoBlackItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 @font-face {
   font-family: "Source Sans Pro";
@@ -101,6 +262,9 @@ img { max-width: 100%; height:auto;}
 .menu-left .item:first-child {
   /* border-top:none; */
 } 
+.platform-ios .menu-left .scroll-content {
+    margin-top:20px !important;
+}
 .menu-left .item {
   margin:0;
  
@@ -130,6 +294,7 @@ background: url(../img/bg_menu.png);
 
   padding: 12px 0 12px 16px;
   background: transparent;
+  font-family: Roboto;
 }
 
 .menu-left  .item-content.activated {
@@ -194,7 +359,9 @@ p.ng-binding {
     width: 94%;
     bottom: 0;
 }
-
+div#slides {
+    position: relative;
+}
 a.item {
     padding-bottom: 4px;
 }
@@ -532,7 +699,7 @@ div#lightbox {
   display:none;
     width: 100%;
     
-  max-width: 400px;
+  /* max-width: 500px; */
   padding: 3%;
   top: 44px;
   height: 100%;
@@ -575,19 +742,143 @@ div#lightbox {
     float: left;
 }
 
-#lightbox img {
-    max-width: 100%;    height: auto;    float: left;
+#lightbox img {    
+    height: auto;    float: left;
     width: 100%;
 }
-
+@media (min-width:960px){
+  	#lightbox img { 
+  	max-width: 47%;
+  	float:left;
+  	margin: 5px;
+}
+  	#lightbox b {
+  		float:left;
+  		font-size:1.3em !important;
+  		display: block;
+  		width: 50%;
+}
+#lightbox span {
+	 padding-bottom: 0px !important;
+}
+}
 div#lightbox span {
     display: block;
     overflow: hidden;
     background: #f5f5f5;
     border-radius: 8px;
     padding-bottom: 10px;
-    /* box-sizing: content-box; */
+    box-sizing: content-box;
 }
 #video .media-container {
   background: #000;
+}
+ 
+.meter {
+			height: 3px;
+			top: 0;
+			position: absolute; 
+			width: 100%;
+			z-index: 9999;
+		
+			background: rgba(0,0,0,0.7);
+}
+		.meter > span {
+			display: block;
+			height: 100%;         
+			background-color: #FFF;
+			position: relative;
+			overflow: hidden;
+		}
+		
+
+		.animate > span:after {
+			display: none;
+		}
+
+		@-webkit-keyframes move {
+		    0% {
+		       background-position: 0 0;
+		    }
+		    100% {
+		       background-position: 50px 50px;
+		    }
+		}
+
+		@-moz-keyframes move {
+		    0% {
+		       background-position: 0 0;
+		    }
+		    100% {
+		       background-position: 50px 50px;
+		    }
+		}
+		.nostripes > span > span, .nostripes > span:after {
+			-webkit-animation: none;
+			-moz-animation: none;
+			background-image: none;
+		}
+
+
+
+#jogos-lista .list .data {
+    float: left;
+    width: 15%;
+    text-align: center;
+    margin-right: 5px;
+}
+
+#jogos-lista .list a {
+    padding: 8px 15px;
+}
+
+#jogos-lista .list .data .dia {
+    display: block;
+    font-weight: bold;
+}
+
+#jogos-lista .list .data .hora {
+    font-size: 0.8em;
+}
+#jogos-lista .list .time {
+    float: left;
+    min-width: 42%;
+    position: relative;
+    text-align: right;
+    margin-right: 10px;
+}
+
+
+
+#jogos-lista .list h2 {
+    overflow: hidden;
+    font-weight: bold;
+    max-height: 55px;
+    font-size: 1em;
+    line-height: 50px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+#jogos-lista .list .time2 {
+    float: right;
+    text-align: left;
+    margin-left: 10px;
+}
+#jogos-lista .list .time img {
+    width: 50px;
+    float: left;
+    margin-right: 3px;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0px;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+}
+#jogos-lista .list .time2 img {
+    margin-right:0;
+    margin-left:3px;
+    right: 0;
+    left: initial;
 }

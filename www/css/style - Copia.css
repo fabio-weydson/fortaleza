@@ -1,16 +1,199 @@
 /* Empty. Add your own CSS if you like */
 
+/* latin-ext */
+
+
 @font-face {
     font-family: 'Roboto';
     src: url('../font/Roboto-Regular-webfont.eot');
-  src: url('../font/Roboto-Regular-webfont.eot?#iefix') format('eot'),
-         url('../font/Roboto-Regular-webfont.svg#RobotoRegular') format('svg'),
+    src: url('../font/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Regular-webfont.svg#Roboto') format('svg'),
          url('../font/Roboto-Regular-webfont.woff') format('woff'),
          url('../font/Roboto-Regular-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+
 }
-/* Empty. Add your own CSS if you like */
+
+@font-face {
+    font-family: 'RobotoItalic';
+    src: url('../font/Roboto-Italic-webfont.eot');
+    src: url('../font/Roboto-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Italic-webfont.svg#RobotoItalic') format('svg'),
+         url('../font/Roboto-Italic-webfont.woff') format('woff'),
+         url('../font/Roboto-Italic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoBold';
+    src: url('../font/Roboto-Bold-webfont.eot');
+    src: url('../font/Roboto-Bold-webfont.svg#RobotoBold') format('svg'),
+         url('../font/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Bold-webfont.woff') format('woff'),
+         url('../font/Roboto-Bold-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoBoldItalic';
+    src: url('../font/Roboto-BoldItalic-webfont.eot');
+    src: url('../font/Roboto-BoldItalic-webfont.svg#RobotoBoldItalic') format('svg'),
+         url('../font/Roboto-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-BoldItalic-webfont.woff') format('woff'),
+         url('../font/Roboto-BoldItalic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoCondensed';
+    src: url('../font/Roboto-Condensed-webfont.eot');
+    src: url('../font/Roboto-Condensed-webfont.svg#RobotoCondensed') format('svg'),
+         url('../font/Roboto-Condensed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Condensed-webfont.woff') format('woff'),
+         url('../font/Roboto-Condensed-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoCondensedItalic';
+    src: url('../font/Roboto-CondensedItalic-webfont.eot');
+    src: url('../font/Roboto-CondensedItalic-webfont.svg#RobotoCondensedItalic') format('svg'),
+         url('../font/Roboto-CondensedItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-CondensedItalic-webfont.woff') format('woff'),
+         url('../font/Roboto-CondensedItalic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoBoldCondensed';
+    src: url('../font/Roboto-BoldCondensed-webfont.eot');
+    src: url('../font/Roboto-BoldCondensed-webfont.svg#RobotoBoldCondensed') format('svg'),
+         url('../font/Roboto-BoldCondensed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-BoldCondensed-webfont.woff') format('woff'),
+         url('../font/Roboto-BoldCondensed-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoBoldCondensedItalic';
+    src: url('../font/Roboto-BoldCondensedItalic-webfont.eot');
+    src: url('../font/Roboto-BoldCondensedItalic-webfont.svg#RobotoBoldCondensedItalic') format('svg'),
+         url('../font/Roboto-BoldCondensedItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-BoldCondensedItalic-webfont.woff') format('woff'),
+         url('../font/Roboto-BoldCondensedItalic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoThin';
+    src: url('../font/Roboto-Thin-webfont.eot');
+    src: url('../font/Roboto-Thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Thin-webfont.woff') format('woff'),
+         url('../font/Roboto-Thin-webfont.ttf') format('truetype'),
+         url('../font/Roboto-Thin-webfont.svg#RobotoThin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoThinItalic';
+    src: url('../font/Roboto-ThinItalic-webfont.eot');
+    src: url('../font/Roboto-ThinItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-ThinItalic-webfont.woff') format('woff'),
+         url('../font/Roboto-ThinItalic-webfont.ttf') format('truetype'),
+         url('../font/Roboto-ThinItalic-webfont.svg#RobotoThinItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoLight';
+    src: url('../font/Roboto-Light-webfont.eot');
+    src: url('../font/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Light-webfont.woff') format('woff'),
+         url('../font/Roboto-Light-webfont.ttf') format('truetype'),
+         url('../font/Roboto-Light-webfont.svg#RobotoLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoLightItalic';
+    src: url('../font/Roboto-LightItalic-webfont.eot');
+    src: url('../font/Roboto-LightItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-LightItalic-webfont.woff') format('woff'),
+         url('../font/Roboto-LightItalic-webfont.ttf') format('truetype'),
+         url('../font/Roboto-LightItalic-webfont.svg#RobotoLightItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoMedium';
+    src: url('../font/Roboto-Medium-webfont.eot');
+    src: url('../font/Roboto-Medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Medium-webfont.woff') format('woff'),
+         url('../font/Roboto-Medium-webfont.ttf') format('truetype'),
+         url('../font/Roboto-Medium-webfont.svg#RobotoMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoMediumItalic';
+    src: url('../font/Roboto-MediumItalic-webfont.eot');
+    src: url('../font/Roboto-MediumItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-MediumItalic-webfont.woff') format('woff'),
+         url('../font/Roboto-MediumItalic-webfont.ttf') format('truetype'),
+         url('../font/Roboto-MediumItalic-webfont.svg#RobotoMediumItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoBlack';
+    src: url('../font/Roboto-Black-webfont.eot');
+    src: url('../font/Roboto-Black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Black-webfont.woff') format('woff'),
+         url('../font/Roboto-Black-webfont.ttf') format('truetype'),
+         url('../font/Roboto-Black-webfont.svg#RobotoBlack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoBlackItalic';
+    src: url('../font/Roboto-BlackItalic-webfont.eot');
+    src: url('../font/Roboto-BlackItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-BlackItalic-webfont.woff') format('woff'),
+         url('../font/Roboto-BlackItalic-webfont.ttf') format('truetype'),
+         url('../font/Roboto-BlackItalic-webfont.svg#RobotoBlackItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 @font-face {
   font-family: "Source Sans Pro";
@@ -59,7 +242,9 @@
     font-style: normal;
 }
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Source Sans Pro', sans-serif; }
-
+.loading-container .loading {
+  font-size: 1.3em;
+}
 a { text-decoration: none; }
 
 img { max-width: 100%; height:auto;}
@@ -77,27 +262,31 @@ img { max-width: 100%; height:auto;}
 .menu-left .item:first-child {
   /* border-top:none; */
 } 
+.platform-win32 .menu-left .scroll-content {
+    margin-top:20px !important;
+}
 .menu-left .item {
   margin:0;
  
   padding: 0;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #030017;
 
-  border-top: 1px solid #444;
+  border-top: 1px solid #373B56;
 
  color: #FFF;
   font-size: 17px;
  
-  background: transparent;
+  /* background: transparent; */
  
-  text-shadow: -1px 2px 0px #000;
+  background: rgba(35, 35, 35, 0.30);
+  text-shadow: -1px 2px 0px #373B56;
   border-left: none;
   font-family: "Roboto";
   border-right: none;
 }
 .menu-left {
 left: 0;
-background: #333;
+background: url(../img/bg_menu.png);
   
 }
 .menu-left .item-content {
@@ -105,6 +294,7 @@ background: #333;
 
   padding: 12px 0 12px 16px;
   background: transparent;
+  font-family: Roboto;
 }
 
 .menu-left  .item-content.activated {
@@ -119,7 +309,7 @@ background: #333;
 
 .menu-left .sub-item {
     /* border-top: none; */
-    background: #333333;
+    /* background: #333333; */
 }
 .bar.bar-stable { 
     background: #cc0014 url(../img/bg_menu.jpg);
@@ -157,30 +347,48 @@ p.ng-binding {
     line-height: normal;
     font-size: 0.8em;
 }
+#noticia p.texto {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #CCC;
 
+}
+#noticia .button {
+    
+    position: absolute;
+    width: 94%;
+    bottom: 0;
+}
+div#slides {
+    position: relative;
+}
 a.item {
     padding-bottom: 4px;
 }
 h2.title {
-    font-size: 165%;
+    font-size: 1.4em;
     color: #333;
+    font-weight: bold;
+    font-family: "Roboto";
 }
 
 .pane .scroll-content {
-    background: #f5f5f5;
+    /* background: #f5f5f5; */
 }
 .menu-left .scroll-content {
-    background: #232323;
+    /* background: rgba(35, 35, 35, 0.39); */;
 }
 .post-info {
-    color: #999;
+    color: #22A1CF;
+    margin: 10px 0;
 }
 .item h2 {
     font-size: 100%;
     margin-bottom: 2px;
     color: #155B8D;
-    font-size: 85%;
+    font-size: 0.8em;
     max-height: 30px;
+    font-family: "Roboto";
 }
 #slidehome h3 {
     position: absolute;
@@ -189,8 +397,9 @@ h2.title {
     color: #FFF;
     text-shadow: 1px 1px 1px #000;
     padding: 2%;
-    font-size: 150%;
+    font-size: 1.3em;
     bottom: 0;
+    font-family: "Roboto";
     margin-bottom: 5px;
 }
 #slidehome {
@@ -252,27 +461,27 @@ h2.title {
     width: 100%;
     text-shadow: 1px 1px 0px #000;
     color: #FFF;
-    background: rgba(0,0,0,0.6);
+    /* background: rgba(0,0,0,0.6); */
     position: absolute;
     padding-left: 165px;
     bottom: 25px;
 }
 #jogador-ver p.ng-binding {
     text-align: left;
-    font-size: 15px;
+    font-size: 1em;
     color: #777;
     font-family: "Roboto";
 }
 #jogadores-lista .list a h2 {
-    font-size: 120%;
+    font-size: 1em;
 }
 
 #jogadores-lista .list a h3 {
-    font-size: 100%;
+    font-size: 0.9em;
 }
 
 #jogadores-lista .list a p {
-    font-size: 100%;
+    font-size: 0.8em;
 }
 div#jogador .blade {
     position: absolute;
@@ -284,14 +493,14 @@ div#jogador .blade {
 
 div#jogador .blade img {
     width: 128px;
-    border-radius: 100%;
+    /* border-radius: 100%; */
     background: #F5F5F5;
     bottom: -15px;
-    left: 5%;
+    left: 20px;
     position: absolute;
     z-index: 99999;
     /* box-shadow: 0px -1px 11px #000; */
-    border: 3px solid #CCC;
+    border: 2px solid #FFF;
 }
 #tempo-real .data {
     background: #174C8A;
@@ -366,7 +575,7 @@ div#tempo-real {
     width: 60%;
 }
 .list .item-accordion {
- background: #333;
+ background: rgba(0, 0, 0, 0.60);
 
  transition: all 0.2s ease-out;
 }
@@ -378,7 +587,7 @@ div#tempo-real {
   display: block !important;
 }
 #video p.ng-binding{
-  text-align: justify;
+  text-align: left;
     font-size: 110%;
 }
 .banner {
@@ -389,9 +598,9 @@ div#tempo-real {
   clear: both;
 }
 #jogador {
-      background: url(../img/bg_jogador.jpg) left bottom;
-      background-size: initial;
-      height: 40%;
+      background: url(../img/bg_jogador.jpg) 0 76%;
+      background-size: 165%;
+      height: 60%;
       max-height: 200px;
       /* box-shadow: 0px -1px 11px #000; */
       box-sizing: content-box;
@@ -401,19 +610,21 @@ div#tempo-real {
 #jogador-ver h3.subtitle {
   font-weight: 700;
   text-align: left;
-  font-size: 89%;
+  font-size: 0.9em;
   width: 100%;
   color: #6C6C6C;
   position: absolute;
   padding-left: 165px;
-  bottom: -5px;
+  bottom: -16px;
 }
 #jogador-ver .info {
-  padding: 4%;
+  /* padding: 4%; */
   margin-top:50px;
 }
 #jogador-ver p b {
     color: #666;
+    /* font-family: "Roboto"; */
+    display: block;
 }
 span.localdata {
     background: #444;
@@ -478,16 +689,19 @@ button.button-block {
 }
 #noticia img {
     width: 100%;
-    border-radius:6px;
+    /* border-radius:6px; */
 }
 #noticia p.ng-binding {
-    font-size: 1.2em;
+    font-size: 1em;
+    text-align: left;
 }
 div#lightbox {
   display:none;
     width: 100%;
-    padding: 8%;
-  top: 0;
+    
+  max-width: 400px;
+  padding: 3%;
+  top: 44px;
   height: 100%;
     
   z-index: 9;
@@ -500,13 +714,14 @@ div#lightbox {
 div#lightbox b {
     display: block;
     text-align: left;
-    padding: 10px;
+    padding: 5px 10px 0 10px;
     line-height: normal;
     font-weight: normal;
+    font-size: 1em;
     color: #666;
     background: #f5f5f5;
-    border-radius: 0 0 8px 8px;
     float: left;
+    overflow: hidden;
 }
 div#lightbox a {
     color: #FFF;
@@ -529,9 +744,111 @@ div#lightbox {
 
 #lightbox img {
     max-width: 100%;    height: auto;    float: left;
+    width: 100%;
 }
 
 div#lightbox span {
     display: block;
     overflow: hidden;
+    background: #f5f5f5;
+    border-radius: 8px;
+    padding-bottom: 10px;
+    /* box-sizing: content-box; */
+}
+#video .media-container {
+  background: #000;
+}
+.meter {
+			height: 3px;
+			bottom: 39px;
+			position: absolute; 
+			width: 100%;
+			z-index: 9999;
+		
+			background: rgba(0,0,0,0.7);
+}
+		.meter > span {
+			display: block;
+			height: 100%;         
+			background-color: #FFF;
+			position: relative;
+			overflow: hidden;
+		}
+		
+
+		.animate > span:after {
+			display: none;
+		}
+
+		@-webkit-keyframes move {
+		    0% {
+		       background-position: 0 0;
+		    }
+		    100% {
+		       background-position: 50px 50px;
+		    }
+		}
+
+		@-moz-keyframes move {
+		    0% {
+		       background-position: 0 0;
+		    }
+		    100% {
+		       background-position: 50px 50px;
+		    }
+		}
+		.nostripes > span > span, .nostripes > span:after {
+			-webkit-animation: none;
+			-moz-animation: none;
+			background-image: none;
+		}
+
+
+
+#jogos-lista .list .data {
+    float: left;
+    width: 15%;
+    text-align: center;
+    margin-right: 5px;
+}
+
+#jogos-lista .list a {
+    padding: 8px 15px;
+}
+
+#jogos-lista .list .data .dia {
+    display: block;
+    font-weight: bold;
+}
+
+#jogos-lista .list .data .hora {
+    font-size: 0.8em;
+}
+#jogos-lista .list .time {
+    float: left;
+    min-width: 48%;
+}
+
+#jogos-lista .list .time img {
+    width: 41px;
+    float: left;
+    margin-right: 3px;
+}
+
+#jogos-lista .list h2 {
+    overflow: hidden;
+    max-height: 55px;
+    font-size: .8em;
+    line-height: 50px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+#jogos-lista .list .time2 {
+    float: right;
+}
+#jogos-lista .list .time2 img {
+    float: right;
+    margin-right:0
+    margin-left:3px;
 }

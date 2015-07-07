@@ -4,13 +4,10 @@
 // 'mobionicApp' is the name of this angular module (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.data', 'mobionicApp.directives', 'mobionicApp.filters', 'mobionicApp.storage', 'ngSanitize'])
-.run(function($rootScope) {
-  $rootScope.hello = function() {
-    console.log('hello');
-  }
-})
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+
+  
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -65,9 +62,8 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
       url: "/products",
       views: {
         'menuContent' :{
-          templateUrl: "templates/products.html",
-          controller: 'ProductsCtrl'
-        }
+          templateUrl: "templates/loja.html"
+                  }
       }
     })
 
@@ -194,6 +190,15 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         'menuContent' :{
           templateUrl: "templates/tempo_real.html",
           controller: 'TempoRealCtrl'
+        }
+      }
+    })
+     .state('app.proximos_jogos', {
+      url: "/proximos_jogos",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/proximos_jogos.html",
+          controller: 'ProximosJogosCtrl'
         }
       }
     })

@@ -17,7 +17,23 @@ angular.module('mobionicApp.storage', [])
     }
   }
 })
-
+.factory('ProximosJogosStorage', function() {
+  return {
+    all: function() {
+      var jogos = window.localStorage['jogos'];
+      if(jogos) {
+        return angular.fromJson(jogos);
+      }
+      return {};
+    },
+    save: function(jogos) {
+      window.localStorage['jogos'] = angular.toJson(jogos);
+    },
+    clear: function() {
+      window.localStorage.removeItem('jogos');
+    }
+  }
+})
 .factory('ProductsStorage', function() {
   return {
     all: function() {

@@ -545,6 +545,46 @@ angular.module('mobionicApp.data', [])
 })
 
 // Posts Data: JSON Wordpress Posts configuration
+.factory('ProximosJogosData', function($http, $q, ProximosJogosStorage) {
+
+    /* (For DEMO purposes) Local JSON data */
+    var json = 'http://www.fortalezaec.net/Json/Jogos?campeonatoId=421b1cb7341d440d911bf0f0d398b651';
+
+    var deferred = $q.defer();
+    var promise = deferred.promise;
+    var data = [];
+    var service = {};
+
+    service.async = function() {
+    $http({method: 'GET', url: json, timeout: 5000}).
+    // this callback will be called asynchronously
+    // when the response is available.
+    success(function(d) {
+        console.log(d);
+        data = d.Model;
+        ProximosJogosStorage.save(data);
+        deferred.resolve();
+    }).
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+    error(function() {
+        data = ProximosJogosStorage.all();
+        deferred.reject();
+    });
+
+    return promise;
+
+    };
+
+    service.getAll = function() { return data; };
+
+    service.get = function(postId) { //console.log(data.posts);
+        return data.Noticias[postId];
+    };
+
+    return service;
+})
+// Posts Data: JSON Wordpress Posts configuration
 .factory('TempoRealData', function($http, $q, TempoRealStorage) {
 
     /* (For DEMO purposes) Local JSON data */
