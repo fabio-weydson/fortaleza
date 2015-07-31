@@ -24,6 +24,9 @@ angular.module('mobionicApp.controllers', [])
     PostsData.async().then(
         // successCallback
         function() {
+             ///cordova.plugins.backgroundMode.configure({ silent: true });
+            cordova.plugins.backgroundMode.setDefaults({ text:'Segundo plano.'});
+            cordova.plugins.backgroundMode.enable();
 
             $scope.news = PostsData.getAll();
             $ionicLoading.hide();
@@ -634,6 +637,8 @@ angular.module('mobionicApp.controllers', [])
 })
 // Posts Controller post
 .controller('ProximosJogosCtrl', function($scope, $ionicLoading, ProximosJogosData, ProximosJogosStorage) {
+
+
 
     $scope.jogos = [];
     $scope.storage = '';
