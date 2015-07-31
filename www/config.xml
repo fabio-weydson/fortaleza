@@ -64,6 +64,8 @@
     <gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="net.yoik.cordova.plugins.screenorientation"/>
+        <gap:plugin name="it.witek.cordova.plugin.background-mode" />
+
 <!--     <gap:plugin name="org.apache.cordova.splashscreen" />
  -->    <gap:plugin name="org.apache.cordova.vibration" />
     <gap:plugin name="nl.x-services.plugins.socialsharing" />

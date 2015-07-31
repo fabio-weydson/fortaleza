@@ -7,7 +7,9 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
 
-  
+   cordova.plugins.backgroundMode.configure({ silent: true });
+    //cordova.plugins.backgroundMode.enable();
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if(window.cordova && window.cordova.plugins.Keyboard) {
