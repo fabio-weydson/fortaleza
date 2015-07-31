@@ -408,6 +408,31 @@ angular.module('mobionicApp.controllers', [])
 
            
 })
+
+// Post Controller
+.controller('DestaqueCtrl', function($scope,  $ionicLoading, $stateParams, DestaquesData) {
+
+    $scope.destaque = DestaquesData.get($stateParams.postId);
+    $scope.destaque.postId = $stateParams.postId;
+
+    $scope.sharePost = function () {
+            $scope.loading = $ionicLoading.show({
+      template: '<i class="icon ion-loading-a"></i> Aguarde',
+
+      showBackdrop: true,
+      duration: 5000
+    });
+        var subject = $scope.destaque.Titulo;
+        var message = $scope.destaque.Subtitulo;
+        message = message.replace(/(<([^>]+)>)/ig,"");
+         message += ' via APP Oficial do Fortaleza http://bit.ly/1bc2Xja';
+        var img = 'http://fortalezaec.net/{{destaque.FotoNoticia}}';
+        var link = $scope.destaque.URL;
+        window.plugins.socialsharing.share(message, subject, img, link);
+    }
+
+})
+
 // Posts Controller
 .controller('PostsCtrl', function($scope, $ionicLoading, PostsData, PostsStorage) {
 
@@ -708,6 +733,8 @@ angular.module('mobionicApp.controllers', [])
 // Jogador Controller
 .controller('JogadorCtrl', function($scope, $stateParams, JogadoresData) {
 
+
+
     $scope.jogador = JogadoresData.get($stateParams.jogadorId);
 
     $scope.loadURL = function (url) {
@@ -728,7 +755,44 @@ angular.module('mobionicApp.controllers', [])
     }
 
 })
+.controller('TextosCtrl', function($scope, $ionicLoading, $stateParams, JogadoresData) {
 
+   $scope.loading = $ionicLoading.show({
+      template: '<i class="icon ion-loading-a"></i> Carregando',
+
+      
+      showBackdrop: false,
+
+      
+      showDelay: 10
+    });
+
+
+    $scope.colors = [
+      {id:'FortalezaEC', name:'Fortaleza EC'},
+      {id:'AlcidesSantos', name:'Alcides Santos'},
+      {id:'StellaFC', name:'Stella FC'},
+      {id:'Cronologia', name:'Cronologia'},
+      {id:'Titulos', name:'Titulos'},
+      {id:'Curiosidades', name:'Curiosidades'}
+    ];
+
+$scope.colorsSelected = $scope.colors[0];
+
+$scope.changedValue=function(item){
+        $scope.loading.show();
+     $.getJSON("http://www.fortalezaec.net/Json/textosestaticos?name="+item.id, function(result){
+         $scope.texto = '<h1 class="title">'+item.name+'</h1>'+result.Model.Textos;
+          $scope.loading.hide();
+    });
+
+    }  
+
+
+    $scope.changedValue($scope.colors[0]);
+
+
+})
 // Plugins Controller
 .controller('PluginsCtrl', function($scope, PluginsData) {
   $scope.items = PluginsData.items;

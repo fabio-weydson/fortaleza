@@ -1,0 +1,24 @@
+<ion-view title="{{destaque.Titulo}}">
+
+    <ion-nav-buttons side="right">
+   
+    </ion-nav-buttons>
+
+    <ion-content class="has-header" id="noticia">
+        <span class="localdata">{{storage}}</span>
+        <span ng-show="{{destaque.Foto.length}}"><img ng-src="http://www.fortalezaec.net/{{destaque.Foto}}"/></span>
+        <div class="padding">
+           <h2 class="title">{{destaque.Titulo}}</h2>
+            <div  class="destaque-info">
+            Publicado em {{destaque.NoticiaID.DataHora * 1000 | date:'dd/MM/yy '+as+' H:m'}}<br/>
+            </div>
+            <p ng-bind-html="destaque.Subtitulo" class="texto"></p>
+             <p ng-bind-html="destaque.Texto"></p>
+<!--    <a class="button button-full button-positive" href="#/app/noticia/{{post.postId}}">  
+            Veja a notícia completa
+            </a> -->
+
+        </div>
+
+    </ion-content>
+</ion-view>

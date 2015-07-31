@@ -361,6 +361,7 @@ p.ng-binding {
 }
 div#slides {
     position: relative;
+    /* overflow: hidden; */
 }
 a.item {
     padding-bottom: 4px;
@@ -905,4 +906,40 @@ div#lightbox span {
   text-transform:uppercase;
   text-shadow:1px 2px 3px #000;
   letter-spacing: 1px;
+}
+#textos .texto {
+    text-align: justify;
+    font-size: 1.0em;
+}
+#textos select {
+    width: 100%;
+    padding: 9px;
+    color: #FFF;
+    font-size: 1.2em;
+    border: none;
+    font-weight: bold;
+    background: #223B5A url(../img/a_down_32.png) no-repeat 98%;
+    -webkit-appearance: none;
+}
+#textos h1 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.4em;
+    color: #666;
+    text-align: left;
+}
+
+#textos h2 {
+    margin: 0;      
+    font-size: 1.2em;
+    color: #133D6D;
+    font-weight: bold;
+    text-align: left;
+}
+#textos h1.title {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    font-size: 1.6em;
+    border-bottom: 1px solid #CCC;
+    color: #223B5A;
 }

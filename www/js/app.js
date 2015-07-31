@@ -104,12 +104,12 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         }
       }
     })
-    .state('app.jogadores', {
-      url: "/jogadores",
+    .state('app.historia', {
+      url: "/historia",
       views: {
         'menuContent' :{
-          templateUrl: "templates/jogadores.html",
-          controller: 'JogadoresCtrl'
+          templateUrl: "templates/historia.html",
+          controller: 'TextosCtrl'
         }
       }
     })
@@ -120,6 +120,15 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         'menuContent' :{
           templateUrl: "templates/jogador.html",
           controller: 'JogadorCtrl'
+        }
+      }
+    })
+    .state('app.jogadores', {
+      url: "/jogadores",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/jogadores.html",
+          controller: 'JogadoresCtrl'
         }
       }
     })
@@ -174,6 +183,24 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         'menuContent' :{
           templateUrl: "templates/noticia.html",
           controller: 'NoticiaCtrl'
+        }
+      }
+    })
+       .state('app.destaques', {
+      url: "/destaques/:postId",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/destaque.html",
+          controller: 'DestaquesCtrl'
+        }
+      }
+    })
+   .state('app.destaque', {
+      url: "/destaque/:postId",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/destaque.html",
+          controller: 'DestaqueCtrl'
         }
       }
     })

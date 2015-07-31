@@ -122,8 +122,18 @@ angular.module('mobionicApp.data', [])
              subMenu: [
                 {
                     title: "Historia",
-                    url: '#/home',
+                    url: '#/app/historia',
                     icon:"ion-clock",
+                },
+                {
+                    title: "Símbolos",
+                    url: '#/app/simbolos',
+                    icon:"ion-flag",
+                },
+                {
+                    title: "Poderes do Clube",
+                    url: '#/app/poderes',
+                    icon:"ion-briefcase",
                 },
                 {
                     title: "Equipe",
@@ -717,7 +727,7 @@ angular.module('mobionicApp.data', [])
     service.getAll = function() { return data; };
 
     service.get = function(postId) { //console.log(data.posts);
-	    return data.Noticias[postId];
+	    return data[postId];
 	};
 
     return service;

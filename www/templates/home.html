@@ -3,7 +3,7 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-    <a href="#/app/tempo_real" class="button button-icon icon ion-ios7-football-outline"></a>
+    <a href="#/app/tempo_real" nav-clear menu-close class="button button-icon icon ion-ios7-football-outline"></a>
     </ion-nav-buttons>
     <ion-content class="has-header">
     <span class="localdata">{{storage}}</span>
@@ -14,8 +14,8 @@
                 </div>
 				  <ion-slide-box on-slide-changed="slideChanged($index)" auto-play="true" does-continue="true" id="slidehome" delegate-handle="slidehome">
 				      <ion-slide ng-repeat="destaque in destaques | limitTo: 4">
-				        <a href="#/app/posts/{{$index}}" ><h3>{{destaque.Titulo}}</h3></a>
-				          <a href="#/app/posts/{{$index}}" ><img src="http://www.fortalezaec.net{{destaque.Foto}}" width="100%" style="100%;"></a>
+				        <a href="#/app/destaque/{{$index}}" ><h3>{{destaque.Titulo}}</h3></a>
+				          <a href="#/app/destaque/{{$index}}" ><img src="http://www.fortalezaec.net{{destaque.Foto}}" width="100%" style="100%;"></a>
 				      </ion-slide>
 				     
 				    </ion-slide-box>
