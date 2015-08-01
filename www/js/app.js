@@ -7,6 +7,12 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
 
+
+            cordova.plugins.backgroundMode.setDefaults({  title:  $scope.radioOptions.Titulo, ticker: 'Entrando em segundo plano',  text:'Clique para abrir o aplicativo.'});
+            cordova.plugins.backgroundMode.enable();
+            cordova.plugins.backgroundMode.onactivate = function () {
+              alert('asdsadsd');
+            }
   
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -114,7 +120,24 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         }
       }
     })
-
+    .state('app.simbolos', {
+      url: "/simbolos",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/historia.html",
+          controller: 'TextosCtrl'
+        }
+      }
+    })
+ .state('app.poderes', {
+      url: "/poderes",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/historia.html",
+          controller: 'TextosCtrl'
+        }
+      }
+    })
     .state('app.jogador', {
       url: "/jogador/:jogadorId",
       views: {

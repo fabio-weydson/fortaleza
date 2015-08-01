@@ -24,9 +24,7 @@ angular.module('mobionicApp.controllers', [])
     PostsData.async().then(
         // successCallback
         function() {
-             ///cordova.plugins.backgroundMode.configure({ silent: true });
-            cordova.plugins.backgroundMode.setDefaults({ text:'Segundo plano.'});
-            cordova.plugins.backgroundMode.enable();
+           
 
             $scope.news = PostsData.getAll();
             $ionicLoading.hide();
@@ -760,7 +758,11 @@ angular.module('mobionicApp.controllers', [])
     }
 
 })
-.controller('TextosCtrl', function($scope, $ionicLoading, $stateParams, JogadoresData) {
+.controller('TextosCtrl', function($scope, $ionicLoading, $stateParams, $state) {
+
+
+    
+  
 
    $scope.loading = $ionicLoading.show({
       template: '<i class="icon ion-loading-a"></i> Carregando',
@@ -771,24 +773,48 @@ angular.module('mobionicApp.controllers', [])
       
       showDelay: 10
     });
+console.log($state.current.name);
+    if($state.current.name=='app.historia') {
+        $scope.colors = [
+          {id:'FortalezaEC', name:'Fortaleza EC'},
+          {id:'AlcidesSantos', name:'Alcides Santos'},
+          {id:'StellaFC', name:'Stella FC'},
+          {id:'Cronologia', name:'Cronologia'},
+          {id:'Titulos', name:'Titulos'},
+          {id:'Curiosidades', name:'Curiosidades'}
+        ];
+    } else if($state.current.name=='app.simbolos') {
+        $scope.colors = [
+          {id:'NossasCores', name:'Nossas Cores'},
+          {id:'NossoEscudo', name:'Nosso Escudo'},
+          {id:'NossoMascote', name:'Nosso Mascote'},
+          {id:'NossaBandeira', name:'Nossa Bandeira'},
+          {id:'NossaTorcida', name:'Nossa Torcida'},
+          {id:'NossoHino', name:'Nosso Hino'},
+           {id:'NossoUniforme', name:'Nosso Uniforme'},
+            {id:'Juba', name:'Juba'}
+        ];
+    } else if($state.current.name=='app.poderes') {
+        $scope.colors = [
+          {id:'DiretoriaExecutiva', name:'Diretoria Executiva'},
+          {id:'ConselhoDeliberativo', name:'Conselho Deliberativo'},
+          {id:'ConselhoFiscal', name:'Conselho Fiscal'},
+          {id:'ConselhoEtica', name:'Conselho de Etica'},
+          {id:'Presidentes', name:'Presidentes'},
+          {id:'SocioTorcedor', name:'Socio Torcedor'},
+           {id:'SocioProprietario', name:'Socio Proprietario'},
+            {id:'Estatuto', name:'Estatuto'}
+        ];
+    }  
 
-
-    $scope.colors = [
-      {id:'FortalezaEC', name:'Fortaleza EC'},
-      {id:'AlcidesSantos', name:'Alcides Santos'},
-      {id:'StellaFC', name:'Stella FC'},
-      {id:'Cronologia', name:'Cronologia'},
-      {id:'Titulos', name:'Titulos'},
-      {id:'Curiosidades', name:'Curiosidades'}
-    ];
 
 $scope.colorsSelected = $scope.colors[0];
 
 $scope.changedValue=function(item){
-        $scope.loading.show();
+        $ionicLoading.show();
      $.getJSON("http://www.fortalezaec.net/Json/textosestaticos?name="+item.id, function(result){
          $scope.texto = '<h1 class="title">'+item.name+'</h1>'+result.Model.Textos;
-          $scope.loading.hide();
+          $ionicLoading.hide();
     });
 
     }  
