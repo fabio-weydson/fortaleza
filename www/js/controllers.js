@@ -24,8 +24,6 @@ angular.module('mobionicApp.controllers', [])
     PostsData.async().then(
         // successCallback
         function() {
-           
-
             $scope.news = PostsData.getAll();
             $ionicLoading.hide();
         },
@@ -36,7 +34,8 @@ angular.module('mobionicApp.controllers', [])
             $ionicLoading.hide();
         },
         // notifyCallback
-        function() {}
+        function() {
+        }
     );
 
 })
@@ -906,6 +905,25 @@ $scope.changedValue=function(item){
   $scope.items = MenuData.items;
   $scope.subMenus = MenuData.items.subMenus;
 
+ cordova.plugins.backgroundMode.setDefaults({  title:  $scope.radioOptions.Titulo, ticker: 'Entrando em segundo plano',  text:'Clique para abrir o aplicativo.'});
+            cordova.plugins.backgroundMode.enable();
+            cordova.plugins.backgroundMode.onactivate = function () {
+              alert('asdsadsd4');
+            }
+
+
+
+
+
+
+            document.addEventListener('deviceready', function () {
+                 alert('asdsadsd');
+    cordova.plugins.backgroundMode.setDefaults({  title:  $scope.radioOptions.Titulo, ticker: 'Entrando em segundo plano',  text:'Clique para abrir o aplicativo.'});
+            cordova.plugins.backgroundMode.enable();
+            cordova.plugins.backgroundMode.onactivate = function () {
+              alert('asdsadsd2');
+            }
+}, false);
   // Form data for the login modal
   $scope.loginData = {};
 
