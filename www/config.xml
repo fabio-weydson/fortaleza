@@ -34,7 +34,7 @@
     <preference name="StatusBarStyle"             value="blacktranslucent" />
     <preference name="detect-data-types"          value="true" />           <!-- ios: controls whether data types (such as phone no. and dates) are automatically turned into links by the system -->
     <preference name="exit-on-suspend"            value="false" />          <!-- ios: if set to true, app will terminate when home button is pressed -->
-    <preference name="show-splash-screen-spinner" value="false" />           <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
+    <preference name="show-splash-screen-spinner" value="true" />           <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
     <preference name="auto-hide-splash-screen"    value="true" />           <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
     <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
     <preference name="android-minSdkVersion"      value="7" />              <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
@@ -42,12 +42,12 @@
    <!-- Do not auto hide splash on iOS -->
     <preference name="AutoHideSplashScreen" value="true" />
     <!-- Do not auto hide splash on Android -->
-    <preference name="SplashScreenDelay" value="0"/>
+    <preference name="SplashScreenDelay" value="1000"/>
     <!--
         Define a specific version of PhoneGap to build into your app.
         <preference name="phonegap-version"       value="3.5.0" />
     -->
-   <preference name="phonegap-version"       value="3.7.0" /> 
+
     <!-- Plugins -->
 
     <!-- Core plugins -->
@@ -108,9 +108,6 @@
     <string>100</string>
     </gap:config-file>
 
- <gap:config-file platform="android" parent="/manifest/application">
-    <activity android:launchMode="singleInstance" />
-    </gap:config-file>
     <!--
         Define access to external domains.
         <access />            - a blank access tag denies access to all external resources.
@@ -124,6 +121,7 @@
     <access origin="*"/>
     <!-- Added the following intents to support the removal of whitelist code from base cordova to a plugin -->
     <!-- Whitelist configuration. Refer to https://cordova.apache.org/docs/en/edge/guide_appdev_whitelist_index.md.html -->
+    <plugin name="cordova-plugin-whitelist" version="1" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
