@@ -905,17 +905,6 @@ $scope.changedValue=function(item){
   $scope.items = MenuData.items;
   $scope.subMenus = MenuData.items.subMenus;
 
- cordova.plugins.backgroundMode.setDefaults({  title:  $scope.radioOptions.Titulo, ticker: 'Entrando em segundo plano',  text:'Clique para abrir o aplicativo.'});
-            cordova.plugins.backgroundMode.enable();
-            cordova.plugins.backgroundMode.onactivate = function () {
-              alert('asdsadsd4');
-            }
-
-
-
-
-
-
             document.addEventListener('deviceready', function () {
                  alert('asdsadsd');
     cordova.plugins.backgroundMode.setDefaults({  title:  $scope.radioOptions.Titulo, ticker: 'Entrando em segundo plano',  text:'Clique para abrir o aplicativo.'});
