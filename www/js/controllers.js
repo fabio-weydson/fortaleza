@@ -905,6 +905,11 @@ $scope.changedValue=function(item){
   $scope.items = MenuData.items;
   $scope.subMenus = MenuData.items.subMenus;
 
+ cordova.plugins.backgroundMode.setDefaults({  title:  "sadsaddasdsad", ticker: 'Entrando em segundo plano',  text:'Clique para abrir o aplicativo.'});
+            cordova.plugins.backgroundMode.enable();
+            cordova.plugins.backgroundMode.onactivate = function () {
+              alert('asdsadsd4');
+            }
 
   // Form data for the login modal
   $scope.loginData = {};
