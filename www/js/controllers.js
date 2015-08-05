@@ -94,7 +94,7 @@ angular.module('mobionicApp.controllers', [])
 })
 
 // Products Controller
-.controller('ProductsCtrl', function($scope, $ionicLoading, ProductsData, ProductsStorage) {
+.controller('ProductsCtrl', function($scope, $ionicLoading, $timeout, ProductsData, ProductsStorage) {
 
     $scope.products = [];
     $scope.storage = '';
@@ -108,24 +108,28 @@ angular.module('mobionicApp.controllers', [])
       
       showDelay: 10
     });
-
-    ProductsData.async().then(
-        // successCallback
-        function() {
-            $scope.products = ProductsData.getAll();
-            $scope.letterLimit = ProductsData.getLetterLimit();
-            $ionicLoading.hide();
-        },
-        // errorCallback
-        function() {
-            $scope.products = ProductsStorage.all();
-            $scope.letterLimit = ProductsData.getLetterLimit();
-            $scope.storage = 'Dados locais. Você está offline.';
-            $ionicLoading.hide();
-        },
-        // notifyCallback
-        function() {}
-    );
+     $scope.loading.show();
+     $timeout(function() {
+      $scope.loading.hide();
+    }, 5000);
+    
+    // ProductsData.async().then(
+    //     // successCallback
+    //     function() {
+    //         $scope.products = ProductsData.getAll();
+    //         $scope.letterLimit = ProductsData.getLetterLimit();
+    //         $ionicLoading.hide();
+    //     },
+    //     // errorCallback
+    //     function() {
+    //         $scope.products = ProductsStorage.all();
+    //         $scope.letterLimit = ProductsData.getLetterLimit();
+    //         $scope.storage = 'Dados locais. Você está offline.';
+    //         $ionicLoading.hide();
+    //     },
+    //     // notifyCallback
+    //     function() {}
+    // );
 
 })
 
