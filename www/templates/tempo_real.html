@@ -4,6 +4,7 @@
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
     </ion-nav-buttons>
+      <div id="lightbox2" class="lightbox"><span></span><p class="action"><a class="share" ng-click="sharePost()" ><i class="icon ion-share"></i></a><a class="close" ng-click="close_foto2()"><i class="icon ion-close-circled"></i></a></p></div>
     <ion-content class="has-header">
    <img class="full-image" id="bannerapp" src="img/banner_app.jpg">
    <span class="localdata">{{storage}}</span>
@@ -34,9 +35,9 @@
  <div ng-controller="LancesCtrl" id="lances">
 <div class="list">
 
-    <a class="item" ng-repeat="lance in lances2 | reverse"  >
-        <span class="tempo"><b ng-bind="lance.momento"></b>' <b ng-bind="lance.periodo"></b></span>
-        <span ng-bind-html="lance.texto"></span>
+    <a class="item" data-thumbid="{{lance.id}}" ng-repeat="lance in lances" ng-click="abre_foto($event, '{{lance.id}}')" >
+        <span class="tempo"><img  data-texto="{{lance.message | limitTo:240}}" data-imgfull="{{lance.full_picture}}" ng-src="{{lance.picture}}" width="80"><b ng-bind="lance.created_time | date:'H:m'"></b></span>
+        <span ng-bind-html="lance.message | limitTo: 130"></span>
     </a>
   </div>
 </div>

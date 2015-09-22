@@ -534,7 +534,7 @@ div#tempo-real {
 #tempo-real .placar .time {
     width: 50%;
     float: left;
-    font-size: 0.9em;
+    font-size: 0.7em;
     line-height: 13px;
     color: #FFF;
     padding-top: 8px;
@@ -549,6 +549,7 @@ div#tempo-real {
 
 #tempo-real .placar .evento {
     text-align: center;
+    font-size: 0.8em;
     clear:both;
     padding-top: 5px;
 }
@@ -575,6 +576,14 @@ div#tempo-real {
   
     width: 60%;
 }
+
+span.tempo img {
+    float: left;
+    margin-right: 5px;
+}
+
+
+
 .list .item-accordion {
  background: rgba(0, 0, 0, 0.60);
 
@@ -696,23 +705,20 @@ button.button-block {
     font-size: 1em;
     text-align: left;
 }
-div#lightbox {
+div.lightbox {
   display:none;
-    width: 100%;
-    
+  width: 100%;
   /* max-width: 500px; */
   padding: 3%;
-  top: 44px;
+  top: 60px;
   height: 100%;
-    
   z-index: 9;
   position: absolute;
-  
   background: rgba(0,0,0,0.7);
 }
 
 
-div#lightbox b {
+div.lightbox b {
     display: block;
     text-align: left;
     padding: 5px 10px 0 10px;
@@ -724,13 +730,13 @@ div#lightbox b {
     float: left;
     overflow: hidden;
 }
-div#lightbox a {
+div.lightbox a {
     color: #FFF;
     text-align: center;
     display: inline-block;
     margin: 0 10%;
 }
-div#lightbox p.action {
+div.lightbox p.action {
     font-size: 2.9em;
     z-index: 9999;
     width: 100%;
@@ -739,7 +745,7 @@ div#lightbox p.action {
     padding: 0;
     margin-top: 15px;
 }
-div#lightbox {
+div.lightbox {
     float: left;
 }
 
@@ -763,7 +769,7 @@ div#lightbox {
 	 padding-bottom: 0px !important;
 }
 }
-div#lightbox span {
+div.lightbox span {
     display: block;
     overflow: hidden;
     background: #f5f5f5;

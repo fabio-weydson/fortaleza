@@ -202,8 +202,8 @@ angular.module('mobionicApp.controllers', [])
         });  
     };
     $scope.close_foto = function () {
-        $('#lightbox span').html('').promise().done(function(){
-            $('#lightbox').fadeOut(500);  
+        $('.lightbox span').html('').promise().done(function(){
+            $('.lightbox').fadeOut(500);  
         });  
     };
 
@@ -593,8 +593,7 @@ angular.module('mobionicApp.controllers', [])
             $ionicLoading.hide();
             $scope.lances2 = [];
 
-            for (var o in $scope.lances)
-               $scope.lances2.push($scope.lances[o])
+         
             },
         // errorCallback
         function() {
@@ -632,7 +631,22 @@ angular.module('mobionicApp.controllers', [])
         return newvar;
     }
 
-
+    $scope.abre_foto = function (passedEventObject, thumbid) {
+     var window_height = window.innerHeight;
+         $('#lightbox2 span').css('max-height', window_height-Math.round((window_height*25)/100));
+        var imagem = $('a[data-thumbid="'+thumbid+'"] img').data('imgfull');
+        var texto = $('a[data-thumbid="'+thumbid+'"] img').data('texto');
+        var link = $('a[data-thumbid="'+thumbid+'"] img').data('link');
+        $('#lightbox2 span').html('<img src="'+imagem+'"/><b>'+texto+'</b>').promise().done(function(){
+            $scope.ativoimg = imagem;
+            $scope.ativolink = link;
+            $('#lightbox2').fadeIn(500);  
+        });  
+    };
+    $scope.close_foto2 = function () {
+        console.log('assdsa');
+      
+    };
 
 
 })

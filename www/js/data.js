@@ -344,7 +344,7 @@ angular.module('mobionicApp.data', [])
 // News Data: JSON
 .factory('FotosData', function($http, $q, FotosStorage) {
 
-    var json = 'https://api.instagram.com/v1/users/698161208/media/recent/?access_token=206080583.5b9e1e6.3530d3cd24ea4328af6e09f335122038&count=60';
+    var json = 'https://api.instagram.com/v1/users/698161208/media/recent/?access_token=206080583.5b9e1e6.85d847631af641f1a32e0e0eb4524763&count=60';
 
     var deferred = $q.defer();
     var promise = deferred.promise;
@@ -650,8 +650,8 @@ angular.module('mobionicApp.data', [])
 .factory('LancesData', function($http, $q, LancesStorage) {
 
     /* (For DEMO purposes) Local JSON data */
-    var json = 'http://179.188.17.9/~fortalezaapp/webservice/tempo_real.php?ver=linha_do_tempo&v=5';
-
+    //var json = 'http://179.188.17.9/~fortalezaapp/webservice/tempo_real.php?ver=linha_do_tempo&v=5';
+    var json = 'https://graph.facebook.com/v2.4/FortalezaOficial/posts?fields=picture,full_picture,message,created_time&access_token=CAACEdEose0cBAMmeOtGKHaubJLEzh19T9Ih7osdUf9aaGpem11f9pozsCynraoCtaj1Y7p35Qkh6ZCGQLWrKGz9MA4vOd4CNuQEwg9ewsawu6FZBL97bp20iAS0VeFj6vRx1sS70q4XdRdZCydVCa1CzXmsT9kL1sOA92ZCZCcUR9foYCeP1BzR4tJycZCB0vDTPoRfy3HJixMBOZAtxbhR8JuPVSlOQn0ZD';
 
     var deferred = $q.defer();
     var promise = deferred.promise;
@@ -663,7 +663,8 @@ angular.module('mobionicApp.data', [])
     // this callback will be called asynchronously
     // when the response is available.
     success(function(d) {
-		data = d;
+		data = d.data;
+        console.log(data);
 		LancesStorage.save(data);
         deferred.resolve();
     }).
@@ -689,14 +690,7 @@ angular.module('mobionicApp.data', [])
 // Posts Data: JSON Wordpress Posts configuration
 .factory('DestaquesData', function($http, $q, DestaquesStorage) {
 
-    /* (For DEMO purposes) Local JSON data */
     var json = 'http://www.fortalezaec.net/Json/DestaquesMaiores?visivel=true';
-
-    /* Set your URL as you can see in the following example */
-    // var json = 'YourWordpressURL/?json=get_recent_posts';
-
-    /* With user-friendly permalinks configured */
-    // var json = 'YourWordpressURL/api/get_recent_posts';
 
     var deferred = $q.defer();
     var promise = deferred.promise;
@@ -709,6 +703,7 @@ angular.module('mobionicApp.data', [])
     // when the response is available.
     success(function(d) {
         data = d.Model;
+        console.log(data);
         DestaquesStorage.save(data);
         deferred.resolve();
 

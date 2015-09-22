@@ -13,9 +13,9 @@
                     <span style="width: 0%"></span>
                 </div>
 				  <ion-slide-box on-slide-changed="slideChanged($index)" auto-play="true" does-continue="true" id="slidehome" delegate-handle="slidehome">
-				      <ion-slide ng-repeat="destaque in destaques | limitTo: 4">
+				      <ion-slide ng-repeat="destaque in destaques | limitTo: 4"  >
 				        <a href="#/app/destaque/{{$index}}" ><h3>{{destaque.Titulo}}</h3></a>
-				          <a href="#/app/destaque/{{$index}}" ><img src="http://www.fortalezaec.net{{destaque.Foto}}" width="100%" style="100%;"></a>
+				          <a href="#/app/destaque/{{$index}}" ><img ng-src="http://www.fortalezaec.net{{destaque.Foto}}" width="100%" style="100%;"></a>
 				      </ion-slide>
 				     
 				    </ion-slide-box>

@@ -9,7 +9,7 @@
         
         <div class="list">
 
-            <a class="item" ng-class="{'item-thumbnail-left' : post.FotoNoticia.length}" href="#/app/posts/{{$index}}" ng-repeat="post in posts | limitTo: paginationLimit()">
+            <a class="item" ng-class="{'item-thumbnail-left' : post.FotoNoticia.length}" ng-show="{{post.FotoNoticia.length}}" href="#/app/posts/{{$index}}" ng-repeat="post in posts | limitTo: paginationLimit()">
                 <img ng-src="http://www.fortalezaec.net/{{post.FotoNoticia}}" with="150" ng-show="{{post.FotoNoticia.length}}" alt="{{post.Titulo}}">
                 
                 <h2>{{post.Titulo}}</h2>
