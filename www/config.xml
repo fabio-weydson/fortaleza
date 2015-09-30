@@ -22,7 +22,7 @@
         following tag to your config.xml; you will still have the INTERNET
         permission on your app, which PhoneGap requires.
     -->
-    <preference name="permissions"    value="none"/>
+    <preference name="permissions"                value="none"/>
  
     <!-- Customize your app and platform with the preference element. -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
@@ -43,33 +43,33 @@
    <!-- Do not auto hide splash on iOS -->
     <preference name="AutoHideSplashScreen" value="true" />
     <!-- Do not auto hide splash on Android -->
-    <preference name="SplashScreenDelay" value="1000"/>
-    
+    <preference name="SplashScreenDelay" value="3000"/>
+    <!--
         Define a specific version of PhoneGap to build into your app.
         <preference name="phonegap-version"       value="cli-5.2.0" />
-   
+    -->
 
     <!-- Plugins -->
 
     <!-- Core plugins -->
-    <gap:plugin name="org.apache.cordova.battery-status" source="npm" />
-    <gap:plugin name="org.apache.cordova.console"  source="npm"/>
-    <gap:plugin name="org.apache.cordova.device"  source="npm"/>
-    <gap:plugin name="org.apache.cordova.device-motion"  source="npm"/>
-    <gap:plugin name="org.apache.cordova.device-orientation" source="npm" />
-    <gap:plugin name="org.apache.cordova.dialogs"  source="npm"/>
-    <gap:plugin name="org.apache.cordova.file"  source="npm"/>
-     <gap:plugin name="cordova-plugin-file-transfer"  source="npm" />
-     <gap:plugin name="org.apache.cordova.globalization" />
-    <gap:plugin name="org.apache.cordova.inappbrowser"  source="npm"/>
-    <gap:plugin name="org.apache.cordova.media" source="npm" />
-    <gap:plugin name="org.apache.cordova.network-information"  source="npm"/>
-    <gap:plugin name="net.yoik.cordova.plugins.screenorientation" />
-        <gap:plugin name="it.witek.cordova.plugin.background-mode"  />
+    <gap:plugin name="org.apache.cordova.battery-status" />
+    <gap:plugin name="org.apache.cordova.console" />
+    <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.device-motion" />
+    <gap:plugin name="org.apache.cordova.device-orientation" />
+    <gap:plugin name="org.apache.cordova.dialogs" />
+    <gap:plugin name="org.apache.cordova.file" />
+    <gap:plugin name="org.apache.cordova.file-transfer" />
+    <gap:plugin name="org.apache.cordova.globalization" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <gap:plugin name="org.apache.cordova.media" />
+    <gap:plugin name="org.apache.cordova.network-information" />
+    <gap:plugin name="net.yoik.cordova.plugins.screenorientation"/>
+        <gap:plugin name="it.witek.cordova.plugin.background-mode" />
 
-    <gap:plugin name="org.apache.cordova.splashscreen"  source="npm"/>
-  <!-- <gap:plugin name="org.apache.cordova.vibration" /> -->  
-    <gap:plugin name="nl.x-services.plugins.socialsharing"  source="npm"/>
+   <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="org.apache.cordova.vibration" />
+    <gap:plugin name="nl.x-services.plugins.socialsharing" />
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
     <!--
