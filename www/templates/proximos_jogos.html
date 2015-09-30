@@ -11,9 +11,9 @@
       
         <div class="list">
 
-            <a class="item" href="#" ng-repeat="jogo in jogos | limitTo: paginationLimit()" >      
+            <a class="item" href="#" ng-repeat="jogo in jogos.slice().reverse() | limitTo: paginationLimit()" >      
                 <div class="data"><!-- <span ng-bind-html="jogo.DataHora * 1000 | date:'dd/MM/yy'"></span> -->
-                    <span class="dia">11/07</span><span class="hora">16:00h</span>
+                    <span class="dia">{{jogo.DataHora * 1000 | date:'dd/MM'}}</span><span class="hora">{{jogo.DataHora * 1000 | date:'H:mm'}}h</span>
                 </div>          
                 <h2><span class="time"><img src="http://fortalezaec.net/{{jogo.Mandante.Foto}}"/>{{jogo.Mandante.Nome}}</span> x<span class="time time2"><img src="http://fortalezaec.net/{{jogo.Visitante.Foto}}"/>{{jogo.Visitante.Nome}}</span></h2>
                 <h3></h3>

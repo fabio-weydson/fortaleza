@@ -197,33 +197,33 @@ angular.module('mobionicApp.data', [])
             title: 'Ingressos',
             icon: 'ion-card',
             url: '#/app/ingressos'
-        },
-        {
-            title: 'Mais',
-            icon: 'ion-more',
-             subMenu: [
-                // {
-                //     title: "Newsletter",
-                //     url: '#/app/member',
-                //     icon:"ion-paper-airplane",
-                // },
-                {
-                    title: "Contatos",
-                    url: '#/app/contact',
-                    icon:"ion-ios7-email",
-                }
-                // {
-                //     title: "Ajustes",
-                //     url: '#/app/settings',
-                //     icon:"ion-ios7-gear",
-                // },
-        //          {
-        //     title: 'Plugins',
-        //     icon: 'ion-code',
-        //     url: '#/app/plugins'
-        // },
-        ]  
         }
+        // {
+        //     title: 'Mais',
+        //     icon: 'ion-more',
+        //      subMenu: [
+        //         // {
+        //         //     title: "Newsletter",
+        //         //     url: '#/app/member',
+        //         //     icon:"ion-paper-airplane",
+        //         // },
+        //         {
+        //             title: "Contatos",
+        //             url: '#/app/contact',
+        //             icon:"ion-ios7-email",
+        //         }
+        //         // {
+        //         //     title: "Ajustes",
+        //         //     url: '#/app/settings',
+        //         //     icon:"ion-ios7-gear",
+        //         // },
+        // //          {
+        // //     title: 'Plugins',
+        // //     icon: 'ion-code',
+        // //     url: '#/app/plugins'
+        // // },
+        // ]  
+        // }
         // {
         //     title: 'Elements',
         //     icon: 'ion-code',
@@ -570,7 +570,6 @@ angular.module('mobionicApp.data', [])
     // this callback will be called asynchronously
     // when the response is available.
     success(function(d) {
-        console.log(d);
         data = d.Model;
         ProximosJogosStorage.save(data);
         deferred.resolve();
@@ -598,8 +597,8 @@ angular.module('mobionicApp.data', [])
 .factory('TempoRealData', function($http, $q, TempoRealStorage) {
 
     /* (For DEMO purposes) Local JSON data */
-    var json = 'http://179.188.17.9/~fortalezaapp/webservice/tempo_real.php?ver=tempo_real';
-
+    //var json = 'http://179.188.17.9/~fortalezaapp/webservice/tempo_real.php?ver=tempo_real';
+    var json = 'http://www.fortalezaec.net/Json/UltimoJogo?categoriaId=00e967dfc6f74ca5b523546ce9cce0f2';
 
     var deferred = $q.defer();
     var promise = deferred.promise;
@@ -612,21 +611,23 @@ angular.module('mobionicApp.data', [])
     // when the response is available.
     success(function(d) {
 
-        data = d.channel.item.dadosevento;
-        var dataJogoFull = d.channel.item.data;
-        var dataJogo = dataJogoFull.replace("-", "<br/>");
-       	data['data'] = dataJogo;
-        var time1  = d.channel.item.dadosevento.time1.trim();
-       	var escudo1 = StrToURL(time1);
+        data = d.Model;
+       //  var dataJogoFull = d.channel.item.data;
+        
+       //  var dataJogo = dataJogoFull.replace(" ", "<br/>as ");
+       // 	data['data'] = dataJogo;
+       //  var time1  = d.channel.item.dadosevento.time1.trim();
+       // 	var escudo1 = StrToURL(time1);
 
-      	data['escudo_1'] = 'http://cdn.espn.com.br/image/times/'+escudo1.toLowerCase()+'.png';
-      	var time2  = d.channel.item.dadosevento.time2.trim();
-        var escudo2 = StrToURL(time2);
-      	data['escudo_2'] = 'http://cdn.espn.com.br/image/times/'+escudo2.toLowerCase()+'.png';
+      	// data['escudo_1'] = 'https://apidadoscampeonatos.gazetaesportiva.net/uploads/equipe/imagem/'+escudo1.toLowerCase()+'.png';
+      	// var time2  = d.channel.item.dadosevento.time2.trim();
+       //  var escudo2 = StrToURL(time2);
+      	// data['escudo_2'] = 'https://apidadoscampeonatos.gazetaesportiva.net/uploads/equipe/imagem/'+escudo2.toLowerCase()+'.png';
 
 
         TempoRealStorage.save(data);
         deferred.resolve();
+        localStorage.setItem('hora_jogo', data.DataHora);
     }).
     // called asynchronously if an error occurs
     // or server returns response with an error status.
@@ -648,11 +649,13 @@ angular.module('mobionicApp.data', [])
     return service;
 })
 .factory('LancesData', function($http, $q, LancesStorage) {
-
+    var hora_jogo = localStorage.getItem('hora_jogo');
+    var hora_jogo
+    var hora_before = hora_jogo -= 60 * 60;
+    var hora_depois = hora_jogo += 180 * 60;
     /* (For DEMO purposes) Local JSON data */
     //var json = 'http://179.188.17.9/~fortalezaapp/webservice/tempo_real.php?ver=linha_do_tempo&v=5';
-    var json = 'https://graph.facebook.com/v2.4/FortalezaOficial/posts?fields=picture,full_picture,message,created_time&access_token=CAACEdEose0cBAMmeOtGKHaubJLEzh19T9Ih7osdUf9aaGpem11f9pozsCynraoCtaj1Y7p35Qkh6ZCGQLWrKGz9MA4vOd4CNuQEwg9ewsawu6FZBL97bp20iAS0VeFj6vRx1sS70q4XdRdZCydVCa1CzXmsT9kL1sOA92ZCZCcUR9foYCeP1BzR4tJycZCB0vDTPoRfy3HJixMBOZAtxbhR8JuPVSlOQn0ZD';
-
+    var json = 'https://graph.facebook.com/v2.4/FortalezaOficial/posts?fields=picture,full_picture,message,created_time&since='+hora_before+'&until='+hora_depois+'&access_token=CAAWZCKW9JPX4BAMv7n2gCFAjZCihkZBp19GY8hR0DSrZCtkXC7vKqyzcZBPZCvuRzCxPg4BCvX5ZB5cLvZAmfWVRSptaIgXCXtY3zp7NwHV8UDL5B9KNONC9LrRMwgL3HtzWTZCUwBzojZB0aMYZAV5ZBoWPu300Ut7wIMzMZCKzbdQUUD1om9x7BZCnIYemAeySBekc8ZD';
     var deferred = $q.defer();
     var promise = deferred.promise;
     var data = [];
@@ -663,8 +666,8 @@ angular.module('mobionicApp.data', [])
     // this callback will be called asynchronously
     // when the response is available.
     success(function(d) {
+     
 		data = d.data;
-        console.log(data);
 		LancesStorage.save(data);
         deferred.resolve();
     }).

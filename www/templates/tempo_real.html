@@ -1,30 +1,31 @@
-<ion-view title="Tempo Real">
+<ion-view title="Tempo Real" id="temporeal">
  <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
     </ion-nav-buttons>
-      <div id="lightbox2" class="lightbox"><span></span><p class="action"><a class="share" ng-click="sharePost()" ><i class="icon ion-share"></i></a><a class="close" ng-click="close_foto2()"><i class="icon ion-close-circled"></i></a></p></div>
+      <div id="lightbox2" class="lightbox"><span></span><p class="action"><a class="share" ng-click="sharePost()" ><i class="icon ion-share"></i></a><a class="close" ng-click="close_foto()"><i class="icon ion-close-circled"></i></a></p></div>
     <ion-content class="has-header">
    <img class="full-image" id="bannerapp" src="img/banner_app.jpg">
    <span class="localdata">{{storage}}</span>
    <div id="tempo-real">
 
    		<div class="data">
-   			<div ng-bind-html="temporeal.data"></div>
+   			<div><em ng-bind-html="temporeal.DataHora * 1000 | date:'dd/MM'"></em> às <em ng-bind-html="temporeal.DataHora * 1000 | date:'H:mm'"></em><span><em ng-bind-html="temporeal.Local"></em></span></div>
+        
    		</div>
    		<div class="placar">
-       <div class="pontos"><span>{{temporeal.ponto1}} x {{temporeal.ponto2}}</span></div>
+       <div class="pontos"><span>{{temporeal.PlacarMandante}} x {{temporeal.PlacarVisitante}}</span></div>
    			<div class="time time1">
-		       <img ng-src="{{temporeal.escudo_1}}">
-		       {{temporeal.time1}}
+		       <img ng-src="http://fortalezaec.net{{temporeal.Mandante.Foto}}">
+		       {{temporeal.Mandante.Nome}}
 	       </div>
 	       <div class="time time2">
-		       <img ng-src="{{temporeal.escudo_2}}">
-		       {{temporeal.time2}}
+		       <img ng-src="http://fortalezaec.net{{temporeal.Visitante.Foto}}">
+		       {{temporeal.Visitante.Nome}}
 	       </div>
 
-	       <div class="evento">{{temporeal.nomeevento}} <br/>{{temporeal.terminado}}</div>
+	       <div class="evento">{{temporeal.Campeonato.TipoCampeonato.Nome}} <br/>{{temporeal.terminado}}</div>
        </div>
        </div>
         <div class="barra-titulo">
@@ -34,10 +35,9 @@
 </div>
  <div ng-controller="LancesCtrl" id="lances">
 <div class="list">
-
     <a class="item" data-thumbid="{{lance.id}}" ng-repeat="lance in lances" ng-click="abre_foto($event, '{{lance.id}}')" >
         <span class="tempo"><img  data-texto="{{lance.message | limitTo:240}}" data-imgfull="{{lance.full_picture}}" ng-src="{{lance.picture}}" width="80"><b ng-bind="lance.created_time | date:'H:m'"></b></span>
-        <span ng-bind-html="lance.message | limitTo: 130"></span>
+        <span>{{lance.message | limitTo: 130}}</span>
     </a>
   </div>
 </div>

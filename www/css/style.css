@@ -508,8 +508,9 @@ div#jogador .blade img {
     float: left;
     width: 30%;
     text-align: center;
-    height: 100%;
-    vertical-align: middle;
+    overflow: hidden;
+    min-height: 118px;
+    display: table;
 }
 
 #tempo-real .placar {
@@ -518,13 +519,16 @@ div#jogador .blade img {
     position: relative;
     float: left;
     font-family: "Roboto";
+    display: table;
     width: 70%;
 }
 
 div#tempo-real {
-    height: 100px;
+    min-height: 100px;
+    overflow: hidden;
     background: #03244D;
     color: #53AADD;
+    margin-top: -4px;
 }
 
 .barra-titulo {
@@ -534,12 +538,12 @@ div#tempo-real {
 #tempo-real .placar .time {
     width: 50%;
     float: left;
-    font-size: 0.7em;
+    font-size: 0.8em;
     line-height: 13px;
     color: #FFF;
-    padding-top: 8px;
+    padding-top: 5%;
     text-align: center;
-    padding-right: 29px;
+    padding-right: 28px;
 }
 
 #tempo-real .placar .time2 {
@@ -549,13 +553,15 @@ div#tempo-real {
 
 #tempo-real .placar .evento {
     text-align: center;
-    font-size: 0.8em;
+    font-size: 1em;
     clear:both;
-    padding-top: 5px;
+    padding-top: 0px;
 }
 #tempo-real .data div {
-    margin-top: 30px;
+    line-height: 24px;
     color: #FFF;
+    display: table-cell !important;
+    vertical-align: middle;
 }
 
 
@@ -571,10 +577,12 @@ div#tempo-real {
 }
 #tempo-real .time img {
     /* background: #FFF; */
-  padding: 2px;
-  border-radius: 3px;
-  
+    padding: 2px;
+    border-radius: 3px;
     width: 60%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5px;
 }
 
 span.tempo img {
@@ -729,6 +737,7 @@ div.lightbox b {
     background: #f5f5f5;
     float: left;
     overflow: hidden;
+    vertical-align: baseline;
 }
 div.lightbox a {
     color: #FFF;
@@ -772,10 +781,11 @@ div.lightbox {
 div.lightbox span {
     display: block;
     overflow: hidden;
-    background: #f5f5f5;
+    background: #f5f5f5 url(../img/loading.gif) center  no-repeat;
     border-radius: 8px;
     padding-bottom: 10px;
     box-sizing: content-box;
+    min-height: 62%;
 }
 #video .media-container {
   background: #000;
@@ -833,10 +843,11 @@ div.lightbox span {
     width: 15%;
     text-align: center;
     margin-right: 5px;
+    margin-left: 5px;
 }
 
 #jogos-lista .list a {
-    padding: 8px 15px;
+    padding: 8px 5px;
 }
 
 #jogos-lista .list .data .dia {
@@ -861,7 +872,7 @@ div.lightbox span {
     overflow: hidden;
     font-weight: bold;
     max-height: 55px;
-    font-size: 1em;
+    font-size: 0.74em;
     line-height: 50px;
     text-align: center;
     margin: 0;
@@ -952,4 +963,24 @@ div.lightbox span {
 }
 #textos a {
     color: #C50A0A;
+}
+
+#tempo-real .data span {
+    line-height: 13px;
+    display: block;
+    color: #53AADD;
+    font-size: 0.9em;
+}
+
+#lances a.item {
+    display: 
+    
+    -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+em.hash_tag {
+    color: #5791D0 !important;
+    margin: 0;
+    padding: 0;
 }
