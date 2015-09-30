@@ -70,11 +70,6 @@
     <gap:plugin name="nl.x-services.plugins.socialsharing" /> 
     <gap:plugin name="it.witek.cordova.plugin.background-mode" />
     <gap:plugin name="org.apache.cordova.geolocation" />
-    
-    <!-- Third party plugins -->
-    <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
-    <!--
-    -->
 
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />
