@@ -578,10 +578,10 @@ angular.module('mobionicApp.controllers', [])
             $cordovaSocialSharing.shareViaFacebook($scope.message, $scope.image, $scope.link);
         }
         $scope.shareToTwitter  = function() {
-            window.plugins.socialsharing.ViaTwitter($scope.message, $scope.image, $scope.link);
+            window.plugins.socialsharing.shareViaTwitter($scope.message, $scope.image, $scope.link);
         }
         $scope.shareToWhatsApp  = function() {
-            window.plugins.socialsharing.ViaWhatsApp($scope.message, $scope.image, $scope.link);
+            window.plugins.socialsharing.shareViaWhatsApp($scope.message, $scope.image, $scope.link);
         }
         $scope.shareViaEmail  = function() {
             window.plugins.socialsharing.shareViaEmail($scope.message, $scope.subject, [], [], [], null);
