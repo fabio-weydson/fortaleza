@@ -287,7 +287,6 @@ angular.module('mobionicApp.controllers', [])
 
 
      window.addEventListener("orientationchange", function() {
-        console.log('orientacao');
            var window_width = $('.media-container').width();
             var window_height = window.innerHeight;
             window_width *= 1;
@@ -319,11 +318,11 @@ angular.module('mobionicApp.controllers', [])
       duration: 5000
     });
         var subject = $scope.video.snippet.title;
-        var message = " | Baixe o App Oficial do Fortaleza http://bit.ly/1j0YCLy";
-        message += message.replace(/(<([^>]+)>)/ig,"");
-        var imagem = $scope.video.snippet.thumbnails.default.url;
+        var message = subject+" | Baixe o App Oficial do Fortaleza http://bit.ly/1j0YCLy";
+        message = message.replace(/(<([^>]+)>)/ig,"");
+        //var imagem = $scope.video.snippet.thumbnails.default.url;
         var link = 'https://youtu.be/'+idVideo;
-        window.plugins.socialsharing.share(message, subject, imagem, link);
+        window.plugins.socialsharing.share(message, null, null, link);
   
     }
 
@@ -504,10 +503,9 @@ angular.module('mobionicApp.controllers', [])
       showBackdrop: true,
       duration: 5000
     });
-        var subject = $scope.post.Titulo;
-        var message = $scope.post.Subtitulo;
+        var message = $scope.post.Titulo;
         message = message.replace(/(<([^>]+)>)/ig,"");
-        message += ' Leia Mais. Baixe o APP Oficial http://bit.ly/1j0YCLy';
+        message = message+' Leia Mais. Baixe o APP Oficial http://bit.ly/1j0YCLy';
         var img = 'http://fortalezaec.net{{post.FotoNoticia}}';
         var link = $scope.post.URL;
         window.plugins.socialsharing.share(message, null, img, link);
@@ -517,7 +515,6 @@ angular.module('mobionicApp.controllers', [])
 
 // Post Controller
 .controller('NoticiaCtrl', ['$scope', '$sce', '$ionicLoading', '$stateParams', 'PostsData', function($scope, $sce,$ionicLoading, $stateParams, PostsData) {
-
     $scope.post = PostsData.get($stateParams.postId);
     $scope.post.postId = $stateParams.postId;
     $scope.post.iframe = 'http://www.fortalezaec.net/'+ $scope.post.URL;
@@ -527,10 +524,9 @@ angular.module('mobionicApp.controllers', [])
 
         $scope.sharePost = function () {
      
-        var subject = $scope.post.Titulo;
-        var message = $scope.post.Subtitulo;
+        var message = $scope.post.Titulo;
         message = message.replace(/(<([^>]+)>)/ig,"");
-        message += ' Leia Mais. Baixe o APP Oficial  http://bit.ly/1j0YCLy';
+        message = message+' Leia Mais. Baixe o APP Oficial  http://bit.ly/1j0YCLy';
         var img = 'http://fortalezaec.net/{{post.FotoNoticia}}';
         var link = 'http://fortalezaec.net'+$scope.post.URL;
         window.plugins.socialsharing.share(message, null, img, link);
