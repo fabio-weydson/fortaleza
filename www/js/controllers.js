@@ -505,9 +505,10 @@ angular.module('mobionicApp.controllers', [])
     });
         var message = $scope.post.Titulo;
         message = message.replace(/(<([^>]+)>)/ig,"");
-        message = message+' Leia Mais. Baixe o APP Oficial http://bit.ly/1j0YCLy';
+        //message = message+'. Baixe o APP Oficial http://bit.ly/1j0YCLy';
         var img = 'http://fortalezaec.net{{post.FotoNoticia}}';
-        var link = $scope.post.URL;
+        var link = 'http://www.fortalezaec.net'+$scope.post.URL;
+        link = link.replace('App/', 'Ver/');
         window.plugins.socialsharing.share(message, null, img, link);
     }
 
@@ -526,9 +527,10 @@ angular.module('mobionicApp.controllers', [])
      
         var message = $scope.post.Titulo;
         message = message.replace(/(<([^>]+)>)/ig,"");
-        message = message+' Leia Mais. Baixe o APP Oficial  http://bit.ly/1j0YCLy';
+        //message = message+' Leia Mais. Baixe o APP Oficial  http://bit.ly/1j0YCLy';
         var img = 'http://fortalezaec.net/{{post.FotoNoticia}}';
         var link = 'http://fortalezaec.net'+$scope.post.URL;
+        link = link.replace('App/', 'Ver/');
         window.plugins.socialsharing.share(message, null, img, link);
     }
 }])
@@ -574,8 +576,7 @@ angular.module('mobionicApp.controllers', [])
         var imagem = $('#lances a[data-active="true"] img').data('imgfull');
         var texto = $('#lances a[data-active="true"] img').data('texto');
         var link = $('#lances a[data-active="true"] img').data('link');
-        var subject = "via APP Oficial do Fortaleza";
-        var message = texto+" via App oficial Fortaleza http://bit.ly/1j0YCLy";
+        var message = texto+". via App oficial Fortaleza http://bit.ly/1j0YCLy";
         message = message.replace(/(<([^>]+)>)/ig,"");
         var imagem = $scope.ativoimg;
         var link = 'http://bit.ly/1j0YCLy';
