@@ -515,7 +515,7 @@ angular.module('mobionicApp.controllers', [])
 })
 
 // Post Controller
-.controller('NoticiaCtrl', ['$scope', '$sce', '$ionicLoading', '$stateParams', 'PostsData', function($scope, $sce,$ionicLoading, $stateParams, PostsData) {
+.controller('NoticiaCtrl', ['$scope', '$sce', '$ionicLoading', '$ionicActionSheet', '$stateParams', 'PostsData', function($scope, $sce,$ionicLoading,$ionicActionSheet, $stateParams, PostsData, $cordovaSocialSharing) {
     $scope.post = PostsData.get($stateParams.postId);
     $scope.post.postId = $stateParams.postId;
     $scope.post.iframe = 'http://www.fortalezaec.net/'+ $scope.post.URL;
@@ -523,7 +523,7 @@ angular.module('mobionicApp.controllers', [])
 
     $scope.post.embed = urlEmbed;
 
-        $scope.sharePost = function () {
+        $scope.sharePost2 = function () {
      
         var message = $scope.post.Titulo;
         message = message.replace(/(<([^>]+)>)/ig,"");
@@ -533,6 +533,60 @@ angular.module('mobionicApp.controllers', [])
         link = link.replace('App/', 'Ver/');
         window.plugins.socialsharing.share(message, null, img, link);
     }
+  $scope.sharePost = function() {
+            $ionicActionSheet.show({
+                buttons: [
+                    { text: 'Facebook' },
+                    { text: 'Twitter' },
+                    { text: 'Whatsapp' },
+                    { text: 'Email' },
+                    { text: 'Outros' }
+                ],
+                titleText: 'Compartilhar',
+                cancelText: 'Cancelar',
+                buttonClicked: function(index) {
+                    switch(index) {
+                        case 0:
+                            $scope.shareToFacebook();
+                            break;
+                        case 1:
+                            $scope.shareToTwitter();
+                            break;
+                        case 2:
+                            $scope.shareToWhatsApp();
+                            break;
+                        case 3:
+                            $scope.shareViaEmail();
+                            break;
+                        case 4:
+                            $scope.shareNative();
+                            break;
+                    }
+                    return true;
+                }
+            });
+        }
+        $scope.subject = $scope.post.Titulo;
+        $scope.link = 'http://fortalezaec.net'+$scope.post.URL;
+        $scope.message = $scope.post.Titulo + ' ' + $scope.link;
+        $scope.image = 'http://fortalezaec.net/{{post.FotoNoticia}}';
+
+         $scope.shareNative = function() {
+            $cordovaSocialSharing.share($scope.message, $scope.subject, null, $scope.link);
+        }
+         $scope.shareToFacebook  = function() {
+            $cordovaSocialSharing.shareViaFacebook($scope.message, $scope.image, $scope.link);
+        }
+        $scope.shareToTwitter  = function() {
+            window.plugins.socialsharing.ViaTwitter($scope.message, $scope.image, $scope.link);
+        }
+        $scope.shareToWhatsApp  = function() {
+            window.plugins.socialsharing.ViaWhatsApp($scope.message, $scope.image, $scope.link);
+        }
+        $scope.shareViaEmail  = function() {
+            window.plugins.socialsharing.shareViaEmail($scope.message, $scope.subject, [], [], [], null);
+        }
+
 }])
 
 // Posts Controller
