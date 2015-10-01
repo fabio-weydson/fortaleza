@@ -307,7 +307,7 @@ angular.module('mobionicApp.controllers', [])
         }
     })
 
-    $scope.loadURL = function (url) {
+    $scope.loadURL = function (url) { 
         window.open(url,'_system');
     }
 
