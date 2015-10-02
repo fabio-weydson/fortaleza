@@ -575,13 +575,13 @@ angular.module('mobionicApp.controllers', [])
             window.plugins.socialsharing.share($scope.message, $scope.subject, $scope.image, $scope.link);
         }
          $scope.shareToFacebook  = function() {
-            window.plugins.socialsharing.shareViaFacebook($scope.message, $scope.image, $scope.link);
+            window.plugins.socialsharing.shareViaFacebook($scope.message, $scope.link);
         }
         $scope.shareToTwitter  = function() {
-            window.plugins.socialsharing.shareViaTwitter($scope.message, $scope.image, $scope.link);
+            window.plugins.socialsharing.shareViaTwitter($scope.subject, null, $scope.link);
         }
         $scope.shareToWhatsApp  = function() {
-            window.plugins.socialsharing.shareViaWhatsApp('teste', null, null);
+            window.plugins.socialsharing.shareViaWhatsApp($scope.message, $scope.image, null);
         }
         $scope.shareViaEmail  = function() {
             window.plugins.socialsharing.shareViaEmail($scope.message, $scope.subject, [], [], [], null);
