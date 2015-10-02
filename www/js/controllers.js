@@ -575,7 +575,7 @@ angular.module('mobionicApp.controllers', [])
             window.plugins.socialsharing.share($scope.message, $scope.subject, $scope.image, $scope.link);
         }
          $scope.shareToFacebook  = function() {
-            window.plugins.socialsharing.shareViaFacebook($scope.message, $scope.image, $scope.link);
+            window.plugins.socialsharing.shareViaFacebook(null, $scope.image, $scope.link);
         }
         $scope.shareToTwitter  = function() {
             window.plugins.socialsharing.shareViaTwitter($scope.subject, null, $scope.link);
