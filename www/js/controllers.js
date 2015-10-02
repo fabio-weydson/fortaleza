@@ -533,7 +533,13 @@ angular.module('mobionicApp.controllers', [])
         link = link.replace('App/', 'Ver/');
         window.plugins.socialsharing.share(message, null, img, link);
     }
+       $scope.subject = $scope.post.Titulo;
+        $scope.link = 'http://fortalezaec.net'+$scope.post.URL;
+        $scope.message = $scope.post.Titulo + ' ' + $scope.link;
+        $scope.image = 'http://fortalezaec.net'+$scope.post.FotoNoticia;
+
   $scope.sharePost = function() {
+   
             $ionicActionSheet.show({
                 buttons: [
                     { text: 'Facebook' },
@@ -566,22 +572,19 @@ angular.module('mobionicApp.controllers', [])
                 }
             });
         }
-        $scope.subject = $scope.post.Titulo;
-        $scope.link = 'http://fortalezaec.net'+$scope.post.URL;
-        $scope.message = $scope.post.Titulo + ' ' + $scope.link;
-        $scope.image = 'http://fortalezaec.net/{{post.FotoNoticia}}';
+     
 
         $scope.shareNative = function() {
             window.plugins.socialsharing.share($scope.message, $scope.subject, $scope.image, $scope.link);
         }
          $scope.shareToFacebook  = function() {
-            window.plugins.socialsharing.shareViaFacebook(null, $scope.image, $scope.link);
+            window.plugins.socialsharing.shareViaFacebook($scope.subject, $scope.image, $scope.link);
         }
         $scope.shareToTwitter  = function() {
             window.plugins.socialsharing.shareViaTwitter($scope.subject, null, $scope.link);
         }
         $scope.shareToWhatsApp  = function() {
-            window.plugins.socialsharing.shareViaWhatsApp($scope.post.Titulo, null, $scope.link);
+            window.plugins.socialsharing.shareViaWhatsApp($scope.post.Titulo, $scope.image, $scope.link);
         }
         $scope.shareViaEmail  = function() {
             window.plugins.socialsharing.shareViaEmail($scope.message, $scope.subject, [], [], [], null);
