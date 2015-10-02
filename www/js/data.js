@@ -1,74 +1,6 @@
 angular.module('mobionicApp.data', [])
 
 // Home Data: Home page configuration
-/*
-.factory('Data', function(){
-
-    var data = {};
-
-    data.items = [
-        {
-            title: 'News',
-            icon: 'ion-ios7-calendar-outline',
-            note: 'Latest News',
-            url: '#/app/news'
-        },
-        {
-            title: 'Products',
-            icon: 'ion-ios7-cart',
-            note: 'Our Products',
-            url: '#/app/products'
-        },
-        {
-            title: 'Gallery',
-            icon: 'ion-images',
-            note: 'Our Photos',
-            url: '#/app/gallery'
-        },
-        {
-            title: 'Map',
-            icon: 'ion-map',
-            note: 'Find Us',
-            url: '#/app/map'
-        },
-        {
-            title: 'About',
-            icon: 'ion-person-stalker',
-            note: 'About Us',
-            url: '#/app/about'
-        },
-        {
-            title: 'Contact',
-            icon: 'ion-email',
-            note: 'Contact Us',
-            url: '#/app/contact'
-        },
-        {
-            title: 'RSS',
-            icon: 'ion-social-rss',
-            note: 'RSS Feed',
-            url: '#/app/feeds'
-        },
-        {
-            title: 'Wordpress JSON',
-            icon: 'ion-social-wordpress',
-            note: 'JSON API plugin',
-            url: '#/app/posts'
-        },
-        {
-            title: 'Wordpress Pagination',
-            icon: 'ion-ionic',
-            note: 'Server Side',
-            url: '#/app/serverposts'
-        },
-        {
-            title: 'Mobile Plugins',
-            icon: 'ion-iphone',
-            note: 'Cordova/PhoneGap',
-            url: '#/app/plugins'
-        },
-    ];
-    */
     .factory('Data', function($http, $q, NewsStorage) {
 
     var json = 'json/news.json';
@@ -547,7 +479,7 @@ angular.module('mobionicApp.data', [])
 
     service.getAll = function() { return data; };
 
-    service.get = function(postId) { //console.log(data.posts);
+    service.get = function(postId) { 
 	    return data.Noticias[postId];
 	};
 
@@ -587,7 +519,7 @@ angular.module('mobionicApp.data', [])
 
     service.getAll = function() { return data; };
 
-    service.get = function(postId) { //console.log(data.posts);
+    service.get = function(postId) { 
         return data.Noticias[postId];
     };
 
@@ -642,7 +574,7 @@ angular.module('mobionicApp.data', [])
 
     service.getAll = function() { return data; };
 
-    service.get = function(tempoId) { //console.log(data.posts);
+    service.get = function(tempoId) { 
 	    return data[tempoId];
 	};
 
@@ -684,7 +616,7 @@ angular.module('mobionicApp.data', [])
 
     service.getAll = function() { return data; };
 
-    service.get = function(lanceId) { //console.log(data.posts);
+    service.get = function(lanceId) { 
 	    return data[lanceId];
 	};
 
@@ -706,7 +638,6 @@ angular.module('mobionicApp.data', [])
     // when the response is available.
     success(function(d) {
         data = d.Model;
-        console.log(data);
         DestaquesStorage.save(data);
         deferred.resolve();
 
@@ -724,7 +655,7 @@ angular.module('mobionicApp.data', [])
 
     service.getAll = function() { return data; };
 
-    service.get = function(postId) { //console.log(data.posts);
+    service.get = function(postId) { 
 	    return data[postId];
 	};
 

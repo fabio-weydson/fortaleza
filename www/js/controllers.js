@@ -93,65 +93,15 @@ angular.module('mobionicApp.controllers', [])
 
 })
 
-// Products Controller
-.controller('ProductsCtrl', function($scope, $ionicLoading, $timeout, ProductsData, ProductsStorage) {
-
-    $scope.products = [];
-    $scope.storage = '';
-
-    $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-a"></i> Carregando',
-
-      
-      showBackdrop: false,
-
-      
-      showDelay: 10
-    });
-     $scope.loading.show();
-     $timeout(function() {
-      $scope.loading.hide();
-    }, 5000);
-    
-    // ProductsData.async().then(
-    //     // successCallback
-    //     function() {
-    //         $scope.products = ProductsData.getAll();
-    //         $scope.letterLimit = ProductsData.getLetterLimit();
-    //         $ionicLoading.hide();
-    //     },
-    //     // errorCallback
-    //     function() {
-    //         $scope.products = ProductsStorage.all();
-    //         $scope.letterLimit = ProductsData.getLetterLimit();
-    //         $scope.storage = 'Dados locais. Você está offline.';
-    //         $ionicLoading.hide();
-    //     },
-    //     // notifyCallback
-    //     function() {}
-    // );
-
-})
-
-// Product Controller
-.controller('ProductCtrl', function($scope, $stateParams, ProductsData) {
-
-    $scope.product = ProductsData.get($stateParams.productId);
-
-})
 
 // Gallery Controller
-.controller('FotosCtrl', function($scope, $ionicLoading, FotosData, FotosStorage, $document) {
+.controller('FotosCtrl', function($scope, $ionicLoading, $ionicActionSheet, FotosData, FotosStorage, $document) {
 
     $scope.fotos = [];
 
     $scope.loading = $ionicLoading.show({
       template: '<i class="icon ion-loading-a"></i> Carregando',
-
-      
       showBackdrop: false,
-
-      
       showDelay: 10
     });
 
@@ -211,16 +161,64 @@ angular.module('mobionicApp.controllers', [])
         });  
     };
 
-    $scope.sharePost = function () {
-        var text = $scope.ativotexto;
-        var subject = "via APP Oficial do Fortaleza";
-        var message = text+" | Baixe o App Oficial do Fortaleza http://bit.ly/1j0YCLy";
-        message = message.replace(/(<([^>]+)>)/ig,"");
-        var imagem = $scope.ativoimg;
-        var link = $scope.ativolink.replace('https://instagram.com', 'http://instagr.am');
-        window.plugins.socialsharing.share(message, null, imagem, link);
+     $scope.sharePost = function() {
+        
+    $scope.subject = null;
+    $scope.link = $scope.ativolink.replace('https://instagram.com', 'http://instagr.am');
+    $scope.message = $scope.ativotexto.replace(/(<([^>]+)>)/ig,"") + ' ' + $scope.ativolink.replace('https://instagram.com', 'http://instagr.am');
+    $scope.image = $scope.ativoimg;
 
-    }
+            $ionicActionSheet.show({
+                buttons: [
+                    { text: 'Facebook' },
+                    { text: 'Twitter' },
+                    { text: 'Whatsapp' },
+                    { text: 'Email' },
+                    { text: 'Outros' }
+                ],
+                titleText: 'Compartilhar',
+                cancelText: 'Cancelar',
+                buttonClicked: function(index) {
+                    switch(index) {
+                        case 0:
+                            $scope.shareToFacebook();
+                            break;
+                        case 1:
+                            $scope.shareToTwitter();
+                            break;
+                        case 2:
+                            $scope.shareToWhatsApp();
+                            break;
+                        case 3:
+                            $scope.shareViaEmail();
+                            break;
+                        case 4:
+                            $scope.shareNative();
+                            break;
+                    }
+                    return true;
+                }
+            });
+        }
+     
+
+        $scope.shareNative = function() {
+            window.plugins.socialsharing.share($scope.message, $scope.subject, $scope.image, $scope.link);
+        }
+         $scope.shareToFacebook  = function() {
+            window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint($scope.subject, null, $scope.link);
+        }
+        $scope.shareToTwitter  = function() {
+            window.plugins.socialsharing.shareViaTwitter($scope.subject, null, $scope.link);
+        }
+        $scope.shareToWhatsApp  = function() {
+            window.plugins.socialsharing.shareViaWhatsApp($scope.post.Titulo, $scope.image, $scope.link);
+        }
+        $scope.shareViaEmail  = function() {
+            window.plugins.socialsharing.shareViaEmail($scope.message, $scope.subject, [], [], [], null);
+        }
+
+
 
 })
 
@@ -276,14 +274,14 @@ angular.module('mobionicApp.controllers', [])
 })
 
 // Video Controller
-.controller('VideoCtrl', ['$scope', '$ionicLoading', '$sce', '$stateParams', 'VideosData', function($scope, $ionicLoading, $sce, $stateParams, VideosData){
+.controller('VideoCtrl', ['$scope', '$ionicLoading', '$ionicActionSheet' ,'$sce', '$stateParams', 'VideosData', function($scope, $ionicLoading, $ionicActionSheet, $sce, $stateParams, VideosData){
       $scope.video = VideosData.get($stateParams.videoId);
 
 
-    var idVideo = $scope.video.snippet.resourceId.videoId;
-    var urlEmbed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/'+idVideo+'?rel=0&showinfo=0&allownetworking=internal&fs=0&theme=light&controls=2&autohide=1" frameborder="0" width="100%" height="100%"></iframe>');
+    $scope.idVideo = $scope.video.snippet.resourceId.videoId;
+    $scope.urlEmbed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/'+$scope.idVideo+'?rel=0&showinfo=0&allownetworking=internal&fs=0&theme=light&controls=2&autohide=1" frameborder="0" width="100%" height="100%"></iframe>');
 
-    $scope.video.embed = urlEmbed;
+    $scope.video.embed = $scope.urlEmbed;
 
 
      window.addEventListener("orientationchange", function() {
@@ -296,13 +294,13 @@ angular.module('mobionicApp.controllers', [])
             $('.media-container .ng-binding').width(window_width).height(valueHeight);
             $('#video .padding,.nav-bar-container').show();
             $('.has-header').css('top', '44px');
-            $scope.video.embed = urlEmbed;
+            $scope.video.embed = $scope.urlEmbed;
         }else {
             $('.media-container').height(window_height);
             $('.media-container .ng-binding').width(window_width).height(valueHeight);
             $('#video .padding,.nav-bar-container').hide();
             $('.has-header').css('top', '0px');
-            $scope.video.embed = urlEmbed;
+            $scope.video.embed = $scope.urlEmbed;
         }
     })
 
@@ -310,21 +308,7 @@ angular.module('mobionicApp.controllers', [])
         window.open(url,'_system');
     }
 
-    $scope.sharePost = function () {
-          $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-a"></i> Aguarde',
 
-      showBackdrop: true,
-      duration: 5000
-    });
-        var subject = $scope.video.snippet.title;
-        var message = subject+" | Baixe o App Oficial do Fortaleza http://bit.ly/1j0YCLy";
-        message = message.replace(/(<([^>]+)>)/ig,"");
-        //var imagem = $scope.video.snippet.thumbnails.default.url;
-        var link = 'https://youtu.be/'+idVideo;
-        window.plugins.socialsharing.share(message, null, null, link);
-  
-    }
 
    $scope.init = function () {
         //screen.unlockOrientation();
@@ -334,6 +318,65 @@ angular.module('mobionicApp.controllers', [])
        $('.media-container .ng-binding').width(window_width).height(valueHeight);
        
     };
+
+    $scope.sharePost = function() {
+        
+    $scope.subject = $scope.video.snippet.title;
+    $scope.link = 'https://youtu.be/'+$scope.idVideo ;
+    $scope.message =  $scope.subject + ' ' + $scope.link;
+    $scope.image = $scope.video.snippet.thumbnails.default.url;
+
+            $ionicActionSheet.show({
+                buttons: [
+                    { text: 'Facebook' },
+                    { text: 'Twitter' },
+                    { text: 'Whatsapp' },
+                    { text: 'Email' },
+                    { text: 'Outros' }
+                ],
+                titleText: 'Compartilhar',
+                cancelText: 'Cancelar',
+                buttonClicked: function(index) {
+                    switch(index) {
+                        case 0:
+                            $scope.shareToFacebook();
+                            break;
+                        case 1:
+                            $scope.shareToTwitter();
+                            break;
+                        case 2:
+                            $scope.shareToWhatsApp();
+                            break;
+                        case 3:
+                            $scope.shareViaEmail();
+                            break;
+                        case 4:
+                            $scope.shareNative();
+                            break;
+                    }
+                    return true;
+                }
+            });
+        }
+     
+
+        $scope.shareNative = function() {
+            window.plugins.socialsharing.share($scope.message, $scope.subject, $scope.image, $scope.link);
+        }
+         $scope.shareToFacebook  = function() {
+            window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint($scope.subject, null, $scope.link);
+        }
+        $scope.shareToTwitter  = function() {
+            window.plugins.socialsharing.shareViaTwitter($scope.subject, null, $scope.link);
+        }
+        $scope.shareToWhatsApp  = function() {
+            window.plugins.socialsharing.shareViaWhatsApp($scope.post.Titulo, $scope.image, $scope.link);
+        }
+        $scope.shareViaEmail  = function() {
+            window.plugins.socialsharing.shareViaEmail($scope.message, $scope.subject, [], [], [], null);
+        }
+
+
 
     //   $scope.$on('$rootScope.orientation.change', function () {
     //   alert('orientacao alterada');
@@ -417,26 +460,68 @@ angular.module('mobionicApp.controllers', [])
 })
 
 // Post Controller
-.controller('DestaqueCtrl', function($scope,  $ionicLoading, $stateParams, DestaquesData) {
+.controller('DestaqueCtrl', function($scope,  $ionicLoading, $ionicActionSheet, $stateParams, DestaquesData) {
 
     $scope.destaque = DestaquesData.get($stateParams.postId);
     $scope.destaque.postId = $stateParams.postId;
 
-    $scope.sharePost = function () {
-            $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-a"></i> Aguarde',
+    
+    $scope.sharePost = function() {
+        
+    $scope.subject = $scope.post.Titulo;
+    $scope.link = 'http://fortalezaec.net'+$scope.post.URL;
+    $scope.message = $scope.post.Titulo + ' ' + $scope.link;
+    $scope.image = 'http://fortalezaec.net'+$scope.post.FotoNoticia;
 
-      showBackdrop: true,
-      duration: 5000
-    });
-        var subject = $scope.destaque.Titulo;
-        var message = $scope.destaque.Subtitulo;
-        message = message.replace(/(<([^>]+)>)/ig,"");
-         message += ' Baixe o App Oficial do Fortaleza http://bit.ly/1j0YCLy';
-        var img = 'http://fortalezaec.net/{{destaque.FotoNoticia}}';
-        var link = $scope.destaque.URL;
-        window.plugins.socialsharing.share(message, null, img, link);
-    }
+            $ionicActionSheet.show({
+                buttons: [
+                    { text: 'Facebook' },
+                    { text: 'Twitter' },
+                    { text: 'Whatsapp' },
+                    { text: 'Email' },
+                    { text: 'Outros' }
+                ],
+                titleText: 'Compartilhar',
+                cancelText: 'Cancelar',
+                buttonClicked: function(index) {
+                    switch(index) {
+                        case 0:
+                            $scope.shareToFacebook();
+                            break;
+                        case 1:
+                            $scope.shareToTwitter();
+                            break;
+                        case 2:
+                            $scope.shareToWhatsApp();
+                            break;
+                        case 3:
+                            $scope.shareViaEmail();
+                            break;
+                        case 4:
+                            $scope.shareNative();
+                            break;
+                    }
+                    return true;
+                }
+            });
+        }
+     
+
+        $scope.shareNative = function() {
+            window.plugins.socialsharing.share($scope.message, $scope.subject, $scope.image, $scope.link);
+        }
+         $scope.shareToFacebook  = function() {
+            window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint($scope.subject, $scope.image, $scope.link);
+        }
+        $scope.shareToTwitter  = function() {
+            window.plugins.socialsharing.shareViaTwitter($scope.subject, null, $scope.link);
+        }
+        $scope.shareToWhatsApp  = function() {
+            window.plugins.socialsharing.shareViaWhatsApp($scope.post.Titulo, $scope.image, $scope.link);
+        }
+        $scope.shareViaEmail  = function() {
+            window.plugins.socialsharing.shareViaEmail($scope.message, $scope.subject, [], [], [], null);
+        }
 
 })
 
@@ -491,55 +576,18 @@ angular.module('mobionicApp.controllers', [])
 })
 
 // Post Controller
-.controller('PostCtrl', function($scope,  $ionicLoading, $stateParams, PostsData) {
+.controller('PostCtrl', function($scope,  $ionicLoading,$ionicActionSheet, $stateParams, PostsData) {
 
     $scope.post = PostsData.get($stateParams.postId);
     $scope.post.postId = $stateParams.postId;
 
-    $scope.sharePost = function () {
-            $scope.loading = $ionicLoading.show({
-      template: '<i class="icon ion-loading-a"></i> Aguarde',
+    $scope.sharePost = function() {
+        
+    $scope.subject = $scope.post.Titulo;
+    $scope.link = 'http://fortalezaec.net'+$scope.post.URL;
+    $scope.message = $scope.post.Titulo + ' ' + $scope.link;
+    $scope.image = 'http://fortalezaec.net'+$scope.post.FotoNoticia;
 
-      showBackdrop: true,
-      duration: 5000
-    });
-        var message = $scope.post.Titulo;
-        message = message.replace(/(<([^>]+)>)/ig,"");
-        //message = message+'. Baixe o APP Oficial http://bit.ly/1j0YCLy';
-        var img = 'http://fortalezaec.net{{post.FotoNoticia}}';
-        var link = 'http://www.fortalezaec.net'+$scope.post.URL;
-        link = link.replace('App/', 'Ver/');
-        window.plugins.socialsharing.share(message, null, img, link);
-    }
-
-})
-
-// Post Controller
-.controller('NoticiaCtrl', ['$scope', '$sce', '$ionicLoading', '$ionicActionSheet', '$stateParams', 'PostsData', function($scope, $sce,$ionicLoading,$ionicActionSheet, $stateParams, PostsData, $cordovaSocialSharing) {
-    $scope.post = PostsData.get($stateParams.postId);
-    $scope.post.postId = $stateParams.postId;
-    $scope.post.iframe = 'http://www.fortalezaec.net/'+ $scope.post.URL;
-    var urlEmbed = $sce.trustAsHtml('<iframe src="'+$scope.post.iframe+'" frameborder="0" width="100%" height="100%"></iframe>');
-
-    $scope.post.embed = urlEmbed;
-
-        $scope.sharePost2 = function () {
-     
-        var message = $scope.post.Titulo;
-        message = message.replace(/(<([^>]+)>)/ig,"");
-        //message = message+' Leia Mais. Baixe o APP Oficial  http://bit.ly/1j0YCLy';
-        var img = 'http://fortalezaec.net/{{post.FotoNoticia}}';
-        var link = 'http://fortalezaec.net'+$scope.post.URL;
-        link = link.replace('App/', 'Ver/');
-        window.plugins.socialsharing.share(message, null, img, link);
-    }
-       $scope.subject = $scope.post.Titulo;
-        $scope.link = 'http://fortalezaec.net'+$scope.post.URL;
-        $scope.message = $scope.post.Titulo + ' ' + $scope.link;
-        $scope.image = 'http://fortalezaec.net'+$scope.post.FotoNoticia;
-
-  $scope.sharePost = function() {
-   
             $ionicActionSheet.show({
                 buttons: [
                     { text: 'Facebook' },
@@ -578,7 +626,78 @@ angular.module('mobionicApp.controllers', [])
             window.plugins.socialsharing.share($scope.message, $scope.subject, $scope.image, $scope.link);
         }
          $scope.shareToFacebook  = function() {
-            window.plugins.socialsharing.shareViaFacebook($scope.subject, $scope.image, $scope.link);
+            window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint($scope.subject, $scope.image, $scope.link);
+        }
+        $scope.shareToTwitter  = function() {
+            window.plugins.socialsharing.shareViaTwitter($scope.subject, null, $scope.link);
+        }
+        $scope.shareToWhatsApp  = function() {
+            window.plugins.socialsharing.shareViaWhatsApp($scope.post.Titulo, $scope.image, $scope.link);
+        }
+        $scope.shareViaEmail  = function() {
+            window.plugins.socialsharing.shareViaEmail($scope.message, $scope.subject, [], [], [], null);
+        }
+
+
+})
+
+// Post Controller
+.controller('NoticiaCtrl', ['$scope', '$sce', '$ionicLoading', '$ionicActionSheet', '$stateParams', 'PostsData', function($scope, $sce,$ionicLoading, $ionicActionSheet, $stateParams, PostsData, $cordovaSocialSharing) {
+    $scope.post = PostsData.get($stateParams.postId);
+    $scope.post.postId = $stateParams.postId;
+    $scope.post.iframe = 'http://www.fortalezaec.net/'+ $scope.post.URL;
+    var urlEmbed = $sce.trustAsHtml('<iframe src="'+$scope.post.iframe+'" frameborder="0" width="100%" height="100%"></iframe>');
+
+    $scope.post.embed = urlEmbed;
+
+   
+
+    $scope.sharePost = function() {
+
+    $scope.subject = $scope.post.Titulo;
+    $scope.link = 'http://fortalezaec.net'+$scope.post.URL;
+    $scope.message = $scope.post.Titulo + ' ' + $scope.link;
+    $scope.image = 'http://fortalezaec.net'+$scope.post.FotoNoticia;
+
+            $ionicActionSheet.show({
+                buttons: [
+                    { text: 'Facebook' },
+                    { text: 'Twitter' },
+                    { text: 'Whatsapp' },
+                    { text: 'Email' },
+                    { text: 'Outros' }
+                ],
+                titleText: 'Compartilhar',
+                cancelText: 'Cancelar',
+                buttonClicked: function(index) {
+                    switch(index) {
+                        case 0:
+                            $scope.shareToFacebook();
+                            break;
+                        case 1:
+                            $scope.shareToTwitter();
+                            break;
+                        case 2:
+                            $scope.shareToWhatsApp();
+                            break;
+                        case 3:
+                            $scope.shareViaEmail();
+                            break;
+                        case 4:
+                            $scope.shareNative();
+                            break;
+                    }
+                    return true;
+                }
+            });
+        }
+     
+
+        $scope.shareNative = function() {
+            window.plugins.socialsharing.share($scope.message, $scope.subject, $scope.image, $scope.link);
+        }
+         $scope.shareToFacebook  = function() {
+            window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint($scope.subject, $scope.image, $scope.link);
         }
         $scope.shareToTwitter  = function() {
             window.plugins.socialsharing.shareViaTwitter($scope.subject, null, $scope.link);
@@ -593,7 +712,7 @@ angular.module('mobionicApp.controllers', [])
 }])
 
 // Posts Controller
-.controller('TempoRealCtrl', function($scope, $ionicLoading, TempoRealData, TempoRealStorage) {
+.controller('TempoRealCtrl', function($scope, $ionicLoading, TempoRealData, $ionicActionSheet, TempoRealStorage) {
 
     $scope.temporeal = [];
     $scope.storage = '';
@@ -623,23 +742,70 @@ angular.module('mobionicApp.controllers', [])
         function() {}
     );
      $scope.close_foto = function () {
-
         $('#lightbox2 span').html('').promise().done(function(){
             $('#lightbox2').fadeOut(500);  
              $('a[data-active="true"]').attr('data-active', false);
         });  
     };
-    $scope.sharePost = function ()  {
-        var imagem = $('#lances a[data-active="true"] img').data('imgfull');
-        var texto = $('#lances a[data-active="true"] img').data('texto');
-        var link = $('#lances a[data-active="true"] img').data('link');
-        var message = texto+". via App oficial Fortaleza http://bit.ly/1j0YCLy";
-        message = message.replace(/(<([^>]+)>)/ig,"");
-        var imagem = $scope.ativoimg;
-        var link = 'http://bit.ly/1j0YCLy';
-        window.plugins.socialsharing.share(message, null, imagem, link);
 
+
+    $scope.sharePost = function() {
+
+    $scope.subject =  "Tempo Real: "+temporeal.Mandante.Nome+" X "+temporeal.Visitante.Nome;
+    $scope.link = 'http://bit.ly/1j0YCLy';
+    $scope.message = $scope.subject+" "+$('#lances a[data-active="true"] img').data('texto');
+    $scope.message = $scope.message.replace(/(<([^>]+)>)/ig,"")
+    $scope.image = $('#lances a[data-active="true"] img').data('imgfull');
+
+    $ionicActionSheet.show({
+                buttons: [
+                    { text: 'Facebook' },
+                    { text: 'Twitter' },
+                    { text: 'Whatsapp' },
+                    { text: 'Email' },
+                    { text: 'Outros' }
+                ],
+                titleText: 'Compartilhar',
+                cancelText: 'Cancelar',
+                buttonClicked: function(index) {
+                    switch(index) {
+                        case 0:
+                            $scope.shareToFacebook();
+                            break;
+                        case 1:
+                            $scope.shareToTwitter();
+                            break;
+                        case 2:
+                            $scope.shareToWhatsApp();
+                            break;
+                        case 3:
+                            $scope.shareViaEmail();
+                            break;
+                        case 4:
+                            $scope.shareNative();
+                            break;
+                    }
+                    return true;
+                }
+            });
     }
+     
+
+        $scope.shareNative = function() {
+            window.plugins.socialsharing.share($scope.message, $scope.subject, $scope.image, $scope.link);
+        }
+         $scope.shareToFacebook  = function() {
+            window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint($scope.subject, $scope.image, $scope.link);
+        }
+        $scope.shareToTwitter  = function() {
+            window.plugins.socialsharing.shareViaTwitter($scope.subject, null, $scope.link);
+        }
+        $scope.shareToWhatsApp  = function() {
+            window.plugins.socialsharing.shareViaWhatsApp($scope.post.Titulo, $scope.image, $scope.link);
+        }
+        $scope.shareViaEmail  = function() {
+            window.plugins.socialsharing.shareViaEmail($scope.message, $scope.subject, [], [], [], null);
+        }
 
 })
 // Lances Controller
@@ -756,7 +922,7 @@ angular.module('mobionicApp.controllers', [])
     }
     var page = 1;
     // Define the number of the posts in the page
-    var pageSize = 7;
+    var pageSize = 10;
 
     $scope.paginationLimit = function(data) {
     return pageSize * page;
@@ -836,11 +1002,7 @@ angular.module('mobionicApp.controllers', [])
         var subject = $scope.jogador.NomeUsual;
         var message = $scope.jogador.Idade;
         message = message.replace(/(<([^>]+)>)/ig,"");
-
         var link = $scope.jogador.url;
-
-        
-        
         window.plugins.socialsharing.share(message, null, null, link);
     }
 
