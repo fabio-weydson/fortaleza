@@ -571,17 +571,17 @@ angular.module('mobionicApp.controllers', [])
         $scope.message = $scope.post.Titulo + ' ' + $scope.link;
         $scope.image = 'http://fortalezaec.net/{{post.FotoNoticia}}';
 
-         $scope.shareNative = function() {
-            $cordovaSocialSharing.share($scope.message, $scope.subject, null, $scope.link);
+        $scope.shareNative = function() {
+            window.plugins.socialsharing.share($scope.message, $scope.subject, $scope.image, $scope.link);
         }
          $scope.shareToFacebook  = function() {
-            $cordovaSocialSharing.shareViaFacebook($scope.message, $scope.image, $scope.link);
+            window.plugins.socialsharing.shareViaFacebook($scope.message, $scope.image, $scope.link);
         }
         $scope.shareToTwitter  = function() {
             window.plugins.socialsharing.shareViaTwitter($scope.message, $scope.image, $scope.link);
         }
         $scope.shareToWhatsApp  = function() {
-            window.plugins.socialsharing.shareViaWhatsApp($scope.message, $scope.image, $scope.link);
+            window.plugins.socialsharing.shareViaWhatsApp('teste', null, null);
         }
         $scope.shareViaEmail  = function() {
             window.plugins.socialsharing.shareViaEmail($scope.message, $scope.subject, [], [], [], null);
