@@ -389,7 +389,7 @@ angular.module('mobionicApp.data', [])
 // Gallery Data: Gallery configuration
 .factory('VideosData', function($http, $q, VideosStorage) {
 
-    var json = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=UUV5UiFF5AlNKW4sLXcYMG_g&fields=items/id,items/snippet/publishedAt,items/snippet/title,items/snippet/description,items/snippet/resourceId/videoId,items/snippet/thumbnails/default&key=AIzaSyDAyzQoPMlHyqjx5MJ5NS9jv3cM8JihcOc';
+    var json = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=UUV5UiFF5AlNKW4sLXcYMG_g&fields=items/id,items/snippet/publishedAt,items/snippet/title,items/snippet/description,items/snippet/resourceId/videoId,items/snippet/thumbnails/default,items/snippet/thumbnails/high&key=AIzaSyDAyzQoPMlHyqjx5MJ5NS9jv3cM8JihcOc';
     var deferred = $q.defer();
     var promise = deferred.promise;
     var data = [];

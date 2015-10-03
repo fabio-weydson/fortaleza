@@ -285,28 +285,32 @@ angular.module('mobionicApp.controllers', [])
     $scope.video.embed = $scope.urlEmbed;
 
 
-     window.addEventListener("orientationchange", function() {
-           var window_width = $('.media-container').width();
-            var window_height = window.innerHeight;
-            window_width *= 1;
-            var valueHeight = Math.round((window_width/16)*9);
-        if(window.orientation == 0) {
-            $('.media-container').height(valueHeight);
-            $('.media-container .ng-binding').width(window_width).height(valueHeight);
-            $('#video .padding,.nav-bar-container').show();
-            $('.has-header').css('top', '44px');
-            //$scope.video.embed = $scope.urlEmbed;
-           $('#frame_video').attr('src', $scope.video_url);
-        }else {
-            $('.media-container').height(window_height);
-            $('.media-container .ng-binding').width(window_width).height(valueHeight);
-            $('#video .padding,.nav-bar-container').hide();
-            $('.has-header').css('top', '0px');
-           $('#frame_video').attr('src', $scope.video_url);
-            //$scope.video.embed = $scope.urlEmbed;
-        }
-    })
+    //  window.addEventListener("orientationchange", function() {
+    //        var window_width = $('.media-container').width();
+    //         var window_height = window.innerHeight;
+    //         window_width *= 1;
+    //         var valueHeight = Math.round((window_width/16)*9);
+    //     if(window.orientation == 0) {
+    //         $('.media-container').height(valueHeight);
+    //         $('.media-container .ng-binding').width(window_width).height(valueHeight);
+    //         $('#video .padding,.nav-bar-container').show();
+    //         $('.has-header').css('top', '44px');
+    //         //$scope.video.embed = $scope.urlEmbed;
+    //        $('#frame_video').attr('src', $scope.video_url);
+    //     }else {
+    //         $('.media-container').height(window_height);
+    //         $('.media-container .ng-binding').width(window_width).height(valueHeight);
+    //         $('#video .padding,.nav-bar-container').hide();
+    //         $('.has-header').css('top', '0px');
+    //        $('#frame_video').attr('src', $scope.video_url);
+    //         //$scope.video.embed = $scope.urlEmbed;
+    //     }
+    // })
+    
+    $scope.abreVideo = function(){
+        YoutubeVideoPlayer.openVideo($scope.idVideo);
 
+    }
     $scope.loadURL = function (url) { 
         window.open(url,'_system');
     }
@@ -640,7 +644,7 @@ angular.module('mobionicApp.controllers', [])
             window.plugins.socialsharing.shareViaTwitter($scope.subject, null, $scope.link);
         }
         $scope.shareToWhatsApp  = function() {
-            window.plugins.socialsharing.shareViaWhatsApp($scope.post.Titulo, $scope.image, $scope.link);
+            window.plugins.socialsharing.shareViaWhatsApp($scope.post.Titulo, null, $scope.link);
         }
         $scope.shareViaEmail  = function() {
             window.plugins.socialsharing.shareViaEmail($scope.message, $scope.subject, [], [], [], null);

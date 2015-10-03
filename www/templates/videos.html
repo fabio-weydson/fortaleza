@@ -9,7 +9,7 @@
     <span class="localdata">{{storage}}</span>
           <div class="list">
             <a class="item" ng-class="{'item-thumbnail-left' : video.snippet.thumbnails.default.url}" href="#/app/video/{{$index}}" ng-repeat="video in videos | limitTo: paginationLimit()" >
-                <img img-cache ic-src="{{video.snippet.thumbnails.default.url}}">
+                <img ng-src="{{video.snippet.thumbnails.default.url}}">
                 
                 <h2>{{video.snippet.title}}</h2>
                 <h3>{{video.snippet.description}}...</h3>
