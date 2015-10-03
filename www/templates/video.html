@@ -6,11 +6,9 @@
         <span class="localdata">{{storage}}</span>
         <div id="video" >
          <div class="item item-image">
-                 <div class="media-container" >
+                 <div class="media-container" data-ng-init="init()">
                  
-                  <!-- <div ng-bind-html="video.embed"></div> -->
-                  <a href="{{video_url}}"><img ng-src="{{video.snippet.thumbnails.high.url}}"></a><br/>
-<a href="https://www.youtube.com/watch?v={{idVideo}}"><img ng-src="{{video.snippet.thumbnails.high.url}}"></a>
+                  <div ng-bind-html="video.embed"></div>
                             </div>
           </div>
                        <div class="padding">
