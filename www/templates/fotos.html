@@ -11,7 +11,7 @@
 
          <div id="fotos" >
             <div class="thumb" data-thumbid="{{foto.id}}"  ng-repeat="foto in fotos  | limitTo: paginationLimit()">
-                <img ng-click="abre_foto($event, '{{foto.id}}')" data-texto="{{foto.caption.text | limitTo:240}}" data-imgfull="{{foto.images.standard_resolution.url}}"  data-link="{{foto.link}}"  ng-src="{{foto.images.thumbnail.url}}"/>
+                <img ng-click="abre_foto($event, '{{foto.id}}')" data-texto="{{foto.caption.text | limitTo:240}}" data-imgfull="{{foto.images.standard_resolution.url}}"  data-link="{{foto.link}}" img-cache ic-src="{{foto.images.thumbnail.url}}"/>
             </div>
         </div>
          <button class="button button-block button-positive" ng-show="hasMoreItems()" ng-click="showMoreItems()" >

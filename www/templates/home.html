@@ -44,7 +44,7 @@
         <div class="list">
 
             <a class="item" ng-class="{'item-thumbnail-left' : post.FotoNoticia.length}" href="#/app/posts/{{$index}}" ng-repeat="post in posts | limitTo: paginationLimit()"  >
-                <img img-cache ic-src="http://www.fortalezaec.net/{{post.FotoNoticia}}" with="150" ng-show="{{post.FotoNoticia.length}}" alt="{{post.Titulo}}">
+                <img img-cache ic-src="http://www.fortalezaec.net/{{post.FotoNoticia}}" with="150" ng-show="{{post.FotoNoticia.length}}">
                 
                 <h2>{{post.Titulo}}</h2>
                 <h3>{{post.Subtitulo}}</h3>
