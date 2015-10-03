@@ -308,7 +308,7 @@ angular.module('mobionicApp.controllers', [])
     // })
     
     $scope.abreVideo = function(){
-        YoutubeVideoPlayer.openVideo($scope.idVideo);
+        window.youtube.playVideo($scope.idVideo);
 
     }
     $scope.loadURL = function (url) { 

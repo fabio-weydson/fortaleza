@@ -69,7 +69,7 @@
     <gap:plugin name="cordova-plugin-statusbar" source="npm"  />
     <gap:plugin name="nl.x-services.plugins.socialsharing" /> 
     <gap:plugin name="it.witek.cordova.plugin.background-mode" />
-    <gap:plugin name="com.bunkerpalace.cordova.YoutubeVideoPlayer" source="npm"/>
+    <gap:plugin name="remcob00-cordova-youtube-android-player-api" source="npm"/>
 
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />
