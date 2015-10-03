@@ -7,7 +7,7 @@ angular.module('mobionicApp.controllers', [])
  $scope.items = Data.items;
  });
  */
-.controller('HomeCtrl',function($scope, $ionicLoading, PostsData, PostsStorage) {
+.controller('HomeCtrl',function($scope, $ionicLoading, PostsData, PostsStorage, ImgCache) {
 
     $scope.news = [];
     $scope.storage = '';
@@ -418,7 +418,7 @@ angular.module('mobionicApp.controllers', [])
 
 })
 // Posts Controller
-.controller('DestaquesCtrl', function($scope, $ionicLoading, $interval, $location, $ionicSlideBoxDelegate, DestaquesData, DestaquesStorage) {
+.controller('DestaquesCtrl', function($scope, $ionicLoading, $interval, $location, $ionicSlideBoxDelegate, DestaquesData, DestaquesStorage, ImgCache) {
   $scope.intervalo = 4000;
     $scope.destaques = [];
     $scope.storage = '';
@@ -462,6 +462,7 @@ angular.module('mobionicApp.controllers', [])
             },$scope.intervalo)
         }
     }
+
 
            
 })
@@ -1223,6 +1224,7 @@ $scope.changedValue=function(item){
         });
 
     };
+
 
 })
 

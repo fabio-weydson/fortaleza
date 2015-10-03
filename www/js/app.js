@@ -3,9 +3,10 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'mobionicApp' is the name of this angular module (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.data', 'mobionicApp.directives', 'mobionicApp.filters', 'mobionicApp.storage', 'ngSanitize'])
+angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.data', 'mobionicApp.directives', 'mobionicApp.filters', 'mobionicApp.storage', 'ngSanitize', 'ImgCache'])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+    ImgCache.$init();
     navigator.splashscreen.hide();
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -32,7 +33,22 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
 
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, ImgCacheProvider) {
+
+   // set single options
+    ImgCacheProvider.setOption('debug', true);
+    ImgCacheProvider.setOption('usePersistentCache', true);
+
+    // or more options at once
+    ImgCacheProvider.setOptions({
+        debug: true,
+        usePersistentCache: true
+    });
+
+    // ImgCache library is initialized automatically,
+    // but set this option if you are using platform like Ionic -
+    // in this case we need init imgcache.js manually after device is ready
+    ImgCacheProvider.manualInit = true;
 
     // $ionicConfigProvider
     // http://ionicframework.com/docs/api/provider/%24ionicConfigProvider/

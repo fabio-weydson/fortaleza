@@ -15,7 +15,7 @@
 				  <ion-slide-box on-slide-changed="slideChanged($index)" auto-play="true" does-continue="true" id="slidehome" delegate-handle="slidehome">
 				      <ion-slide ng-repeat="destaque in destaques | limitTo: 4"  >
 				        <a href="#/app/destaque/{{$index}}" ><h3>{{destaque.Titulo}}</h3></a>
-				          <a href="#/app/destaque/{{$index}}" ><img ng-src="http://www.fortalezaec.net{{destaque.Foto}}" width="100%" style="100%;"></a>
+				          <a href="#/app/destaque/{{$index}}" ><img img-cache ic-src="http://www.fortalezaec.net{{destaque.Foto}}" width="100%" style="100%;"></a>
 				      </ion-slide>
 				     
 				    </ion-slide-box>
@@ -44,7 +44,7 @@
         <div class="list">
 
             <a class="item" ng-class="{'item-thumbnail-left' : post.FotoNoticia.length}" href="#/app/posts/{{$index}}" ng-repeat="post in posts | limitTo: paginationLimit()"  >
-                <img ng-src="http://www.fortalezaec.net/{{post.FotoNoticia}}" with="150" ng-show="{{post.FotoNoticia.length}}" alt="{{post.Titulo}}">
+                <img img-cache ic-src="http://www.fortalezaec.net/{{post.FotoNoticia}}" with="150" ng-show="{{post.FotoNoticia.length}}" alt="{{post.Titulo}}">
                 
                 <h2>{{post.Titulo}}</h2>
                 <h3>{{post.Subtitulo}}</h3>
