@@ -44,12 +44,12 @@
     <preference name="AutoHideSplashScreen" value="false" />
     <!-- Do not auto hide splash on Android -->
     <preference name="SplashScreenDelay" value="10000"/>
-    <preference name="phonegap-version" value="cli-5.1.1" />
+  <!--   <preference name="phonegap-version" value="cli-5.1.1" /> -->
     <!--
         Define a specific version of PhoneGap to build into your app.
         <preference name="phonegap-version"       value="cli-5.2.0" />
     -->
-
+  <preference name="phonegap-version"       value="3.5.0" />
     <!-- Plugins -->
 
     <!-- Core plugins -->
