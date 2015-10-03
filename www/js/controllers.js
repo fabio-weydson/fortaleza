@@ -279,7 +279,8 @@ angular.module('mobionicApp.controllers', [])
 
 
     $scope.idVideo = $scope.video.snippet.resourceId.videoId;
-    $scope.urlEmbed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/'+$scope.idVideo+'?rel=0&showinfo=0&allownetworking=internal&fs=0&theme=light&controls=2&autohide=1" frameborder="0" width="100%" height="100%"></iframe>');
+    $scope.video_url = 'https://www.youtube.com/embed/'+$scope.idVideo+'?rel=0&showinfo=0&allownetworking=internal&fs=0&theme=light&controls=2&autohide=1';
+    $scope.urlEmbed = $sce.trustAsHtml('<iframe id="frame_video" src="'+ $scope.video_url+'" frameborder="0" width="100%" height="100%"></iframe>');
 
     $scope.video.embed = $scope.urlEmbed;
 
@@ -294,13 +295,15 @@ angular.module('mobionicApp.controllers', [])
             $('.media-container .ng-binding').width(window_width).height(valueHeight);
             $('#video .padding,.nav-bar-container').show();
             $('.has-header').css('top', '44px');
-            $scope.video.embed = $scope.urlEmbed;
+            //$scope.video.embed = $scope.urlEmbed;
+           $('#frame_video').attr('src', $scope.video_url);
         }else {
             $('.media-container').height(window_height);
             $('.media-container .ng-binding').width(window_width).height(valueHeight);
             $('#video .padding,.nav-bar-container').hide();
             $('.has-header').css('top', '0px');
-            $scope.video.embed = $scope.urlEmbed;
+           $('#frame_video').attr('src', $scope.video_url);
+            //$scope.video.embed = $scope.urlEmbed;
         }
     })
 
@@ -415,7 +418,7 @@ angular.module('mobionicApp.controllers', [])
 
 })
 // Posts Controller
-.controller('DestaquesCtrl', function($scope, $ionicLoading, $interval, $ionicSlideBoxDelegate, DestaquesData, DestaquesStorage) {
+.controller('DestaquesCtrl', function($scope, $ionicLoading, $interval, $location, $ionicSlideBoxDelegate, DestaquesData, DestaquesStorage) {
   $scope.intervalo = 4000;
     $scope.destaques = [];
     $scope.storage = '';
@@ -438,8 +441,9 @@ angular.module('mobionicApp.controllers', [])
 
         }
     );
-
+       
     $scope.animaBarra = function(tempo){
+
            $(".meter > span").stop().width(0);
            $(".meter > span").animate({
                         width: '100%'
@@ -447,10 +451,13 @@ angular.module('mobionicApp.controllers', [])
     }
     $scope.slideChanged = function(index) {
         $scope.animaBarra($scope.intervalo);
+
         if(index==3) {
             $interval(function(){
+                if($location.path()=='/app/home') {
                 $ionicSlideBoxDelegate.$getByHandle('slidehome').slide(0,0);
                             $ionicSlideBoxDelegate.$getByHandle('slidehome').start();
+                        }
 
             },$scope.intervalo)
         }

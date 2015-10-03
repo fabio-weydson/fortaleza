@@ -62,8 +62,8 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
       views: {
         'menuContent' :{
           //templateUrl: "templates/loja.html",
-          templateUrl: "templates/construcao.html",
-           controller: 'ProductsCtrl'
+          templateUrl: "templates/construcao.html"
+           //controller: 'ProductsCtrl'
                   }
       }
     })
