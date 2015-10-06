@@ -588,6 +588,7 @@ angular.module('mobionicApp.data', [])
     /* (For DEMO purposes) Local JSON data */
     //var json = 'http://179.188.17.9/~fortalezaapp/webservice/tempo_real.php?ver=linha_do_tempo&v=5';
     var json = 'https://graph.facebook.com/v2.4/FortalezaOficial/posts?fields=picture,full_picture,message,created_time&since='+hora_before+'&until='+hora_depois+'&access_token=CAAWZCKW9JPX4BAMv7n2gCFAjZCihkZBp19GY8hR0DSrZCtkXC7vKqyzcZBPZCvuRzCxPg4BCvX5ZB5cLvZAmfWVRSptaIgXCXtY3zp7NwHV8UDL5B9KNONC9LrRMwgL3HtzWTZCUwBzojZB0aMYZAV5ZBoWPu300Ut7wIMzMZCKzbdQUUD1om9x7BZCnIYemAeySBekc8ZD';
+    console.log(json);
     var deferred = $q.defer();
     var promise = deferred.promise;
     var data = [];

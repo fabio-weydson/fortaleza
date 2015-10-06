@@ -167,7 +167,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.link = $scope.ativolink.replace('https://instagram.com', 'http://instagr.am');
     $scope.message = $scope.ativotexto.replace(/(<([^>]+)>)/ig,"") + ' ' + $scope.ativolink.replace('https://instagram.com', 'http://instagr.am');
     $scope.image = $scope.ativoimg;
-
+    console.log($scope.ativoimg);
             $ionicActionSheet.show({
                 buttons: [
                     { text: 'Facebook' },
@@ -212,13 +212,15 @@ angular.module('mobionicApp.controllers', [])
             window.plugins.socialsharing.shareViaTwitter($scope.subject, null, $scope.link);
         }
         $scope.shareToWhatsApp  = function() {
-            window.plugins.socialsharing.shareViaWhatsApp($scope.post.Titulo, $scope.image, $scope.link);
+            window.plugins.socialsharing.shareViaWhatsApp($scope.message, $scope.image, $scope.link);
         }
         $scope.shareViaEmail  = function() {
             window.plugins.socialsharing.shareViaEmail($scope.message, $scope.subject, [], [], [], null);
         }
 
-
+        $scope.loadURL = function (url) {
+            window.open(url,'_system');
+        }
 
 })
 
@@ -291,6 +293,7 @@ angular.module('mobionicApp.controllers', [])
             var window_height = window.innerHeight;
             window_width *= 1;
             var valueHeight = Math.round((window_width/16)*9);
+            alert(window.orientation+"_"+window_width+"_"+valueHeight);
         if(window.orientation == 0) {
             $('.media-container').height(valueHeight);
             $('.media-container .ng-binding').width(window_width).height(valueHeight);
@@ -667,7 +670,11 @@ angular.module('mobionicApp.controllers', [])
     $scope.subject = $scope.post.Titulo;
     $scope.link = 'http://fortalezaec.net'+$scope.post.URL;
     $scope.message = $scope.post.Titulo + ' ' + $scope.link;
-    $scope.image = 'http://fortalezaec.net'+$scope.post.FotoNoticia;
+    if($scope.post.FotoNoticia) {
+        $scope.image = 'http://fortalezaec.net'+$scope.post.FotoNoticia;
+    } else {
+        $scope.image = null;
+    }
 
             $ionicActionSheet.show({
                 buttons: [
@@ -761,11 +768,15 @@ angular.module('mobionicApp.controllers', [])
 
     $scope.sharePost = function() {
 
-    $scope.subject =  "Tempo Real: "+temporeal.Mandante.Nome+" X "+temporeal.Visitante.Nome;
+    $scope.subject =  "Tempo Real: "+$scope.temporeal.Mandante.Nome+" X "+$scope.temporeal.Visitante.Nome;
     $scope.link = 'http://bit.ly/1j0YCLy';
     $scope.message = $scope.subject+" "+$('#lances a[data-active="true"] img').data('texto');
     $scope.message = $scope.message.replace(/(<([^>]+)>)/ig,"")
-    $scope.image = $('#lances a[data-active="true"] img').data('imgfull');
+    if($scope.image) {
+        $scope.image = $('#lances a[data-active="true"] img').data('imgfull');
+    } else {
+        $scope.image = null;
+    }
 
     $ionicActionSheet.show({
                 buttons: [
@@ -811,7 +822,7 @@ angular.module('mobionicApp.controllers', [])
             window.plugins.socialsharing.shareViaTwitter($scope.subject, null, $scope.link);
         }
         $scope.shareToWhatsApp  = function() {
-            window.plugins.socialsharing.shareViaWhatsApp($scope.post.Titulo, $scope.image, $scope.link);
+            window.plugins.socialsharing.shareViaWhatsApp($scope.subject, $scope.image, $scope.link);
         }
         $scope.shareViaEmail  = function() {
             window.plugins.socialsharing.shareViaEmail($scope.message, $scope.subject, [], [], [], null);

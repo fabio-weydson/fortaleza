@@ -512,7 +512,6 @@ div#jogador .blade img {
     text-align: center;
     overflow: hidden;
     min-height: 118px;
-    display: table;
 }
 
 #tempo-real .placar {
@@ -560,10 +559,8 @@ div#tempo-real {
     padding-top: 0px;
 }
 #tempo-real .data div {
-    line-height: 24px;
+    margin-top: 38%;
     color: #FFF;
-    display: table-cell !important;
-    vertical-align: middle;
 }
 
 
