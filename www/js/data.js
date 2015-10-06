@@ -635,16 +635,23 @@ angular.module('mobionicApp.data', [])
 
     service.async = function() {
     $http({method: 'GET', url: json, timeout: 5000}).
-    // this callback will be called asynchronously
-    // when the response is available.
+
+
     success(function(d) {
-        data = d.Model;
+         d = d.Model;
+         console.log(d);
+        $.each(d, function( index, value ) {
+            if(value.Foto) {
+                data.push(value);
+            }
+        });
+
+        console.log(data);
+
         DestaquesStorage.save(data);
         deferred.resolve();
-
     }).
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
+
     error(function() {
         data = DestaquesStorage.all();
         deferred.reject();

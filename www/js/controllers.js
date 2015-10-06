@@ -299,15 +299,17 @@ angular.module('mobionicApp.controllers', [])
             $('.media-container .ng-binding').width(window_width).height(valueHeight);
             $('#video .padding,.nav-bar-container').show();
             $('.has-header').css('top', '44px');
-            //$scope.video.embed = $scope.urlEmbed;
-           $('#frame_video').attr('src', $scope.video_url);
+            $scope.video.embed = $scope.urlEmbed;
+            $scope.video.embed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/cTy6SkCIQAw" frameborder="0" width="100%" height="100%"></iframe>');
+            //$('#frame_video').attr('src', $scope.video_url);
         }else {
             $('.media-container').height(window_height);
             $('.media-container .ng-binding').width(window_width).height(valueHeight);
             $('#video .padding,.nav-bar-container').hide();
             $('.has-header').css('top', '0px');
-           $('#frame_video').attr('src', $scope.video_url);
+            //$('#frame_video').attr('src', $scope.video_url);
             //$scope.video.embed = $scope.urlEmbed;
+            $scope.video.embed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/cTy6SkCIQAw" frameborder="0" width="100%" height="100%"></iframe>');
         }
     })
     
@@ -599,7 +601,12 @@ angular.module('mobionicApp.controllers', [])
     $scope.subject = $scope.post.Titulo;
     $scope.link = 'http://fortalezaec.net'+$scope.post.URL;
     $scope.message = $scope.post.Titulo + ' ' + $scope.link;
-    $scope.image = 'http://fortalezaec.net'+$scope.post.FotoNoticia;
+    if($scope.post.FotoNoticia) {
+        $scope.image = 'http://fortalezaec.net'+$scope.post.FotoNoticia;
+    } else {
+        $scope.image = null;
+    }
+
 
             $ionicActionSheet.show({
                 buttons: [
@@ -645,7 +652,7 @@ angular.module('mobionicApp.controllers', [])
             window.plugins.socialsharing.shareViaTwitter($scope.subject, null, $scope.link);
         }
         $scope.shareToWhatsApp  = function() {
-            window.plugins.socialsharing.shareViaWhatsApp($scope.post.Titulo, null, $scope.link);
+            window.plugins.socialsharing.shareViaWhatsApp($scope.post.Titulo, $scope.image, $scope.link);
         }
         $scope.shareViaEmail  = function() {
             window.plugins.socialsharing.shareViaEmail($scope.message, $scope.subject, [], [], [], null);
