@@ -276,7 +276,7 @@ angular.module('mobionicApp.controllers', [])
 })
 
 // Video Controller
-.controller('VideoCtrl', ['$scope', '$ionicLoading', '$ionicActionSheet' ,'$sce', '$stateParams', 'VideosData', function($scope, $ionicLoading, $ionicActionSheet, $sce, $stateParams, VideosData){
+.controller('VideoCtrl', ['$scope', '$ionicLoading', '$ionicActionSheet' ,'$sce', '$stateParams', '$timeout', 'VideosData', function($scope, $ionicLoading, $ionicActionSheet, $sce, $stateParams, $timeout, VideosData){
     
     $scope.video = VideosData.get($stateParams.videoId);
 
@@ -289,6 +289,7 @@ angular.module('mobionicApp.controllers', [])
 
 
      window.addEventListener("orientationchange", function() {
+        $timeout(function() {
            var window_width = $('.media-container').width();
             var window_height = window.innerHeight;
             window_width *= 1;
@@ -311,6 +312,7 @@ angular.module('mobionicApp.controllers', [])
             //$scope.video.embed = $scope.urlEmbed;
             $scope.video.embed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/cTy6SkCIQAw" frameborder="0" width="'+window_width+'" height="'+valueHeight+'"></iframe>');
         }
+        }, 1000);
     })
     
  
