@@ -165,7 +165,7 @@ angular.module('mobionicApp.controllers', [])
         
     $scope.subject = null;
     $scope.link = $scope.ativolink.replace('https://instagram.com', 'http://instagr.am');
-    $scope.message = $scope.ativotexto.replace(/(<([^>]+)>)/ig,"") + ' ' + $scope.ativolink.replace('https://instagram.com', 'http://instagr.am');
+    $scope.message = $scope.ativotexto.replace(/(<([^>]+)>)/ig,"");
     $scope.image = $scope.ativoimg;
     console.log($scope.ativoimg);
             $ionicActionSheet.show({
@@ -612,13 +612,14 @@ angular.module('mobionicApp.controllers', [])
     $scope.sharePost = function() {
         
     $scope.subject = $scope.post.Titulo;
-    $scope.link = 'http://fortalezaec.net'+$scope.post.URL;
+    $scope.link = 'http://fortalezaec.net'+$scope.post.URL.replace('/App/', '/Ver/');
     $scope.message = $scope.post.Titulo + ' ' + $scope.link;
     if($scope.post.FotoNoticia) {
         $scope.image = 'http://fortalezaec.net'+$scope.post.FotoNoticia;
     } else {
         $scope.image = null;
     }
+    console.log($scope.link);
 
 
             $ionicActionSheet.show({
@@ -688,7 +689,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.sharePost = function() {
 
     $scope.subject = $scope.post.Titulo;
-    $scope.link = 'http://fortalezaec.net'+$scope.post.URL;
+    $scope.link = 'http://fortalezaec.net'+$scope.post.URL.replace('/App/', '/Ver/');;
     $scope.message = $scope.post.Titulo + ' ' + $scope.link;
     if($scope.post.FotoNoticia) {
         $scope.image = 'http://fortalezaec.net'+$scope.post.FotoNoticia;

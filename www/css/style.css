@@ -366,7 +366,8 @@ div#slides {
     /* overflow: hidden; */
 }
 a.item {
-    padding-bottom: 4px;
+    /* padding-bottom: 11px; */
+    min-height: 80px;
 }
 h2.title {
     font-size: 1.4em;
@@ -443,9 +444,11 @@ h2.title {
 }
 
 .item-thumbnail-left, .item-thumbnail-left .item-content {
-  padding-top: 8px;
+  padding-top: 6px;
   padding-left: 97px;
-  min-height: 80px; }
+  min-height: 80px;
+  padding-bottom: 10px;
+  }
 
   #jogadores-lista img {
     max-width: 60px;
