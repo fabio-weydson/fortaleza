@@ -300,7 +300,7 @@ angular.module('mobionicApp.controllers', [])
             $('#video .padding,.nav-bar-container').show();
             $('.has-header').css('top', '44px');
             $scope.video.embed = $scope.urlEmbed;
-            $scope.video.embed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/cTy6SkCIQAw" frameborder="0" width="100%" height="100%"></iframe>');
+            $scope.video.embed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/cTy6SkCIQAw" frameborder="0" width="'+window_width+'" height="'+valueHeight+'"></iframe>');
             //$('#frame_video').attr('src', $scope.video_url);
         }else {
             $('.media-container').height(window_height);
@@ -309,7 +309,7 @@ angular.module('mobionicApp.controllers', [])
             $('.has-header').css('top', '0px');
             //$('#frame_video').attr('src', $scope.video_url);
             //$scope.video.embed = $scope.urlEmbed;
-            $scope.video.embed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/cTy6SkCIQAw" frameborder="0" width="100%" height="100%"></iframe>');
+            $scope.video.embed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/cTy6SkCIQAw" frameborder="0" width="'+window_width+'" height="'+valueHeight+'"></iframe>');
         }
     })
     
