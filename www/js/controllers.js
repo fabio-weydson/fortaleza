@@ -269,9 +269,13 @@ angular.module('mobionicApp.controllers', [])
     $scope.showMoreItems = function() {
     page = page + 1;
     };
-    $scope.loadURL = function (url) {
+        
+ 
+    $scope.loadURL = function (url) { 
         window.open(url,'_system');
     }
+
+
 
 })
 
@@ -305,29 +309,28 @@ angular.module('mobionicApp.controllers', [])
             $('.media-container').height(valueHeight);
             $('.media-container .ng-binding').width(window_width).height(valueHeight);
             $('#video .padding,.nav-bar-container').show();
-            $('.has-header').css('top', '44px');
+            $('.has-header').animate({
+                    top: "44px",
+                    }, 500);
             //$scope.video.embed = $scope.urlEmbed;
-            $scope.video.embed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/'+$scope.idVideo+'?rel=0&showinfo=0&allownetworking=internal&fs=0&theme=light&controls=2&autohide=1" frameborder="0" width="'+window_width+'" height="'+valueHeight+'"></iframe>');
+            $scope.video.embed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/'+$scope.idVideo+'?rel=0&showinfo=0&allownetworking=internal&fs=0&theme=light&controls=2&autohide=1?&feature=player_embedded" frameborder="0" width="'+window_width+'" height="'+valueHeight+'"></iframe>');
             //$('#frame_video').attr('src', $scope.video_url);
             $ionicLoading.hide();
         }else {
             $('.media-container').height(window_height);
             $('.media-container .ng-binding').width(window_width).height(valueHeight);
-            $('#video .padding,.nav-bar-container').hide();
-            $('.has-header').css('top', '0px');
+            $('.has-header').animate({
+                    top: "0px",
+                    }, 500).promise().done(function(){
+                        $('#video .padding,.nav-bar-container').hide();
+                    });
             //$('#frame_video').attr('src', $scope.video_url);
             //$scope.video.embed = $scope.urlEmbed;
-            $scope.video.embed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/'+$scope.idVideo+'?rel=0&showinfo=0&allownetworking=internal&fs=0&theme=light&controls=2&autohide=1" frameborder="0" width="'+window_width+'" height="'+valueHeight+'"></iframe>');
+            $scope.video.embed = $sce.trustAsHtml('<iframe id="frame_video" src="https://www.youtube.com/embed/'+$scope.idVideo+'?rel=0&showinfo=0&allownetworking=internal&fs=0&theme=light&controls=2&autohide=1&feature=player_embedded" frameborder="0" width="'+window_width+'" height="'+valueHeight+'"></iframe>');
             $ionicLoading.hide();
             }
         }, 500);
     })
-    
- 
-    $scope.loadURL = function (url) { 
-        window.open(url,'_system');
-    }
-
 
 
    $scope.init = function () {
