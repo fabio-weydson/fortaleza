@@ -393,7 +393,7 @@ angular.module('mobionicApp.controllers', [])
             window.plugins.socialsharing.shareViaTwitter($scope.subject, null, $scope.link);
         }
         $scope.shareToWhatsApp  = function() {
-            window.plugins.socialsharing.shareViaWhatsApp($scope.post.Titulo, $scope.image, $scope.link);
+            window.plugins.socialsharing.shareViaWhatsApp($scope.post.Titulo, null, $scope.link);
         }
         $scope.shareViaEmail  = function() {
             window.plugins.socialsharing.shareViaEmail($scope.message, $scope.subject, [], [], [], null);

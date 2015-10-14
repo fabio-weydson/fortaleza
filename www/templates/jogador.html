@@ -13,7 +13,7 @@
           <div class="info padding">
          
  			<p><b>Nome completo</b> {{jogador.NomeCompleto}}</p>
-			<p><b>Nascimento:</b> {{jogador.DataNascimento | date:'MM/dd/yyyy'}}</p>
+			<p><b>Nascimento:</b> {{jogador.DataNascimento*1000 | date:'dd/MM/yyyy'}}</p>
 			<p><b>Naturalidade:</b> {{jogador.Naturalidade}} </p>
 			<p><b>Currículo:</b> {{jogador.ClubesAnteriores}} </p>
             </div>
