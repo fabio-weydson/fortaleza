@@ -10,10 +10,10 @@
     <name>Fortaleza Esporte Clube</name>
 
     <description>
-        descrição
+        App Oficial do Fortaleza Esporte Clube
     </description>
 
-    <author href="http://phonegap.com" email="support@phonegap.com">
+    <author href="http://dbgrafics.com.br" email="contatos@dbgrafics.com.br">
         DB Grafics
     </author>
 
@@ -68,7 +68,7 @@
 <gap:plugin name="nl.x-services.plugins.toast" source="pgb" version="2.0.2" />
 
 
-<icon src="icon.png" />
+<gap:icon src="icon.png" />
 <gap:splash src="splash.png" /> 
 
 <!-- SPLASH -->
@@ -92,7 +92,21 @@
               <icon src="resources/android/icon/xhdpi.png" density="xhdpi" />
      </platform>
 
-
+ <platform name="ios">
+  <icon src="resources/ios/icon/icon-57-2x.png"           width="114" height="114" />
+    <icon src="resources/ios/icon/icon-57.png"            width="57" height="57" />
+    <icon src="resources/ios/icon/icon-72.png"               width="72" height="72" />
+    <icon src="resources/ios/icon/icon-76.png"                width="76" height="76" />
+    <icon src="resources/ios/icon/icon-120.png"               width="120" height="120" />
+    <icon src="resources/ios/icon/icon-152.png"              width="152" height="152" />
+ </platform>
+ <platform name="ios">
+     <splash src="resources/ios/screen/Default-568h@2x.png"  width="640" height="1136" />
+    <splash height="480" src="resources/ios/screen/screen-iphone-portrait.png" width="320" />
+    <splash height="960" src="resources/ios/screen/screen-iphone-portrait-2x.png" width="640" />
+    <splash  height="1024" src="resources/ios/screen/screen-ipad-portrait.png" width="768" />
+    <splash height="768" src="resources/ios/screen/screen-ipad-landscape.png" width="1024" />
+</platform>
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
     <string>300</string>
