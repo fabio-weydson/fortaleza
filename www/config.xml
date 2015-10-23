@@ -5,7 +5,7 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         xmlns:android = "http://schemas.android.com/apk/res/android"
         id        = "com.fortalezaec.fortaleza"
-        version   = "0.5">
+        version   = "1.0">
 
     <name>Fortaleza Esporte Clube</name>
 
@@ -107,7 +107,7 @@
 
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
-    <string>300</string>
+    <string>301</string>
     </gap:config-file>
     <gap:config-file platform="android" parent="/manifest/application">
     <activity android:launchMode="singleInstance" />
