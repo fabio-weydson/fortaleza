@@ -4,9 +4,8 @@
     <a class="button button-clear" ng-click="sharePost()"><i class="icon ion-share"></i></a>
     </ion-nav-buttons>
     
-    <ion-content class="has-header" id="noticia">
+    <ion-content class="has-header" id="noticia" scroll="true" overflow-scroll="true" >
         <span class="localdata">{{storage}}</span>
-        
-             <div ng-bind-html="post.embed" style="  height: 100%;"></div>
+             <div ng-bind-html="post.embed" scroll="true" overflow-scroll="true" style=" height: 100%;"  class="iframe-wrapper"></div>
     </ion-content>
 </ion-view>

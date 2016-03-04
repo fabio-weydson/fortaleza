@@ -160,17 +160,6 @@ angular.module('mobionicApp.data', [])
         //     title: 'Elements',
         //     icon: 'ion-code',
         //     url: '#/app/elements'
-        // },
-        
-        // {
-        //     title: 'Tabs',
-        //     icon: 'ion-ios7-albums-outline',
-        //     url: '#/app/tabs'
-        // },
-        // {
-        //     title: 'Grid',
-        //     icon: 'ion-grid',
-        //     url: '#/app/grid'
         // }
         
     ];
@@ -178,102 +167,6 @@ angular.module('mobionicApp.data', [])
     return data;
 })
 
-// Plugins Data: Mobile Plugins configuration
-.factory('PluginsData', function(){
-    var data = {};
-
-    data.items = [
-        {
-            title: 'Device',
-            icon: 'ion-ipad',
-            note: 'Device API',
-            url: '#/app/plugins/device'
-        },
-        {
-            title: 'Geolocation',
-            icon: 'ion-location',
-            note: 'Geolocation API',
-            url: '#/app/plugins/geolocation'
-        },
-        {
-            title: 'Notifications',
-            icon: 'ion-alert',
-            note: 'Dialogs API',
-            url: '#/app/plugins/notifications'
-        },
-        {
-            title: 'Barcode',
-            icon: 'ion-qr-scanner',
-            note: 'Barcode Scanner',
-            url: '#/app/plugins/barcodescanner'
-        }
-    ];
-
-    return data;
-})
-
-// Map Data: Map configuration
-.factory('MapData', function(){
-    var data = {};
-
-    data.map = {
-        zoom: 12,
-        center: {
-            latitude: 40.74,
-            longitude: -74.18
-        },
-        markers: [
-        {
-            id: 1,
-            icon: 'img/blue_marker.png',
-            latitude: 40.71,
-            longitude: -74.21,
-            title: 'This is our main store'
-        },
-        {
-            id: 2,
-            latitude: 40.72,
-            longitude: -74.20,
-            title: 'This is our second store'
-        },
-        {
-            id: 3,
-            latitude: 40.73,
-            longitude: -74.19,
-            title: 'This is our third store'
-        },
-        {
-            id: 4,
-            latitude: 40.74,
-            longitude: -74.18,
-            title: 'This is our fourth store'
-        },
-        {
-            id: 5,
-            latitude: 40.75,
-            longitude: -74.17,
-            title: 'This is our fifth store'
-        },
-        {
-            id: 6,
-            latitude: 40.76,
-            longitude: -74.16,
-            title: 'This is our sixth store'
-        },
-        {
-            id: 7,
-            icon: 'img/plane.png',
-            latitude: 40.77,
-            longitude: -74.15,
-            title: 'Airport'
-        }]
-    };
-
-    return data;
-})
-
-
-// News Data: JSON
 .factory('FotosData', function($http, $q, FotosStorage) {
 
     var json = 'https://api.instagram.com/v1/users/698161208/media/recent/?access_token=206080583.5b9e1e6.85d847631af641f1a32e0e0eb4524763&count=60';
@@ -306,82 +199,6 @@ angular.module('mobionicApp.data', [])
     service.getAll = function() { return data; };
 
     service.get = function(fotoId) { return data[fotoId]; };
-
-    return service;
-})
-
-// News Data: JSON
-.factory('NewsData', function($http, $q, NewsStorage) {
-
-    var json = 'json/news.json?v=2';
-
-    var deferred = $q.defer();
-    var promise = deferred.promise;
-    var data = [];
-    var service = {};
-
-    service.async = function() {
-    $http({method: 'GET', url: json, timeout: 5000}).
-    // this callback will be called asynchronously
-    // when the response is available.
-    success(function(d) {
-        data = d.result;
-        NewsStorage.save(data);
-        deferred.resolve();
-    }).
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-    error(function() {
-        data = NewsStorage.all();
-        deferred.reject();
-    });
-
-    return promise;
-
-    };
-
-    service.getAll = function() { return data; };
-
-    service.get = function(newId) { return data[newId]; };
-
-    return service;
-})
-
-// Products Data: JSON
-.factory('ProductsData', function($http, $q, ProductsStorage) {
-
-    var json = 'json/products.json?v=2';
-
-    var deferred = $q.defer();
-    var promise = deferred.promise;
-    var data = [];
-    var service = {};
-
-    service.async = function() {
-    $http({method: 'GET', url: json, timeout: 5000}).
-    // this callback will be called asynchronously
-    // when the response is available.
-    success(function(d) {
-        data = d.result;
-        ProductsStorage.save(data);
-        deferred.resolve();
-    }).
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-    error(function() {
-        data = ProductsStorage.all();
-        deferred.reject();
-    });
-
-    return promise;
-
-    };
-
-    service.getAll = function() { return data; };
-
-    service.get = function(productId) { return data[productId]; };
-
-    service.getLetterLimit = function() { return 100; };
 
     return service;
 })
@@ -443,7 +260,7 @@ angular.module('mobionicApp.data', [])
 // Posts Data: JSON Wordpress Posts configuration
 .factory('PostsData', function($http, $q, PostsStorage) {
 
-    /* (For DEMO purposes) Local JSON data */
+    
     var json = 'http://www.fortalezaec.net/Json/Noticias?first=0&limit=20';
 
     /* Set your URL as you can see in the following example */
@@ -489,7 +306,7 @@ angular.module('mobionicApp.data', [])
 // Posts Data: JSON Wordpress Posts configuration
 .factory('ProximosJogosData', function($http, $q, ProximosJogosStorage) {
 
-    /* (For DEMO purposes) Local JSON data */
+    
     var json = 'http://www.fortalezaec.net/Json/Jogos?campeonatoId=421b1cb7341d440d911bf0f0d398b651';
 
     var deferred = $q.defer();
@@ -528,8 +345,7 @@ angular.module('mobionicApp.data', [])
 // Posts Data: JSON Wordpress Posts configuration
 .factory('TempoRealData', function($http, $q, TempoRealStorage) {
 
-    /* (For DEMO purposes) Local JSON data */
-    //var json = 'http://179.188.17.9/~fortalezaapp/webservice/tempo_real.php?ver=tempo_real';
+    
     var json = 'http://www.fortalezaec.net/Json/UltimoJogo?categoriaId=00e967dfc6f74ca5b523546ce9cce0f2';
 
     var deferred = $q.defer();
@@ -585,9 +401,8 @@ angular.module('mobionicApp.data', [])
     var hora_jogo
     var hora_before = hora_jogo -= 60 * 60;
     var hora_depois = hora_jogo += 180 * 60;
-    /* (For DEMO purposes) Local JSON data */
-    //var json = 'http://179.188.17.9/~fortalezaapp/webservice/tempo_real.php?ver=linha_do_tempo&v=5';
-    var json = 'https://graph.facebook.com/v2.4/FortalezaOficial/posts?fields=picture,full_picture,message,created_time&since='+hora_before+'&until='+hora_depois+'&access_token=CAAWZCKW9JPX4BAMv7n2gCFAjZCihkZBp19GY8hR0DSrZCtkXC7vKqyzcZBPZCvuRzCxPg4BCvX5ZB5cLvZAmfWVRSptaIgXCXtY3zp7NwHV8UDL5B9KNONC9LrRMwgL3HtzWTZCUwBzojZB0aMYZAV5ZBoWPu300Ut7wIMzMZCKzbdQUUD1om9x7BZCnIYemAeySBekc8ZD';
+    
+    var json = 'https://graph.facebook.com/v2.4/FortalezaOficial/posts?fields=picture,full_picture,message,created_time&since='+hora_before+'&until='+hora_depois+'&access_token=CAAWZCKW9JPX4BAH5gLJmcn7LqDgiyGTLzRM4A3VjcAcFyXFbWqUHMVYTzLandVjgpsNghZBdQBY2ctK1MPugFl6EHDAIYIwdE6lM4rtSrKlmn2YwUqyTmQZArPuFrPc7nLhgvemoyo8dqve2FdCpNqE69ZAKKcA8rNUUT3rR2ptw7WZBvCJAUEnFZCnEPDj98ZD';
     console.log(json);
     var deferred = $q.defer();
     var promise = deferred.promise;
@@ -670,7 +485,7 @@ angular.module('mobionicApp.data', [])
 // Posts Data: JSON Wordpress Posts configuration
 .factory('JogadoresData', function($http, $q, JogadoresStorage) {
 
-    /* (For DEMO purposes) Local JSON data */
+    
     var json = 'http://www.fortalezaec.net/Json/Jogadores?categoriaId=00e967dfc6f74ca5b523546ce9cce0f2';
 
     /* Set your URL as you can see in the following example */
@@ -712,102 +527,4 @@ angular.module('mobionicApp.data', [])
 	};
 
     return service;
-})
-// ServerPosts Data: JSON Wordpress Posts configuration with Server Side pagination
-.factory('ServerPostsData', function($http, $q, ServerPostsStorage) {
-
-    var data = [];
-    var service = {};
-
-    /* (For DEMO purposes) Local JSON data */
-    var json = 'json/serverposts&';
-
-    /* Set your URL as you can see in the following example */
-    /* NOTE: In case of the default permalinks, you should add '&' at the end of the url */
-    // var json = 'YourWordpressURL/?json=get_recent_posts&';
-
-    /* With user-friendly permalinks configured */
-    /* NOTE: In case of the user-friendly permalinks, you should add '?' at the end of the url */
-    // var json = 'YourWordpressURL/api/get_recent_posts?';
-
-    service.getURL = function() { return json; };
-
-    service.setData = function(posts) { data = posts; };
-
-    service.get = function(serverpostId) { return data[serverpostId]; };
-
-    return service;
-})
-
-// RSS Feeds Data: JSON
-.factory('FeedsData', function($http, $q, FeedsStorage) {
-
-    var xml = 'http://esportes.opovo.com.br/esportes/temporeal/mobile-fortaleza.xml';
-    var url = 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=' + encodeURIComponent(xml);
-    var deferred = $q.defer();
-    var promise = deferred.promise;
-    var data = [];
-    var service = {};
-    var entries = [];
-
-    service.async = function() {
-    $http({method: 'JSONP', url: url, timeout: 5000}).
-    // this callback will be called asynchronously
-    // when the response is available.
-    success(function(d) {
-        data = d;
-        FeedsStorage.save(data.responseData.feed);
-        entries = data.responseData.feed.item;
-        deferred.resolve();
-    }).
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-    error(function() {
-        data = FeedsStorage.all();
-        entries = data.entries;
-        deferred.reject();
-    });
-
-    return promise;
-
-    };
-
-    service.getAll = function() { return data.responseData.feed; };
-
-    service.get = function(entryId) { return entries[entryId];  };
-
-    return service;
-})
-
-// Settings Data: Settings configuration
-.factory('SettingsData', function(){
-    var data = {};
-
-    data.items = {
-        options: [
-        {
-           name: 'First Option',
-           value: true
-        },
-        {
-           name: 'Second Option',
-           value: false
-        },
-        {
-           name: 'Third Option',
-           value: false
-        },
-        {
-           name: 'Fourth Option',
-           value: false
-        },
-        {
-           name: 'Fifth Option',
-           value: false
-        }],
-        sorting: 'A',
-        range:30
-    };
-
-    return data;
 })

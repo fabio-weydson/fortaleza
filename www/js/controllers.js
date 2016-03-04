@@ -86,14 +86,6 @@ angular.module('mobionicApp.controllers', [])
 
 })
 
-// New Controller
-.controller('NewCtrl', function($scope, $stateParams, NewsData) {
-
-    $scope.new = NewsData.get($stateParams.newId);
-
-})
-
-
 // Gallery Controller
 .controller('FotosCtrl', function($scope, $ionicLoading, $ionicActionSheet, FotosData, FotosStorage, $document) {
 
@@ -428,15 +420,6 @@ angular.module('mobionicApp.controllers', [])
 
 
 })
-.controller('AboutCtrl', function($scope) {
-
-    $scope.about = {
-      subject:  '',
-      body: ''
-    }
-
-
-})
 // Posts Controller
 .controller('DestaquesCtrl', function($scope, $ionicLoading, $interval, $location, $ionicSlideBoxDelegate, DestaquesData, DestaquesStorage, ImgCache) {
   $scope.intervalo = 4000;
@@ -680,10 +663,21 @@ angular.module('mobionicApp.controllers', [])
     $scope.post = PostsData.get($stateParams.postId);
     $scope.post.postId = $stateParams.postId;
     $scope.post.iframe = 'http://www.fortalezaec.net/'+ $scope.post.URL;
-    var urlEmbed = $sce.trustAsHtml('<iframe src="'+$scope.post.iframe+'" frameborder="0" width="100%" height="100%"></iframe>');
+    var urlEmbed = $sce.trustAsHtml('<iframe src="'+$scope.post.iframe+'" frameborder="0" width="100%" height="100%" data-tap-disabled="true"></iframe>');
 
     $scope.post.embed = urlEmbed;
 
+    console.log('sdsd');
+        if (/iPhone|iPod|iPad/.test(navigator.userAgent))
+            $('iframe').wrap(function(){
+                var $this = $(this);
+                return $('<div />').css({
+                    width: $this.attr('width'),
+                    height: $this.attr('height'),
+                    overflow: 'scroll',
+                    '-webkit-overflow-scrolling': 'touch'
+                });
+            });
    
 
     $scope.sharePost = function() {
@@ -1051,10 +1045,6 @@ angular.module('mobionicApp.controllers', [])
 })
 .controller('TextosCtrl', function($scope, $ionicLoading, $stateParams, $state) {
 
-
-    
-  
-
    $scope.loading = $ionicLoading.show({
       template: '<i class="icon ion-loading-a"></i> Carregando',
 
@@ -1114,118 +1104,13 @@ $scope.changedValue=function(item){
 
 
 })
-// Plugins Controller
-.controller('PluginsCtrl', function($scope, PluginsData) {
-  $scope.items = PluginsData.items;
-})
 
-// Device Controller
-.controller('DeviceCtrl', function($scope) {
-  $scope.device = device;
-})
-
-// Notifications Controller
-.controller('NotificationsCtrl', function($scope) {
-
-    $scope.alertNotify = function() {
-    navigator.notification.alert("Sample Alert",function() {console.log("Alert success")},"My Alert","Close");
-    };
-
-    $scope.beepNotify = function() {
-    navigator.notification.beep(1);
-    };
-
-    $scope.vibrateNotify = function() {
-    navigator.notification.vibrate(3000);
-    };
-
-    $scope.confirmNotify = function() {
-    navigator.notification.confirm("My Confirmation",function(){console.log("Confirm Success")},"Are you sure?",["Ok","Cancel"]);
-    };
-
-})
-
-// Seetings Controller
-.controller('SettingsCtrl', function($scope, SettingsStorage, NewsStorage, ProductsStorage, AboutStorage, GalleryStorage, FeedsStorage, PostsStorage, ServerPostsStorage) {
-
-    $scope.settings = SettingsStorage.all();
-
-    $scope.saveSettings = function() {
-        SettingsStorage.save($scope.settings);
-    };
-
-    $scope.$watch('settings', function() { SettingsStorage.save($scope.settings) }, true);
-
-    $scope.resetSettings = function() {
-        SettingsStorage.clear();
-        $scope.settings = SettingsStorage.all();
-    };
-
-    $scope.resetNewsStorage = function() {
-        NewsStorage.clear();
-    };
-
-    $scope.resetProductsStorage = function() {
-        ProductsStorage.clear();
-    };
-
-    $scope.resetProductsGalleryStorage = function() {
-        GalleryStorage.clear();
-    };
-
-    $scope.resetAboutStorage = function() {
-        AboutStorage.clear();
-    };
-
-    $scope.resetFeedsStorage = function() {
-        FeedsStorage.clear();
-    };
-
-    $scope.resetPostsStorage = function() {
-        PostsStorage.clear();
-    };
-
-    $scope.resetServerPostsStorage = function() {
-        ServerPostsStorage.clear();
-    };
-
-})
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, MenuData, $ionicActionSheet) {
 
   $scope.items = MenuData.items;
   $scope.subMenus = MenuData.items.subMenus;
 
-
-  // Form data for the login modal
-  $scope.loginData = {};
-
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  },
-
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
-
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
    $scope.toggleGroup = function(item) {
    
     if ($scope.isGroupShown(item)) {
@@ -1237,28 +1122,6 @@ $scope.changedValue=function(item){
   $scope.isGroupShown = function(item) {
     return $scope.shownGroup === item;
   };
-    // Triggered on a button click, or some other target
-    $scope.show = function() {
-
-        // Show the action sheet
-        var hideSheet = $ionicActionSheet.show({
-         buttons: [
-           { text: '<b>Share</b> This' },
-           { text: 'Move' }
-         ],
-         destructiveText: 'Delete',
-         titleText: 'Modify your album',
-         cancelText: 'Cancel',
-         cancel: function() {
-              // add cancel code..
-            },
-         buttonClicked: function(index) {
-           return true;
-         }
-        });
-
-    };
-
 
 })
 

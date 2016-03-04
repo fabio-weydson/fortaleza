@@ -73,26 +73,6 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         }
       }
     })
-    .state('app.products', {
-      url: "/products",
-      views: {
-        'menuContent' :{
-          //templateUrl: "templates/loja.html",
-          templateUrl: "templates/construcao.html"
-           //controller: 'ProductsCtrl'
-                  }
-      }
-    })
-
-    .state('app.product', {
-      url: "/products/:productId",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/product.html",
-          controller: 'ProductCtrl'
-        }
-      }
-    })
   .state('app.fotos', {
       url: "/fotos",
       views: {
@@ -269,33 +249,6 @@ angular.module('mobionicApp', ['ionic', 'mobionicApp.controllers', 'mobionicApp.
         'menuContent' :{
           templateUrl: "templates/lances.html",
           controller: 'LancesCtrl'
-        }
-      }
-    })
-    .state('app.plugins', {
-      url: "/plugins",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/plugins.html",
-          controller: 'PluginsCtrl'
-        }
-      }
-    })
-    .state('app.notifications', {
-      url: "/plugins/notifications",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/plugins/notifications.html",
-          controller: 'NotificationsCtrl'
-        }
-      }
-    })
-    .state('app.settings', {
-      url: "/settings",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/settings.html",
-          controller: 'SettingsCtrl'
         }
       }
     })
