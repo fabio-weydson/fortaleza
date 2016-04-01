@@ -339,7 +339,7 @@ angular.module('mobionicApp.controllers', [])
     $scope.subject = $scope.video.snippet.title;
     $scope.link = 'https://youtu.be/'+$scope.idVideo ;
     $scope.message =  $scope.subject + ' ' + $scope.link;
-    $scope.image = $scope.video.snippet.thumbnails.default.url;
+    //$scope.image = $scope.video.snippet.thumbnails.default.url;
 
             $ionicActionSheet.show({
                 buttons: [
@@ -376,7 +376,7 @@ angular.module('mobionicApp.controllers', [])
      
 
         $scope.shareNative = function() {
-            window.plugins.socialsharing.share($scope.message, $scope.subject, $scope.image, $scope.link);
+            window.plugins.socialsharing.share($scope.message, $scope.subject, null, $scope.link);
         }
          $scope.shareToFacebook  = function() {
             window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint($scope.subject, null, $scope.link);
@@ -667,7 +667,7 @@ angular.module('mobionicApp.controllers', [])
 
     $scope.post.embed = urlEmbed;
 
-    console.log('sdsd');
+    
         if (/iPhone|iPod|iPad/.test(navigator.userAgent))
             $('iframe').wrap(function(){
                 var $this = $(this);

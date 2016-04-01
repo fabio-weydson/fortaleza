@@ -307,7 +307,7 @@ angular.module('mobionicApp.data', [])
 .factory('ProximosJogosData', function($http, $q, ProximosJogosStorage) {
 
     
-    var json = 'http://www.fortalezaec.net/Json/Jogos?campeonatoId=421b1cb7341d440d911bf0f0d398b651';
+    var json = 'http://www.fortalezaec.net/Json/Jogos?categoriaId=00e967dfc6f74ca5b523546ce9cce0f2&ano=2016&ordem=asc';
 
     var deferred = $q.defer();
     var promise = deferred.promise;

@@ -19,7 +19,43 @@ angular.module('mobionicApp.filters', [])
     };
     return filter;
 })
+.filter('orderObjectBy', function() {
+  return function(items, field, reverse) {
+    var filtered = [];
+    angular.forEach(items, function(item) {
+      filtered.push(item);
+    });
+    filtered.sort(function (a, b) {
+      return (a[field] > b[field] ? 1 : -1);
+    });
+    if(reverse) filtered.reverse();
+    return filtered;
+  };
+})
+.filter('todayFilter', function() {
+  return function(items, field) {
 
+    if (!Date.now) {
+    Date.now = function() { return new Date().getTime(); }
+    }
+
+    var newItems = [];
+
+    var currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    currentDate.getTime();
+    currentDate = Math.floor(currentDate / 1000);
+    
+
+    angular.forEach(items, function(item) {
+      if (item[field] >= currentDate) {
+        newItems.push(item);
+      }
+    });
+
+    return newItems;
+  }
+})
 .filter('reverse', function() {
   return function(items) {
     return items.slice().reverse();

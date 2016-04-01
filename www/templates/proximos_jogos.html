@@ -11,7 +11,9 @@
       
         <div class="list">
 
-            <a class="item" href="#" ng-repeat="jogo in jogos.slice().reverse() | limitTo: paginationLimit()" >      
+            <a class="item" href="#" ng-repeat="jogo in jogos | todayFilter: 'DataHora'" >    
+<!--                         <a class="item" href="#" ng-repeat="jogo in jogos | limitTo: paginationLimit() | orderObjectBy:'DataHora':true" >      
+ -->  
                 <div class="data"><!-- <span ng-bind-html="jogo.DataHora * 1000 | date:'dd/MM/yy'"></span> -->
                     <span class="dia">{{jogo.DataHora * 1000 | date:'dd/MM'}}</span><span class="hora">{{jogo.DataHora * 1000 | date:'H:mm'}}h</span>
                 </div>          
@@ -21,10 +23,10 @@
 
         </div>
         
-        <button class="button button-block button-positive" ng-show="hasMoreItems()" ng-click="showMoreItems()" >
+       <!--  <button class="button button-block button-positive" ng-show="hasMoreItems()" ng-click="showMoreItems()" >
         Exibir mais
         </button>
-
+ -->
        
     </ion-content>
 </ion-view>
