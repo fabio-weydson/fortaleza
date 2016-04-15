@@ -799,3 +799,14 @@ em.hash_tag {
    width: 100%;
    height: 100%;
  }
+ a.copy {
+    color: #D8D8D8;
+    text-shadow: 1px 1px 1px #000;
+    font-size: 9px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: left;
+    left: 9px;
+    text-transform: uppercase;
+}
