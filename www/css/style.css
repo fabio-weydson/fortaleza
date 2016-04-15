@@ -561,19 +561,19 @@ div.lightbox {
     width: 100%;
 }
 @media (min-width:960px){
-  	#lightbox img { 
-  	max-width: 47%;
-  	float:left;
-  	margin: 5px;
+    #lightbox img { 
+    max-width: 47%;
+    float:left;
+    margin: 5px;
 }
-  	#lightbox b {
-  		float:left;
-  		font-size:1.3em !important;
-  		display: block;
-  		width: 50%;
+    #lightbox b {
+      float:left;
+      font-size:1.3em !important;
+      display: block;
+      width: 50%;
 }
 #lightbox span {
-	 padding-bottom: 0px !important;
+   padding-bottom: 0px !important;
 }
 }
 div.lightbox span {
@@ -592,49 +592,49 @@ div.lightbox span {
 }
  
 .meter {
-			height: 3px;
-			top: 0;
-			position: absolute; 
-			width: 100%;
-			z-index: 9999;
-		
-			background: rgba(0,0,0,0.7);
+      height: 3px;
+      top: 0;
+      position: absolute; 
+      width: 100%;
+      z-index: 9999;
+    
+      background: rgba(0,0,0,0.7);
 }
-		.meter > span {
-			display: block;
-			height: 100%;         
-			background-color: #FFF;
-			position: relative;
-			overflow: hidden;
-		}
-		
+    .meter > span {
+      display: block;
+      height: 100%;         
+      background-color: #FFF;
+      position: relative;
+      overflow: hidden;
+    }
+    
 
-		.animate > span:after {
-			display: none;
-		}
+    .animate > span:after {
+      display: none;
+    }
 
-		@-webkit-keyframes move {
-		    0% {
-		       background-position: 0 0;
-		    }
-		    100% {
-		       background-position: 50px 50px;
-		    }
-		}
+    @-webkit-keyframes move {
+        0% {
+           background-position: 0 0;
+        }
+        100% {
+           background-position: 50px 50px;
+        }
+    }
 
-		@-moz-keyframes move {
-		    0% {
-		       background-position: 0 0;
-		    }
-		    100% {
-		       background-position: 50px 50px;
-		    }
-		}
-		.nostripes > span > span, .nostripes > span:after {
-			-webkit-animation: none;
-			-moz-animation: none;
-			background-image: none;
-		}
+    @-moz-keyframes move {
+        0% {
+           background-position: 0 0;
+        }
+        100% {
+           background-position: 50px 50px;
+        }
+    }
+    .nostripes > span > span, .nostripes > span:after {
+      -webkit-animation: none;
+      -moz-animation: none;
+      background-image: none;
+    }
 
 
 
@@ -660,28 +660,34 @@ div.lightbox span {
 }
 #jogos-lista .list .time {
     float: left;
-    min-width: 42%;
+    width: 45%;
     position: relative;
     text-align: right;
-    margin-right: 10px;
+    margin-right: 0;
 }
-
 
 
 #jogos-lista .list h2 {
     overflow: hidden;
     font-weight: bold;
     max-height: 55px;
-    font-size: 0.74em;
+    font-size: 0.8em;
     line-height: 50px;
     text-align: center;
     margin: 0;
     padding: 0;
 }
+#jogos-lista .list .time b {
+  margin-left: 10%;}
+#jogos-lista .list .time2 b{
+  margin-right: 10%;
+  margin-left: 0;
+} 
+
 #jogos-lista .list .time2 {
     float: right;
     text-align: left;
-    margin-left: 10px;
+    margin-left: 0;
 }
 #jogos-lista .list .time img {
     width: 50px;

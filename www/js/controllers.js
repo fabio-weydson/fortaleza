@@ -925,10 +925,20 @@ angular.module('mobionicApp.controllers', [])
 // Posts Controller post
 .controller('ProximosJogosCtrl', function($scope, $ionicLoading, ProximosJogosData, ProximosJogosStorage) {
 
+    if (!Date.now) {
+    Date.now = function() { return new Date().getTime(); }
+    }
 
+    var currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    currentDate.getTime();
+    currentDate = Math.floor(currentDate / 1000);
 
     $scope.jogos = [];
     $scope.storage = '';
+    $scope.datahoje = currentDate;
+    console.log($scope.datahoje);
+    
      $scope.loadData = function () {
     $scope.loading = $ionicLoading.show({
       template: '<i class="icon ion-loading-a"></i> Carregando',

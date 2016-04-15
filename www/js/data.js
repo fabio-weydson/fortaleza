@@ -308,7 +308,7 @@ angular.module('mobionicApp.data', [])
 
     
     var json = 'http://www.fortalezaec.net/Json/Jogos?categoriaId=00e967dfc6f74ca5b523546ce9cce0f2&ano=2016&ordem=asc';
-
+console.log(json);
     var deferred = $q.defer();
     var promise = deferred.promise;
     var data = [];
@@ -402,8 +402,8 @@ angular.module('mobionicApp.data', [])
     var hora_before = hora_jogo -= 60 * 60;
     var hora_depois = hora_jogo += 180 * 60;
     
-    var json = 'https://graph.facebook.com/v2.4/FortalezaOficial/posts?fields=picture,full_picture,message,created_time&since='+hora_before+'&until='+hora_depois+'&access_token=CAAWZCKW9JPX4BAH5gLJmcn7LqDgiyGTLzRM4A3VjcAcFyXFbWqUHMVYTzLandVjgpsNghZBdQBY2ctK1MPugFl6EHDAIYIwdE6lM4rtSrKlmn2YwUqyTmQZArPuFrPc7nLhgvemoyo8dqve2FdCpNqE69ZAKKcA8rNUUT3rR2ptw7WZBvCJAUEnFZCnEPDj98ZD';
-    console.log(json);
+    var json = 'https://graph.facebook.com/v2.4/FortalezaOficial/posts?fields=picture,full_picture,message,created_time&since='+hora_before+'&until='+hora_depois+'&access_token=CAAWZCKW9JPX4BADD93kqvvW4wMSPAtcMe1O92DXWINQZCbkBqLQ9OiTx1sRtRwhIZAlmNiZCcjI76SMr5pOHoJVGTY1R0ujUQMaQZBH65GTHLtIsb0IpkN8S6BZA1vXz6afhwdUJLXZAlJufIvsWW1STDHs9AFe0WtVXQo7nLcZBESnhqOBYdG7wFGIqZAyuyYSp2kD1ZAe7ZCfrgZDZD';
+    
     var deferred = $q.defer();
     var promise = deferred.promise;
     var data = [];
@@ -414,7 +414,7 @@ angular.module('mobionicApp.data', [])
     // this callback will be called asynchronously
     // when the response is available.
     success(function(d) {
-     
+        // console.log(d.data);
 		data = d.data;
 		LancesStorage.save(data);
         deferred.resolve();
