@@ -74,6 +74,8 @@
 <gap:icon src="icon.png" />
 <gap:splash src="splash.png" /> 
 
+
+
 <!-- SPLASH -->
  <platform name="android">
     <!-- you can use any density that exists in the Android project -->
