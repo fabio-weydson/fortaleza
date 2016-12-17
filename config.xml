@@ -71,10 +71,9 @@
 <gap:plugin name="cordova-plugin-x-toast" source="npm"  />
 
 
+
 <gap:icon src="icon.png" />
 <gap:splash src="splash.png" /> 
-
-
 
 <!-- SPLASH -->
  <platform name="android">
