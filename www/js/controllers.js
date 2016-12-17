@@ -1,12 +1,6 @@
 angular.module('mobionicApp.controllers', [])
 
 // Home Controller
-/*
-.controller('HomeCtrl', function($scope, Data) {
-
- $scope.items = Data.items;
- });
- */
 .controller('HomeCtrl',function($scope, $ionicLoading, PostsData, PostsStorage, ImgCache) {
 
     $scope.news = [];
@@ -114,7 +108,7 @@ angular.module('mobionicApp.controllers', [])
     )
 
     var page = 1;
-    // Define the number of the posts in the page
+    
     var pageSize = 15;
 
     $scope.paginationLimit = function(data) {
@@ -247,7 +241,7 @@ angular.module('mobionicApp.controllers', [])
     )
 
     var page = 1;
-    // Define the number of the posts in the page
+    
     var pageSize = 7;
 
     $scope.paginationLimit = function(data) {
@@ -420,7 +414,7 @@ angular.module('mobionicApp.controllers', [])
 
 
 })
-// Posts Controller
+
 .controller('DestaquesCtrl', function($scope, $ionicLoading, $interval, $location, $ionicSlideBoxDelegate, DestaquesData, DestaquesStorage, ImgCache) {
   $scope.intervalo = 4000;
     $scope.destaques = [];
@@ -470,7 +464,7 @@ angular.module('mobionicApp.controllers', [])
            
 })
 
-// Post Controller
+
 .controller('DestaqueCtrl', function($scope,  $ionicLoading, $ionicActionSheet, $stateParams, DestaquesData) {
 
     $scope.destaque = DestaquesData.get($stateParams.postId);
@@ -536,7 +530,6 @@ angular.module('mobionicApp.controllers', [])
 
 })
 
-// Posts Controller
 .controller('PostsCtrl', function($scope, $ionicLoading, PostsData, PostsStorage) {
 
     $scope.posts = [];
@@ -569,7 +562,7 @@ angular.module('mobionicApp.controllers', [])
     );
     }
     var page = 1;
-    // Define the number of the posts in the page
+    
     var pageSize = 7;
 
     $scope.paginationLimit = function(data) {
@@ -586,7 +579,6 @@ angular.module('mobionicApp.controllers', [])
      $scope.loadData();
 })
 
-// Post Controller
 .controller('PostCtrl', function($scope,  $ionicLoading,$ionicActionSheet, $stateParams, PostsData) {
 
     $scope.post = PostsData.get($stateParams.postId);
@@ -658,7 +650,6 @@ angular.module('mobionicApp.controllers', [])
 
 })
 
-// Post Controller
 .controller('NoticiaCtrl', ['$scope', '$sce', '$ionicLoading', '$ionicActionSheet', '$stateParams', 'PostsData', function($scope, $sce,$ionicLoading, $ionicActionSheet, $stateParams, PostsData, $cordovaSocialSharing) {
     $scope.post = PostsData.get($stateParams.postId);
     $scope.post.postId = $stateParams.postId;
@@ -743,7 +734,6 @@ angular.module('mobionicApp.controllers', [])
 
 }])
 
-// Posts Controller
 .controller('TempoRealCtrl', function($scope, $ionicLoading, TempoRealData, $ionicActionSheet, TempoRealStorage) {
 
     $scope.temporeal = [];
@@ -844,7 +834,7 @@ angular.module('mobionicApp.controllers', [])
         }
 
 })
-// Lances Controller
+
 .controller('LancesCtrl', function($scope, $ionicLoading, LancesData, LancesStorage, $sce) {
 
     $scope.lances = [];
@@ -883,7 +873,7 @@ angular.module('mobionicApp.controllers', [])
     );
 
     var page = 1;
-    // Define the number of the posts in the page
+    
     var pageSize = 5;
 
     $scope.paginationLimit = function(data) {
@@ -922,7 +912,7 @@ angular.module('mobionicApp.controllers', [])
 
 
 })
-// Posts Controller post
+
 .controller('ProximosJogosCtrl', function($scope, $ionicLoading, ProximosJogosData, ProximosJogosStorage) {
 
     if (!Date.now) {
@@ -967,7 +957,7 @@ angular.module('mobionicApp.controllers', [])
     );
     }
     var page = 1;
-    // Define the number of the posts in the page
+    
     var pageSize = 10;
 
     $scope.paginationLimit = function(data) {
@@ -983,7 +973,6 @@ angular.module('mobionicApp.controllers', [])
     };
      $scope.loadData();
 })
-// Jogadores Controller
 .controller('JogadoresCtrl', function($scope, $ionicLoading, JogadoresData, JogadoresStorage) {
 
     $scope.jogadores = [];
@@ -1016,7 +1005,7 @@ angular.module('mobionicApp.controllers', [])
     );
 
     var page = 1;
-    // Define the number of the posts in the page
+    
     var pageSize = 5;
 
     $scope.paginationLimit = function(data) {

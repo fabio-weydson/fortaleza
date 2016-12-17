@@ -1,43 +1,7 @@
 angular.module('mobionicApp.data', [])
 
-// Home Data: Home page configuration
-    .factory('Data', function($http, $q, NewsStorage) {
 
-    var json = 'json/news.json';
 
-    var deferred = $q.defer();
-    var promise = deferred.promise;
-    var data = [];
-    var service = {};
-
-    service.async = function() {
-    $http({method: 'GET', url: json, timeout: 5000}).
-    // this callback will be called asynchronously
-    // when the response is available.
-    success(function(d) {
-        data = d.result;
-        NewsStorage.save(data);
-        deferred.resolve();
-    }).
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-    error(function() {
-        data = NewsStorage.all();
-        deferred.reject();
-    });
-
-    return promise;
-
-    };
-
-    service.getAll = function() { return data; };
-
-    service.get = function(newId) { return data[newId]; };
-
-    return service;
-})
-
-// Menu Data: Menu configuration
 .factory('MenuData', function(){
     var data = {};
 
@@ -148,20 +112,9 @@ angular.module('mobionicApp.data', [])
         //         //     title: "Ajustes",
         //         //     url: '#/app/settings',
         //         //     icon:"ion-ios7-gear",
-        //         // },
-        // //          {
-        // //     title: 'Plugins',
-        // //     icon: 'ion-code',
-        // //     url: '#/app/plugins'
-        // // },
+        //         // }
         // ]  
         // }
-        // {
-        //     title: 'Elements',
-        //     icon: 'ion-code',
-        //     url: '#/app/elements'
-        // }
-        
     ];
 
     return data;
@@ -178,15 +131,15 @@ angular.module('mobionicApp.data', [])
 
     service.async = function() {
     $http({method: 'GET', url: json, timeout: 5000}).
-    // this callback will be called asynchronously
-    // when the response is available.
+    
+    
     success(function(d) {
         data = d.data;
         FotosStorage.save(data);
         deferred.resolve();
     }).
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
+    
+    
     error(function() {
         data = FotosStorage.all();
         deferred.reject();
@@ -203,7 +156,6 @@ angular.module('mobionicApp.data', [])
     return service;
 })
 
-// Gallery Data: Gallery configuration
 .factory('VideosData', function($http, $q, VideosStorage) {
 
     var json = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=20&playlistId=UUV5UiFF5AlNKW4sLXcYMG_g&fields=items/id,items/snippet/publishedAt,items/snippet/title,items/snippet/description,items/snippet/resourceId/videoId,items/snippet/thumbnails/default,items/snippet/thumbnails/high&key=AIzaSyDAyzQoPMlHyqjx5MJ5NS9jv3cM8JihcOc';
@@ -214,15 +166,15 @@ angular.module('mobionicApp.data', [])
 
     service.async = function() {
     $http({method: 'GET', url: json, timeout: 5000}).
-    // this callback will be called asynchronously
-    // when the response is available.
+    
+    
     success(function(d) {
         data = d.items;
         VideosStorage.save(data);
         deferred.resolve();
     }).
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
+    
+    
     error(function() {
         data = VideosStorage.all();
         deferred.reject();
@@ -239,35 +191,11 @@ angular.module('mobionicApp.data', [])
     return service;
 })
 
-// About Data: JSON
-.factory('AboutData', function($http, $q, AboutStorage) {
 
-    var json = 'json/about.json';
-
-    var deferred = $q.defer();
-    var promise = deferred.promise;
-    var data = [];
-    var service = {};
-
-
-    service.getAll = function() { return data; };
-
-    service.get = function(memberId) { return data[memberId]; };
-
-    return service;
-})
-
-// Posts Data: JSON Wordpress Posts configuration
 .factory('PostsData', function($http, $q, PostsStorage) {
 
     
     var json = 'http://www.fortalezaec.net/Json/Noticias?first=0&limit=20';
-
-    /* Set your URL as you can see in the following example */
-    // var json = 'YourWordpressURL/?json=get_recent_posts';
-
-    /* With user-friendly permalinks configured */
-    // var json = 'YourWordpressURL/api/get_recent_posts';
 
     var deferred = $q.defer();
     var promise = deferred.promise;
@@ -276,15 +204,15 @@ angular.module('mobionicApp.data', [])
 
     service.async = function() {
     $http({method: 'GET', url: json, timeout: 5000}).
-    // this callback will be called asynchronously
-    // when the response is available.
+    
+    
     success(function(d) {
         data = d.Model;
         PostsStorage.save(data);
         deferred.resolve();
     }).
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
+    
+    
     error(function() {
         data = PostsStorage.all();
         deferred.reject();
@@ -303,7 +231,6 @@ angular.module('mobionicApp.data', [])
     return service;
 })
 
-// Posts Data: JSON Wordpress Posts configuration
 .factory('ProximosJogosData', function($http, $q, ProximosJogosStorage) {
 
     
@@ -316,15 +243,15 @@ console.log(json);
 
     service.async = function() {
     $http({method: 'GET', url: json, timeout: 5000}).
-    // this callback will be called asynchronously
-    // when the response is available.
+    
+    
     success(function(d) {
         data = d.Model;
         ProximosJogosStorage.save(data);
         deferred.resolve();
     }).
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
+    
+    
     error(function() {
         data = ProximosJogosStorage.all();
         deferred.reject();
@@ -342,7 +269,7 @@ console.log(json);
 
     return service;
 })
-// Posts Data: JSON Wordpress Posts configuration
+
 .factory('TempoRealData', function($http, $q, TempoRealStorage) {
 
     
@@ -354,9 +281,9 @@ console.log(json);
     var service = {};
 
     service.async = function() {
-    $http({method: 'GET', url: json, timeout: 5000}).
-    // this callback will be called asynchronously
-    // when the response is available.
+    $http({method: 'GET', url: json, dataType: 'jsonp', timeout: 5000}).
+    
+    
     success(function(d) {
 
         data = d.Model;
@@ -377,8 +304,8 @@ console.log(json);
         deferred.resolve();
         localStorage.setItem('hora_jogo', data.DataHora);
     }).
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
+    
+    
     error(function() {
         data = TempoRealStorage.all();
         deferred.reject();
@@ -401,8 +328,8 @@ console.log(json);
     var hora_jogo
     var hora_before = hora_jogo -= 60 * 60;
     var hora_depois = hora_jogo += 180 * 60;
-    
-    var json = 'https://graph.facebook.com/v2.4/FortalezaOficial/posts?fields=picture,full_picture,message,created_time&since='+hora_before+'&until='+hora_depois+'&access_token=CAAWZCKW9JPX4BADD93kqvvW4wMSPAtcMe1O92DXWINQZCbkBqLQ9OiTx1sRtRwhIZAlmNiZCcjI76SMr5pOHoJVGTY1R0ujUQMaQZBH65GTHLtIsb0IpkN8S6BZA1vXz6afhwdUJLXZAlJufIvsWW1STDHs9AFe0WtVXQo7nLcZBESnhqOBYdG7wFGIqZAyuyYSp2kD1ZAe7ZCfrgZDZD';
+    //CAAWZCKW9JPX4BADD93kqvvW4wMSPAtcMe1O92DXWINQZCbkBqLQ9OiTx1sRtRwhIZAlmNiZCcjI76SMr5pOHoJVGTY1R0ujUQMaQZBH65GTHLtIsb0IpkN8S6BZA1vXz6afhwdUJLXZAlJufIvsWW1STDHs9AFe0WtVXQo7nLcZBESnhqOBYdG7wFGIqZAyuyYSp2kD1ZAe7ZCfrgZDZD
+    var json = 'https://graph.facebook.com/v2.4/FortalezaOficial/posts?fields=picture,full_picture,message,created_time&since='+hora_before+'&until='+hora_depois+'&access_token=1617559565188478|xrZ3K5p-aOnvFLGHa4xmEjSukww';
     
     var deferred = $q.defer();
     var promise = deferred.promise;
@@ -410,17 +337,16 @@ console.log(json);
     var service = {};
 
     service.async = function() {
-    $http({method: 'GET', url: json, timeout: 5000}).
-    // this callback will be called asynchronously
-    // when the response is available.
+    $http({method: 'GET', url: json, dataType: 'jsonp', timeout: 5000}).
+    
+    
     success(function(d) {
-        // console.log(d.data);
 		data = d.data;
 		LancesStorage.save(data);
         deferred.resolve();
     }).
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
+    
+    
     error(function() {
         data = LancesStorage.all();
         deferred.reject();
@@ -438,7 +364,7 @@ console.log(json);
 
     return service;
 })
-// Posts Data: JSON Wordpress Posts configuration
+
 .factory('DestaquesData', function($http, $q, DestaquesStorage) {
 
     var json = 'http://www.fortalezaec.net/Json/DestaquesMaiores?visivel=true';
@@ -449,7 +375,7 @@ console.log(json);
     var service = {};
 
     service.async = function() {
-    $http({method: 'GET', url: json, timeout: 5000}).
+    $http({method: 'GET', url: json, dataType: 'jsonp', timeout: 5000}).
 
 
     success(function(d) {
@@ -482,17 +408,10 @@ console.log(json);
     return service;
 })
 
-// Posts Data: JSON Wordpress Posts configuration
 .factory('JogadoresData', function($http, $q, JogadoresStorage) {
 
     
     var json = 'http://www.fortalezaec.net/Json/Jogadores?categoriaId=00e967dfc6f74ca5b523546ce9cce0f2';
-
-    /* Set your URL as you can see in the following example */
-    // var json = 'YourWordpressURL/?json=get_recent_posts';
-
-    /* With user-friendly permalinks configured */
-    // var json = 'YourWordpressURL/api/get_recent_posts';
 
     var deferred = $q.defer();
     var promise = deferred.promise;
@@ -500,17 +419,17 @@ console.log(json);
     var service = {};
 
     service.async = function() {
-    $http({method: 'GET', url: json, timeout: 5000}).
-    // this callback will be called asynchronously
-    // when the response is available.
+    $http({method: 'GET', url: json, dataType: 'jsonp', timeout: 5000}).
+    
+    
     success(function(d) {
         data = d.Model;
         
         JogadoresStorage.save(data);
         deferred.resolve();
     }).
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
+    
+    
     error(function() {
         data = JogadoresStorage.all();
         deferred.reject();
